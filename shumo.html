@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>殊墨 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .wrap {
+            max-width: 800px;
+            margin: 120px auto 0;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .wrap h1 {
+            color: #e94560;
+            margin-bottom: 20px;
+        }
+        .wrap p {
+            color:#bbb;
+            font-size:1.05rem;
+            line-height:1.8;
+            margin-bottom:30px;
+        }
+        .btn-pdf {
+            display:inline-block;
+            padding:10px 24px;
+            background:#e94560;
+            color:#fff;
+            text-decoration:none;
+            border-radius:8px;
+            font-size:1rem;
+        }
+        .back-nav {
+            padding: 24px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+            margin-top:80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="index.html">← 返回主页</a>
+    </div>
+    <div class="wrap">
+        <h1>殊墨</h1>
+        <p>经典人类，人均2-3分钟。各种play，玩法由玩家决定</p>
+        <p>页面加载完毕，将自动打开规则PDF。<br>如果没有自动弹出，请点下方按钮：</p>
+        <a class="btn-pdf" href="pdf/殊墨.pdf" target="_blank">📄 打开殊墨规则PDF</a>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+    <div class="star-layer" id="starBox"></div>
+
+    <script>
+        // 自动跳转打开PDF
+        window.onload = function(){
+            window.open("pdf/殊墨.pdf","_blank");
+        }
+        // 星空
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
