@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伯明翰 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../de.html">← 返回德式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/boduolige.png">
+        <div class="info-right">
+            <h1>工业革命：伯明翰</h1>
+            <div class="tag-row">
+                <span class="tag">2-4人</span>
+                <span class="tag">难度3.91/5</span>
+                <span class="tag">时长60-120分钟</span>
+                <span class="tag">链式</span>
+            </div>
+            <div class="content">
+                <p>《工业革命：伯明翰》由马丁·华莱士（Martin Wallace）联袂加文·布朗（Gavan Brown）与马特·托尔曼（Matt Tolman）设计，Roxley于2018年推出，是对2007年经典作品《工业革命》的独立续作与规则重塑。它长期位居BGG排行榜前列，被广泛视为工业革命模拟类桌游的标杆之作。游戏以1770至1870年英格兰工业革命为舞台，玩家扮演西米德兰兹地区相互竞争的企业家，通过建造产业、铺设运输网络、操控市场供需来积累财富与声望。核心机制围绕手牌管理与网络建设展开，在“运河时代”与“铁路时代”两个截然不同的历史阶段中，玩家需要动态调整产业布局与扩张节奏，最终以声望点数最高者胜出。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>伯明翰在18世纪末至19世纪中叶成为英国工业革命的心脏地带，运河与铁路的兴起彻底重塑了物资流通与产业格局。游戏中，玩家化身这一时期的实业家，在版图上兴建棉花厂、煤矿、铁厂、陶器工坊、制成品厂与酿酒厂，通过运河与铁路将产品输送至边缘市场，满足商人的需求。你所做的每一项决策——是抢先铺开网络、贷款扩张，还是深耕高价值产业、等待时机收割——都直接对应着那个时代企业家所面对的核心矛盾：速度与效率、债务与回报、短期现金流与长期声望之间的权衡。游戏并非对历史事件的复刻，而是将工业革命的经济逻辑抽象为一场高强度的策略博弈。<br>
+游戏在两个时代中推进：运河时代（1770–1830） 与 铁路时代（1830–1870）。每个时代结束时进行一次计分，最终在铁路时代计分后决出胜者。每位玩家在回合中依行动顺位执行行动，每轮通常拥有两个行动，从六种基础行动中选择。<br>
+
+六种行动分别是：建造（支付资源，放置产业板块）、网络（铺设运河或铁路连接，扩展你的运输网络）、发展（移除一个低等级产业板块以提升该产业的可建造等级与分值）、销售（将棉花、制成品或陶器卖给边缘商人）、贷款（获得£30，但永久降低收入指数）、以及侦察（弃三张牌，换取一张万能地点牌与一张万能产业牌）。手牌规定了你可以在哪些地点建造何种产业，因此手牌管理构成了每一回合决策的边界。<br>
+
+销售机制是伯明翰区别于前作的关键设计。要将棉花、制成品或陶器卖给商人，你必须同时消耗啤酒来完成交易——“润滑工业的齿轮”。第一个向某位商人售出货物的玩家可以获得免费啤酒，这制造了明确的竞速压力：谁先完成销售，谁就能以更低成本翻转产业、获取分数与收入提升。啤酒本身由酿酒厂生产，这使得酿酒厂成为网络中不可或缺的支撑性产业。<br>
+
+运河与铁路的计分方式也是动态的。并非所有翻转的产业板块都为连接线路提供相同的分数；许多产业提供的运河/铁路分值可能为0，甚至高达2分。这意味着铺设线路时不能只看“连接了多少板块”，还需要预判哪些产业在你的网络辐射范围内具有最高的线路分值。运河时代的产业板块与线路在进入铁路时代时会被移除，只有升级后的产业（等级2及以上）得以保留，迫使玩家在时代交替之际做出前瞻性的保留与放弃决策。<br>
+
+经济管理贯穿全局。煤与铁是建造和研发的硬性资源，其价格会随市场供需浮动，最高可攀升至每块£8。贷款提供即时的£30流动性，但以永久降低收入指数为代价。收入指数决定了你每轮能获得的稳定现金流，而现金流又反过来限制了你能否负担建造与铺路的花费。行动顺位并非固定：你在一个回合中花费的金额越多，下一回合的行动顺位就越靠后——花得越多，等得越久，这一设计迫使玩家在“一次性大规模投入”与“保持机动性、抢先手”之间做出取舍。</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
