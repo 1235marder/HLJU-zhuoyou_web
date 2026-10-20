@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勃根地城堡 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../de.html">← 返回德式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/bogendichengbao.png">
+        <div class="info-right">
+            <h1>勃根地城堡</h1>
+            <div class="tag-row">
+                <span class="tag">1-4人</span>
+                <span class="tag">难度2.91/5</span>
+                <span class="tag">时长70-120分钟</span>
+                <span class="tag">领地建设</span>
+            </div>
+            <div class="content">
+                <p>《勃根地城堡》（The Castles of Burgundy）由斯特凡·费尔德（Stefan Feld）设计，Ravensburger/alea于2011年发行，Julien Delval与Harald Lieske负责美术。它是费尔德个人BGG排名最高的作品，长期稳居BGG总榜前二十，被视为2010年代最具代表性的德式策略游戏之一。游戏以15世纪法国勃艮第公国为舞台，玩家扮演争夺影响力的贵族，通过骰子驱动在个人领地上收集并拼放六角板块，发展畜牧、贸易、矿业与城市建设。其核心特色在于用极简的骰子机制承载了高度密集的决策链——每一颗骰子既是资源，也是限制，而工人的存在让玩家始终保有修正命运的最后手段。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>勃艮第在中世纪盛期是西欧最为富庶的领地之一，以葡萄酒、畜牧与商贸闻名，也是法王与神圣罗马帝国长期角力的焦点。游戏并未试图复刻某一场具体战役或王朝更迭，而是将“领主经营领地”的抽象逻辑提取为一场板块拼放竞赛。你从一座孤零零的城堡和一片空旷的封地开始，逐步将牧场、矿井、市镇、修道院与知识设施填入版图上的六角格，使自己的公国在五个时代中走向繁荣。这里的“勃艮第”更像一个功能性的舞台：规则书从未要求玩家忠于任何历史叙事，真正被考验的是如何在骰点与格子之间，找到效率最高的那条扩张路径。<br>
+游戏分为五个阶段（A至E），每阶段包含五轮。每轮开始时，每位玩家掷两颗六面骰，然后依次将骰子作为行动点数来使用，每颗骰子执行一个行动。骰点并不直接限制你“能否行动”，而是限制你“以什么方式行动”——这是理解勃根地城堡全部策略张力的起点。<br>
+
+玩家的行动选项围绕六角板块展开。中央版图按点数1至6划分了六个板块池，每颗骰子可以执行以下行动之一：拿取板块，将对应点数池中的一枚六角片放入个人暂存区；放置板块，从暂存区取出一枚板块，放入自己领地上点数与骰点匹配的格子中；出售货物，将货物板块按骰点卖出换取银币；或者获取工人，主动弃掉一颗骰子换取两个工人。工人是这套骰子系统中最重要的“解耦阀”：每支付一个工人，就可以将骰点上下调整一点。这意味着高点数骰子并非总是更好，真正的技巧在于用有限的工人把骰点“掰”到最需要的位置，而不是被动接受掷骰结果。<br>
+
+板块放置本身触发即时效果，并构成连锁引擎。不同类型的板块在放置时给予不同的即时收益：建筑板块通常提供一次性能力或资源转换，动物板块在放入牧场时直接计分，矿井在每阶段结束时提供银币，知识板块则赋予持续性的规则修正或终局计分条件。更关键的是区域完成奖励：个人版图被划分为多个封闭区域，当一个区域内的所有格子被填满时，玩家立即获得该区域标注的奖励，越早完成，奖励越丰厚。这迫使玩家在“拿高价值板块”与“抢早完成小区域”之间不断权衡——后者往往点数收益不高，但抢先完成的节奏优势可以滚雪球般放大。<br>
+
+游戏结束时，未被使用的银币、工人与未售出的货物各按一定比例折算为分数，已放置的黄色知识板块也可能提供额外终局得分。胜利不属于某一条单一“最优路线”的忠实执行者，而属于在五个阶段中持续做出高适应性决策、让每一颗骰子都尽可能嵌入现有引擎的人。</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
