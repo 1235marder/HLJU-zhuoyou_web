@@ -34,34 +34,9 @@
             0%, 100% { opacity: 0.3; }
             50% { opacity: 0.9; }
         }
-        .wrap {
-            max-width: 800px;
-            margin: 120px auto 0;
-            padding: 0 20px;
-            text-align: center;
-        }
-        .wrap h1 {
-            color: #e94560;
-            margin-bottom: 20px;
-        }
-        .wrap p {
-            color:#bbb;
-            font-size:1.05rem;
-            line-height:1.8;
-            margin-bottom:30px;
-        }
-        .btn-pdf {
-            display:inline-block;
-            padding:10px 24px;
-            background:#e94560;
-            color:#fff;
-            text-decoration:none;
-            border-radius:8px;
-            font-size:1rem;
-        }
         .back-nav {
-            padding: 24px 20px;
-            max-width: 1100px;
+            padding: 48px 20px 24px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         .back-nav a {
@@ -72,13 +47,61 @@
         .back-nav a:hover {
             color: #e94560;
         }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 24px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .desc-text p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+            margin-bottom: 24px;
+        }
+        /* PDF内嵌框 */
+        .pdf-wrap {
+            width: 100%;
+            height: 82vh;
+            border-radius:12px;
+            overflow:hidden;
+            border: 1px solid rgba(35, 53, 84, 0.4);
+            background:#fff;
+        }
+        .pdf-wrap iframe {
+            width:100%;
+            height:100%;
+            border:0;
+        }
         .footer {
             text-align: center;
             padding: 30px;
             color: #555;
             font-size: 0.9rem;
             border-top: 1px solid rgba(35, 53, 84, 0.4);
-            margin-top:80px;
+            margin-top:40px;
+        }
+        @media (max-width:768px) {
+            .pdf-wrap {
+                height:65vh;
+            }
         }
     </style>
 </head>
@@ -86,23 +109,25 @@
     <div class="back-nav">
         <a href="index.html">← 返回主页</a>
     </div>
-    <div class="wrap">
+    <div class="container">
         <h1>殊墨</h1>
-        <p>经典人类，人均2-3分钟。各种play，玩法由玩家决定</p>
-        <p>页面加载完毕，将自动打开规则PDF。<br>如果没有自动弹出，请点下方按钮：</p>
-        <a class="btn-pdf" href="pdf/殊墨.pdf" target="_blank">📄 打开殊墨规则PDF</a>
+        <div class="tag-row">
+            <span class="tag">轻策 ★★★★☆</span>
+            <span class="tag">无限人次</span>
+        </div>
+        <div class="desc-text">
+            <p>经典人类，人均2-3分钟。各种play，玩法由玩家决定</p>
+        </div>
+        <!-- 直接嵌入PDF，无弹窗 -->
+        <div class="pdf-wrap">
+            <iframe src="pdf/shumo.pdf"></iframe>
+        </div>
     </div>
     <div class="footer">
         黑大桌游社 · 黑龙江大学 · 2026
     </div>
     <div class="star-layer" id="starBox"></div>
-
     <script>
-        // 自动跳转打开PDF
-        window.onload = function(){
-            window.open("pdf/shumo.pdf","_blank");
-        }
-        // 星空
         const starBox = document.getElementById('starBox');
         const starCount = 180;
         for(let i=0; i<starCount; i++){
