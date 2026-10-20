@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黑大桌游社 | Heilongjiang University Board Game Club</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            min-height: 100vh;
+        }
+        .hero {
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, #e94560, #f5a623);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #e94560;
+            border-left: 4px solid #e94560;
+            padding-left: 12px;
+        }
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .game-card {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.2s;
+            border: 1px solid #233554;
+        }
+        .game-card:hover {
+            transform: translateY(-4px);
+            border-color: #e94560;
+        }
+        .game-card .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .game-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #f5a623;
+        }
+        .game-card p {
+            font-size: 0.9rem;
+            color: #888;
+            line-height: 1.6;
+        }
+        .info {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid #233554;
+            margin-bottom: 40px;
+        }
+        .info h3 {
+            color: #e94560;
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+        .info p {
+            color: #bbb;
+            line-height: 2;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid #233554;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>黑大桌游社</h1>
+        <p>黑龙江大学学生桌游爱好者聚集地<br>每月固定活动 · 新玩家友好 · 啥本都玩</p>
+    </div>
+
+    <div class="container">
+        <div class="section-title">我们玩什么</div>
+        <div class="games">
+            <div class="game-card">
+                <div class="emoji">🎲</div>
+                <h3>德式策略</h3>
+                <p>波多黎各、农场主、电厂等深度策略重策</p>
+            </div>
+            <div class="game-card">
+                <div class="emoji">🗡️</div>
+                <h3>美式桌游</h3>
+                <p>幽港迷城、深入绝地等冒险探索类</p>
+            </div>
+            <div class="game-card">
+                <div class="emoji">🍻</div>
+                <h3>聚会游戏</h3>
+                <p>阿瓦隆、狼人、机密代号等轻松开局</p>
+            </div>
+            <div class="game-card">
+                <div class="emoji">🐉</div>
+                <h3>跑团TRPG</h3>
+                <p>D&D、COC等桌面角色扮演</p>
+            </div>
+        </div>
+
+        <div class="section-title">活动信息</div>
+        <div class="info">
+            <h3>📍 活动时间与地点</h3>
+            <p>
+                每周六下午 14:00 - 20:00<br>
+                黑大校园内（具体群内通知）<br>
+                新手随时来，有老人带局，零门槛入坑
+            </p>
+        </div>
+        <div class="info">
+            <h3>🎯 加入我们</h3>
+            <p>
+                <span class="tag">新玩家免费</span>
+                <span class="tag">每周固定局</span>
+                <span class="tag">桌游免费玩</span><br><br>
+                想加入的同学请加群，群内会发每周局表和拼车信息。
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+</body>
+</html>
