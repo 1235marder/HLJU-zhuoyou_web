@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>德式策略桌游 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            min-height: 100vh;
+        }
+        /* 返回导航 */
+        .back-nav {
+            padding: 24px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        /* 顶部横幅 */
+        .banner {
+            max-width: 1100px;
+            height: 260px;
+            margin: 0 auto 32px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            background: url("images/de.png") center / cover no-repeat;
+        }
+        .banner-mask {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+        }
+        .banner-text {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 40px;
+        }
+        .banner-text h1 {
+            font-size: 2.4rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .banner-text p {
+            color: #ddd;
+            font-size: 1rem;
+        }
+        /* 排序栏 */
+        .sort-bar {
+            max-width: 1100px;
+            margin: 0 auto 24px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sort-bar label {
+            color: #bbb;
+        }
+        .sort-bar select {
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: #16213e;
+            color: #eee;
+            border: 1px solid #233554;
+        }
+        /* 桌游网格 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .game-item {
+            height: 220px;
+            border-radius: 12px;
+            border: 1px solid #233554;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .game-item:hover {
+            transform: translateY(-4px);
+            border-color: #e94560;
+        }
+        .game-item-bg {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-color: #16213e;
+        }
+        .game-item-mask {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent 60%);
+        }
+        .game-info {
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            padding: 16px;
+            width: 100%;
+        }
+        .game-info h3 {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin: 2px 2px 0 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid #233554;
+        }
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            .banner {
+                height: 180px;
+                margin: 0 16px 24px;
+            }
+            .banner-text h1 {
+                font-size: 1.8rem;
+            }
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="index.html">← 返回桌游列表主页</a>
+    </div>
+    <!-- 顶部横幅 -->
+    <div class="banner">
+        <div class="banner-mask"></div>
+        <div class="banner-text">
+            <h1>德式策略桌游</h1>
+            <p>资源规划、长线博弈，适合喜欢深度动脑的玩家</p>
+        </div>
+    </div>
+    <!-- 排序下拉 -->
+    <div class="sort-bar">
+        <label>排序方式：</label>
+        <select id="sortSelect">
+            <option value="nameAsc">名称 A→Z（拼音正序）</option>
+            <option value="nameDesc">名称 Z→A（拼音倒序）</option>
+            <option value="diffAsc">难度 低→高</option>
+            <option value="diffDesc">难度 高→低</option>
+        </select>
+    </div>
+    <!-- 桌游卡片容器，JS渲染 -->
+    <div class="container" id="gameContainer"></div>
+
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <script>
+        // ========= 德式策略桌游数据，后续新增桌游直接往这里加条目即可 =========
+        const gameList = [
+            {
+                name: "波多黎各",
+                img: "images/de-boduo.png",
+                player: "2-5人",
+                diff: 3.5,
+                diffUnit: "/10",
+                time: "90-150分钟",
+                desc: "运输货物，建造建筑，成为对欧洲最有贡献的总督。",
+                link: "#"
+            },
+            {
+                name: "伯明翰",
+                img: "images/de-bominghan.png",
+                player: "2-4人",
+                diff: 3.91,
+                diffUnit: "/5",
+                time: "60-120分钟",
+                desc: "建立人脉，发展产业，驾驭工业革命的世界。",
+                link: "#"
+            },
+            {
+                name: "终极铁路",
+                img: "images/de-tielu.png",
+                player: "1-4人",
+                diff: 7,
+                diffUnit: "/10",
+                time: "90-120分钟",
+                desc: "工人放置+科技树重策，全速前进博弈。",
+                link: "#"
+            },
+            {
+                name: "勃根地城堡",
+                img: "images/de-bogendi.png",
+                player: "1-4人",
+                diff: 2.91,
+                diffUnit: "/5",
+                time: "70-120分钟",
+                desc: "把你的公国建设成繁华的商业大都市。",
+                link: "#"
+            },
+            {
+                name: "历史巨轮",
+                img: "images/de-lishi.png",
+                player: "2-4人",
+                diff: 4.44,
+                diffUnit: "/5",
+                time: "180分钟",
+                desc: "在历史中开辟属于你的道路，打造永恒文明。",
+                link: "#"
+            },
+            {
+                name: "帝国",
+                img: "images/de-diguo.png",
+                player: "1-4人",
+                diff: 3.76,
+                diffUnit: "/5",
+                time: "40-160分钟",
+                desc: "手牌管理+公开选秀，竞争成为世界最强帝国。",
+                link: "#"
+            },
+            {
+                name: "灵迹岛",
+                img: "images/de-lingji.png",
+                player: "1-4人",
+                diff: 4.07,
+                diffUnit: "/5",
+                time: "90-120分钟",
+                desc: "岛屿精灵联手，用元素力量保卫家园免受入侵者侵害。",
+                link: "#"
+            },
+            {
+                name: "璀璨宝石",
+                img: "images/de-cancan.png",
+                player: "2-4人",
+                diff: 1.77,
+                diffUnit: "/5",
+                time: "30分钟",
+                desc: "文艺复兴商人争夺宝石，取悦贵族，入门选秀经典。",
+                link: "#"
+            },
+            {
+                name: "卡卡颂",
+                img: "images/de-kakasong.png",
+                player: "2-5人",
+                diff: 1.88,
+                diffUnit: "/5",
+                time: "25-40分钟",
+                desc: "拼版图塑造中世纪法国景观，占领城市、道路、农场。",
+                link: "#"
+            },
+            {
+                name: "卡坦岛",
+                img: "images/de-katan.png",
+                player: "3-4人",
+                diff: 2.28,
+                diffUnit: "/5",
+                time: "60-120分钟",
+                desc: "收集交易资源，建设你的卡坦岛殖民地。",
+                link: "#"
+            },
+            {
+                name: "自然和弦",
+                img: "images/de-ziran.png",
+                player: "1-4人",
+                diff: 2.01,
+                diffUnit: "/5",
+                time: "45分钟",
+                desc: "创造专属景观栖息地，吸引动物居住。",
+                link: "#"
+            },
+            {
+                name: "永恒幽谷",
+                img: "images/de-youheng.png",
+                player: "2-4人",
+                diff: 2.15,
+                diffUnit: "/5",
+                time: "30-45分钟",
+                desc: "驯服神话生物，借助它们的力量召唤传说巨龙。",
+                link: "#"
+            }
+        ];
+
+        const container = document.getElementById("gameContainer");
+        const sortSelect = document.getElementById("sortSelect");
+
+        // 渲染卡片
+        function render(list) {
+            container.innerHTML = "";
+            list.forEach(game => {
+                const a = document.createElement("a");
+                a.className = "game-item";
+                a.href = game.link;
+                a.innerHTML = `
+                    <div class="game-item-bg" style="background-image:url('${game.img}')"></div>
+                    <div class="game-item-mask"></div>
+                    <div class="game-info">
+                        <h3>${game.name}</h3>
+                        <span class="tag">${game.player}</span>
+                        <span class="tag">难度${game.diff}${game.diffUnit}</span>
+                    </div>
+                `;
+                container.appendChild(a);
+            });
+        }
+
+        // 排序逻辑
+        function sortAndRender(type) {
+            let arr = [...gameList];
+            switch(type) {
+                case "nameAsc":
+                    arr.sort((a,b) => a.name.localeCompare(b.name, "zh-CN"));
+                    break;
+                case "nameDesc":
+                    arr.sort((a,b) => b.name.localeCompare(a.name, "zh-CN"));
+                    break;
+                case "diffAsc":
+                    arr.sort((a,b) => a.diff - b.diff);
+                    break;
+                case "diffDesc":
+                    arr.sort((a,b) => b.diff - a.diff);
+                    break;
+            }
+            render(arr);
+        }
+
+        sortSelect.onchange = e => sortAndRender(e.target.value);
+        sortAndRender("nameAsc"); // 默认按名称正序
+    </script>
+</body>
+</html>
