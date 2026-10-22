@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卡卡颂 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../de.html">← 返回德式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/kakasong.png">
+        <div class="info-right">
+            <h1>卡卡颂</h1>
+            <div class="tag-row">
+                <span class="tag">2-5人</span>
+                <span class="tag">难度1.88/5</span>
+                <span class="tag">时长25-40分钟</span>
+                <span class="tag">板块添加</span>
+                <span class="tag">地图构造</span>
+            </div>
+            <div class="content">
+                <p>《卡卡颂》（Carcassonne）由 Klaus-Jürgen Wrede 设计，Hans im Glück 于2000年发行，同年即获得德国年度游戏奖（Spiel des Jahres），与《卡坦岛》并称为“双卡”，是德式入门桌游最经典的门面之一。游戏以法国南部中世纪古城卡卡颂为名，玩家轮流抽取地形板块，拼出一幅不断蔓延的中世纪地景，再派遣随从（米宝）占领城市、道路、修道院与草原，通过完成并收回米宝来滚动分数。它的规则十分钟就能讲完，重度仅约1.95/5，但“拼图的共享性”与“米宝的归属权”之间的张力，让它在极度轻量的框架下长出了远超体量的博弈深度。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>卡卡颂是法国西南部一座以坚固城墙闻名的古城，在罗马时代与骑士时代，它的防御工事远近驰名。游戏并不复刻任何具体战役或王朝，而是把“领主开拓疆土”这件事抽象成了一场拼图竞赛：你扮演中古时代的君王或诸侯，派遣手下担任骑士、强盗、农夫或修士，去建立、管理或占领城市、道路、草原与修道院。随着板块一块块落下，原本空无一物的桌面逐渐长出城墙、田野与修道院，而每一次放置都在重新定义“这块地形属于谁”。<br>
+
+每回合的行动极其简单：抽一块板块，拼到已有版图上，然后决定是否派出一枚米宝。拼放必须遵循地形匹配——道路接道路，城市接城市，草原接草原。米宝放置时，必须放在刚刚拼上的那块板块上，且该地形上不能已有其他玩家的米宝。这看似只是“占地”，真正的博弈在于拼图本身是共享的：你拼出的道路和城市，可能正在帮对手完成他的版图。<br>
+
+完成与回收是分数的直接来源。城市被城墙围合完成时，每个板块计2分，带盾牌的地块额外加2分；道路两端封闭完成时，每块计1分；修道院被周围八格完全包围时，计9分。完成的那一刻，占据该地形的米宝立即收回，回收的米宝可以投入下一轮争夺。这条“完成—回收—再投入”的循环，是卡卡颂最基本的节奏：米宝是你最稀缺的资源，手头的米宝越少，你能参与的争夺就越少。<br>
+
+但米宝并非放下去就安全。当后续板块把两片原本独立的地形连在一起时，该地形上可能同时存在多位玩家的米宝。此时米宝数量多的一方独占全部分数，数量相同则共享。这意味着你可以主动拼一块板块去“合流”对手的城市，如果你在那片地形上已经布置了更多米宝，就能在合流的一瞬间夺取控制权，完成一次零成本的“吞并”。当然，对手也可以反过来利用同样的逻辑来稀释你的优势。合作与对抗在这里没有明确边界：有时你先放一个米宝，再等对手帮你把城市补完，你们共享分数；有时你拼一块板块封死对手即将完成的大城，逼他在低收益的未完成地形上继续投入。<br>
+
+农夫与草原是终局计分中最具翻转能力的暗线。草原上的米宝（农夫）一旦放下就不能回收，也不参与任何即时计分。它的收益在游戏结束时才结算：每片草原所接壤的每一个完成城市计3分，未完成城市计1分。这意味着，如果你在游戏早期把一枚农夫放进一片辐射范围极广的草原，它可能在终局带来远超任何单次城市完成的分数；但代价是这枚米宝在整个中前期都“躺在”草原上，无法参与道路和城市的争夺。用一枚米宝换一条终局赛道，还是保留它用于即时收割，是卡卡颂每一局都在反复拷问的核心取舍。<br>
+
+当最后一块板块拼完，游戏立即结束，所有未完成的道路和城市按较低分值结算，草原农夫进行终局计分，总分最高者胜出。卡卡颂的运气成分来自抽牌顺序，但真正的胜负往往不在你抽到了什么，而在于你把对手的拼图变成了自己的地基，还是让自己的米宝成为了别人完成图景的垫脚石。</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

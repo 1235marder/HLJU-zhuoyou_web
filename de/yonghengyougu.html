@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>永恒幽谷 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../de.html">← 返回德式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/yonghengyougu.png">
+        <div class="info-right">
+            <h1>永恒幽谷</h1>
+            <div class="tag-row">
+                <span class="tag">2-4人</span>
+                <span class="tag">难度2.15/5</span>
+                <span class="tag">时长30-45分钟</span>
+                <span class="tag">手牌管理</span>
+                <span class="tag">公开选秀</span>
+            </div>
+            <div class="content">
+                <p>《永恒之谷》（The Vale of Eternity）由 Eric Hong 设计，Mandoo Games 于2023年发行，中文版由栢龙代理。游戏以驯服神话生物为舞台，玩家扮演驯兽师，在十轮之内通过轮抽挑选生物、出售换取魔法石、再将生物召唤到自己的版面上触发连锁效果，率先达到60分者胜出。它的外表相当轻盈——规则书不厚，单局不到一小时，重度仅在2.33左右；但真正让它在同类卡牌引擎构筑中站住脚的，是两条看似不起眼、实则极其“坏心”的限制：你能召唤的生物数量不得超过当前轮数，而你持有的魔法石永远不能找零。前者让你的引擎规模被轮次进度死死卡住，后者让每一笔支出都带着不可回收的沉没成本。轻盈的是规则，收紧的是每一颗魔法石的去向。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>永恒之谷是一片神话生物栖居的土地，龙、精灵、神明与来自各地传说的怪物在此共存。你是踏入这片山谷的驯兽师，目标不是征服，而是在有限的时间里建立起一套足够精密的“仆从网络”——每一只被驯服的生物都是一枚零件，它们之间的即时触发、持续生效与回合结束效果，才是你真正在经营的东西。龙被视为最珍贵也最难驾驭的存在，但龙并非唯一的胜利路径：火、草、水、风四系生物各有自己的经济逻辑，有人靠水系每轮稳定产出魔法石，有人靠火系战吼卡反复回手刷分，也有人用杂色组合在后期一次性兑现。山谷不规定你应该成为什么样的驯兽师，它只负责在你每一次“留还是卖”的选择面前，让代价变得清晰可见。<br>
+
+每轮以S型轮抽开始：从起始玩家顺时针每人先放一个标记预定一张牌，再从末位玩家逆时针放第二个标记，每人最终拿到两张生物的选择权。被标记的牌归你处置，你可以选择驯服（拿回手牌，免费）、出售（弃掉换魔法石）或暂时留在场上等待后续支付费用召唤到个人版面。轮抽的S型顺序意味着你第一张想要的牌和第二张想要的牌不能都用同一种位次去抢——先手拿第一张，就要接受在第二张上后选；反之亦然。这种微小的顺序错位，在十轮里会累积成可观的资源差。<br>
+
+“生物数量≤当前轮数” 是整局游戏最硬的天花板。第1轮你最多只能召唤1张牌，第5轮最多5张，第10轮才完全放开。这意味着你无法在前期“囤积”一个庞大的引擎等待后期爆发，引擎的规模必须与时间同步生长。更微妙的是，弃置已召唤的生物需要支付等于当前轮数的费用——第8轮想拆掉一张早期放错的牌，代价是8颗魔法石。错误的召唤不是可以轻易修正的失误，它会在你的版面上占据一个位置，直到你愿意付出越来越昂贵的代价把它清走。<br>
+
+魔法石不找零是第二条沉默的税。魔法石面额为1、3、6，持有上限4颗。一张召唤费用为4的牌，如果你手里只有一颗面额6的石头，支付后不会返还任何东西——那2点的差额直接蒸发。这迫使你在出售生物时不能只盯着“这张牌能换多少”，而要计算“换来的面额组合能不能在接下来的召唤中不被浪费”。水系的出售通常产出3的倍数，火系和草系偏向1的小额，龙系则直接给一颗6。你选择卖什么，等于在提前决定你下一轮能顺畅地买什么。<br>
+
+生物效果分为即时、持续与回合结束三类。即时效果在召唤的瞬间触发，持续效果提供常驻能力，回合结束效果则在每轮末尾依序结算。真正的深度不在单张牌的强度，而在效果之间的结算顺序：同一轮结束阶段，多张“回合结束”效果以什么顺序执行，可能决定你这一轮是刚好够分还是差之一线。玩家需要主动选择结算顺序，而某些强制效果（例如必须弃牌换分的生物）会在你不希望的时候迫使你交出手牌——引擎的齿轮咬合得越紧，你对它的控制反而越需要精确。<br>
+
+当有人达到60分，或十轮耗尽，游戏结束。分数主要来自已召唤生物的即时与持续效果，以及每轮结束时的触发收益。永恒之谷的胜负很少来自某一张“超模牌”的单点爆发，而来自在轮数允许的范围内，把每一颗魔法石都花在了不找零的位置上，把每一次轮抽顺序的错位都转化成了下一轮引擎的咬合。它轻，但不松；短，但每一轮都在收紧。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

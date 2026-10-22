@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帝国 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../de.html">← 返回德式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/diguo.png">
+        <div class="info-right">
+            <h1>帝国：传奇</h1>
+            <div class="tag-row">
+                <span class="tag">1-4人</span>
+                <span class="tag">难度3.76/5</span>
+                <span class="tag">时长40-160分钟</span>
+                <span class="tag">共同选秀</span>
+                <span class="tag">手牌管理</span>
+            </div>
+            <div class="content">
+                <p>《帝国：传奇》（Imperium: Legends）由 Nigel Buckle 与 Dávid Turczi 联合设计，Osprey Games 于2021年发行。它是《帝国》系列中偏向神话与奇幻设定的独立作品（与偏重历史的《帝国：经典》完全兼容）。游戏以宏大的文明演进为舞台，玩家扮演不同文明的领袖，通过牌库构筑（Deck-building）与手牌管理，带领自己的部族从野蛮的“蛮族”阶段，一步步走向强盛的“帝国”阶段。其最核心的设计张力在于“非对称的文明发展”与“内部崩溃的倒计时”——你必须在对外扩张、精炼牌库与处理内部动乱之间找到极其微妙的平衡。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>在漫长的历史长河与神话传说中，文明往往是从荆棘与泥泞中起步的。游戏中收录了八大极具特色的文明：亚瑟王、亚特兰蒂斯、古埃及、孔雀王朝、米诺斯、奥尔梅克、秦朝与乌托邦。你将从最原始、最粗糙的“蛮族”牌库开始你的统治，通过征服、贸易、科技与文化，逐步解锁该文明专属的进阶卡牌。每一次“创新”都是对旧有野蛮习俗的摒弃，每一次“扩张”都伴随着未知的风险。你的目标不仅是击败对手，更是要带领你的文明跨越历史的临界点，完成向“帝国”的华丽蜕变。<br>
+
+游戏的核心是牌库构筑与文明演进的结合，每回合玩家拥有3个行动点，用于打出卡牌或执行特定行动。这并非单纯“买牌加牌”的爽快游戏，其精髓在于对节奏和风险的绝对管控。<br>
+
+玩家在回合中主要有三种核心选择：激活（花费行动点打出卡牌，获取资源、发动攻击或发展科技）、创新（弃掉整手牌，从专属市场获取更强力的进阶卡牌，这是精炼牌库的主要途径）、以及反抗（归还“动乱”卡牌，清理牌库）。这种机制迫使玩家必须在“保持当前回合的高效运转”与“为未来的强力爆发做铺垫”之间做出痛苦取舍。<br>
+
+“动乱”（Unrest）机制是悬在所有玩家头顶的达摩克利斯之剑。在发展过程中，玩家不可避免地会积累“动乱”卡牌。这些卡牌不仅会卡手、污染牌库、拖慢节奏，终局还会扣除分数。更致命的是，如果公共牌库中的“动乱”卡被抽光，游戏会立即触发“文明崩溃”提前结束——此时牌库中“动乱”最少的玩家获胜。这一设计彻底改变了传统德式游戏单纯比拼分数的逻辑，让“维稳”成为了一种极具攻击性的防御策略。<br>
+
+文明演进与阶段转换是游戏最迷人的部分。每个文明都有专属的起始牌库和升级路径。当你的初始牌库摸空后，可以解锁第一张升级牌；当所有升级牌都获得后，文明便正式从“蛮族”迈入“帝国”阶段，解锁强大的终极能力，但同时也会失去一些野蛮时期的“实用手段”（例如某些卡牌会被移出游戏）。此外，玩家之间的互动不仅体现在资源的争夺上，还体现在“公开选秀”（Drafting）机制中——公共市场与事件卡牌的流转，往往因为对手的选择而产生连锁反应。<br>
+
+当公共牌库或发展牌库摸空，或者触发“文明崩溃”时，游戏结束。结算场上卡牌、手牌、牌库以及历史区中的分数，并结合扣分的“动乱”卡，得分最高者证明了自己是历史长河中最伟大的文明缔造者。</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

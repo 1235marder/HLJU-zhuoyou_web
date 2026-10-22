@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>终极铁路 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../de.html">← 返回德式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/zhanshi_de.png">
+        <div class="info-right">
+            <h1>终极铁路/h1>
+            <div class="tag-row">
+                <span class="tag">1-4人</span>
+                <span class="tag">难度3.75/5</span>
+                <span class="tag">时长90-120分钟</span>
+                <span class="tag">科技树</span>
+                <span class="tag">工人放置</span>
+            </div>
+            <div class="content">
+                <p>《终极铁路》（Ultimate Railroads）由 Helmut Ohley 与 Leonhard “Lonny” Orgler 联合设计，Hans im Glück 于2021年发行。它是2013年经典工人放置游戏《俄国铁路》（Russian Railroads）的终极大盒版，收录了基础游戏、《德国铁路》与《美国铁路》两大扩展、所有Promo内容，以及一个全新的《亚洲铁路》扩展和单人模式。游戏以19世纪铁路狂热为舞台，玩家扮演铁路大亨，通过指派工人执行铺设铁轨、升级火车头、雇佣工程师等行动，在个人版图的三条线路上构建最高效的铁路网络。其最核心的设计张力在于“朴素的工放外壳”与“极度精密的连锁刷分内核”之间的反差——表面上是抢占工位的常规德式博弈，一旦引擎咬合，分数便会在每轮结算中如蒸汽般喷涌而出。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>19世纪的蒸汽力量正在重塑世界的版图。从西伯利亚的冻土到美洲的平原，铁轨一寸寸向前延伸，火车头的每一次提速，都在压缩空间、放大财富。游戏中，你将执掌一家铁路企业，目标是完成西伯利亚大铁路及另外两条干线，打造最大、最先进的铁路网络。你需要在三条风格迥异的线路上分配有限的工人与金币：有的线路提供稳定的基础分数，有的擅长产出创意片（灯泡）来解锁科技，有的则在后期爆发出惊人的刷分能力。与此同时，工业化轨的攀升让你能将废弃的旧火车头转化为工厂，为终局积累额外的产能与分数。这是一场关于节奏与时机的竞赛：抢在对手之前占据关键工位，在正确的回合完成科技跃迁，然后看着你的铁路帝国在每一次计分阶段产出越来越庞大的数字。<br>
+
+游戏进行7个回合，每回合玩家轮流将工人或金币放置在中央版图的空置工位上执行行动，直到所有人选择PASS，然后进入计分阶段。中央版图大致分为六大功能区：延长轨道、火车头与工厂、工业化、辅助行动、工程师、回合顺序。工人是最基础的执行货币，而金币可以代替工人使用，且能跨回合储存，这赋予了金币极高的战术弹性——当你手持金币在后期PASS后“突袭”一个关键工位时，对手往往来不及反应。<br>
+
+三条铁路是刷分的直接通道。每条线路由不同颜色的轨道构成，铺设轨道需要先满足前置条件，而轨道延伸所解锁的奖励与能力，又会反哺其他系统。火车头决定了你的列车能在每条线路上“跑多远”——每轮计分时，你只根据火车头能抵达的距离来获取分数，因此升级火车头是提升即时收益最直接的杠杆。火车头是双面的，在完成使命后可以被翻转为工厂，进入工业化轨。工业化轨的攀升本身提供分数，同时沿途的工厂会给予额外奖励，形成一条“升级火车 → 淘汰旧车 → 建厂工业化 → 反哺新火车”的闭环。<br>
+
+工程师是个人版图上的专属工位。每轮中央版图会提供一名可供雇佣的工程师， hire 之后，你便拥有了一个只有自己能使用的行动格，执行特定的强化行动。工程师的质量与数量不仅直接影响行动效率，终局时还会单独比较数量进行计分，因此“抢工程师”是整局游戏中持续存在的次级战场。回合顺序同样值得争夺，先手意味着在关键工位被抢走之前锁定机会，而围绕顺位的工人往往能在本轮结算末尾再次回收利用，使得顺位竞争本身的收益远超表面成本。<br>
+
+整局游戏最激烈的爆发出现在第一次获得创意片（灯泡）升级的时刻。创意片所带来的科技跃迁——例如9级火车头的提速、附带金币的工程师赠送，或是能够快速推高游戏节奏的关键升级——足以决定一名玩家接下来走哪条主线，甚至左右最终的胜负归属。抢先拿到合适的创意片，等同于为整局引擎选定了一条高速轨道；慢一步的玩家则不得不在别人已经起速的局面下寻找替代路径。终极铁路的胜负，正是在这种工位争夺、科技竞速与刷分连锁的三重挤压中，一点点倾斜的。
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

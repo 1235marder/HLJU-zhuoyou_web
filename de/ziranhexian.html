@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自然和弦 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../de.html">← 返回德式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/ziranhexian.png">
+        <div class="info-right">
+            <h1>自然和弦/h1>
+            <div class="tag-row">
+                <span class="tag">1-4人</span>
+                <span class="tag">难度2.01/5</span>
+                <span class="tag">时长45分钟</span>
+                <span class="tag">链式</span>
+                <span class="tag">公开选秀</span>
+                <span class="tag">版图构筑</span>
+            </div>
+            <div class="content">
+                <p>《自然和弦》（Harmonies）由 Johan Benvenuto 设计，Maëva da Silva 负责插画，Libellud（艾赐魔袋旗下工作室）于2024年发行。它在发售不到一年的时间里便以8.1的评分杀入BGG总榜前300，位列抽象棋类游戏第三，并获得了SDJ红标奖（年度游戏）提名。游戏以“为动物构筑栖息地”为核心，玩家在个人六角格版图上拼放不同颜色的地形标记，通过精确的地形组合吸引动物前来定居。其最精妙的设计在于“强制消化”的拿取机制与“3D堆叠”的空间规划——你从中央版图拿取的每一组地形都必须当场、全部落入你的版图，没有“留作后用”的余地；而山地的堆叠规则让二维的拼图变成了需要预判高度的三维工程。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>《自然和弦》没有选择写实的自然摄影风格，而是基于Libellud一贯的童话基调，用鹅黄与淡棕的暖色调重构了一个空灵、治愈的梦幻森林。你扮演这片土地的创造者，手中握有的不是画笔，而是一枚枚代表着山地、森林、田野、湖泊与湿地的彩色标记。你的任务不是征服自然，而是读懂每一种生灵对“家”的苛刻要求：某些鸟类需要一片被水环绕的林地，某些哺乳动物则偏好有适当高差的丘陵。当你的地形恰好拼出某张动物卡牌所描绘的图案时，这位“客人”便会入驻你的版图，带来分数与生态的共鸣。游戏真正的主题藏在它的名字里：和谐不是单一元素的堆砌，而是不同地形之间恰到好处的咬合。<br>
+
+每回合，你必须从中央版图展示的几组地形标记中选择一组，取走其中的全部三枚，并将它们放置到自己的个人版图上。这个动作没有“拿一枚试试看”的余地，也没有“剩下两枚先存着”的选项——一旦选定，三枚标记必须在本回合内全部落地。这一“强制消化”的规则，将每一次拿取都变成了一次完整的空间承诺：你不仅要为第一枚标记找到位置，还要同时为另外两枚想好归宿，而三者的最佳落点可能在版图上相隔甚远。<br>
+
+3D堆叠是自然和弦区别于绝大多数平面拼图游戏的空间维度。灰色山地标记是唯一可以放置在已有地形之上的类型，最多堆叠三层。这意味着你的版图不仅在横向扩张，也在纵向生长。高耸的山脉可以成为某些动物卡牌的必要条件，也可能遮挡视线、影响其他图案的闭合。在拼放初期，你或许只是在边缘垒起一座小山；到了中后期，这座山的高度可能恰好是你凑出某张高分卡牌图案的最后一个缺口，也可能成为阻碍某片森林连片的障碍。纵向的规划从一开始就需要被纳入横向的布局之中。<br>
+
+动物卡牌是分数的主要来源。每张动物卡牌上都印有一个特定的地形图案，包含地形类型、数量、相对位置乃至堆叠高度等条件。当你的版图上恰好出现了与图案完全吻合的布局时，你可以将该动物卡牌收入囊中，并在对应的位置放置一个动物方块作为标记，同时获得卡牌标示的分数。玩家在回合中可以吸引多只动物，但每张卡牌只能被完成一次，因此公共展示区中那些与你现有版图结构最契合的卡牌，就是最优先的争夺目标。<br>
+
+自然之灵卡牌提供了另一条并行的计分轨道。它们不要求特定的栖息地图案，而是给出全局性的完成条件或额外能力，例如“每有一片完整的森林则额外计分”或“允许你在某类地形上突破常规堆叠限制”。自然之灵的存在，让玩家在追逐具体动物图案的同时，也需要审视自己的整体版图是否正在形成某种“生态特征”——一片连贯的湿地或一条贯穿版图的山脉，可能在终局时通过自然之灵的奖励带来可观的加成。<br>
+
+游戏在一名玩家的个人版图接近填满时触发结束，经过公平轮后结算总分。分数来自已吸引的动物卡牌、完成的自然之灵条件以及部分地形布局的直接得分。自然和弦的胜负很少取决于某一张“神卡”的抢夺，而在于每一次三枚地形的强制落子中，你是否同时喂养了眼前的动物需求与远期的空间结构。你的版图最终会长成什么样子，在某种程度上，从你选择第一组三枚标记的那一刻就已经开始被书写了。
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

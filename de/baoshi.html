@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>璀璨宝石 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../de.html">← 返回德式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/baoshi.png">
+        <div class="info-right">
+            <h1>璀璨宝石</h1>
+            <div class="tag-row">
+                <span class="tag">2-4人</span>
+                <span class="tag">难度1.77/5</span>
+                <span class="tag">时长30分钟</span>
+                <span class="tag">共同选秀</span>
+            </div>
+            <div class="content">
+                <p>《璀璨宝石》由马克·安德烈（Marc André）设计，Pascal Quidault 绘制插画，Space Cowboys 与 Asmodee 于2014年发行。它荣获了2014年金极客奖最佳桌游，并获德国年度游戏（Spiel des Jahres）提名，长期位居BGG家庭类游戏前列，平均评分约7.4分，复杂度仅1.78/5，被视为现代入门策略桌游中最具代表性的“教科书式”作品之一。游戏以文艺复兴时期的宝石贸易为舞台，玩家扮演富商，通过收集宝石指示物、购买发展卡来构建永久的资源折扣引擎，吸引贵族到访，率先累积15点声望者胜出。其设计精髓在于用极低的规则门槛，承载了一条从“资源积累”到“指数爆发”的完整引擎构建曲线，简洁、迅捷，却充满了值得反复推敲的决策深度。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>文艺复兴时期的欧洲，宝石贸易是财富与权力最直观的刻度。城邦之间的商业竞争、贵族阶层的品味竞逐、远洋矿脉与工匠技艺的流通，共同织就了一张精密的商业网络。游戏中，你从亲自前往矿区挑选原石起步，逐步积攒资本，收购矿山以获取稳定的宝石供应，招募工匠将粗粝的原石雕琢为足以打动贵族的珍品。你的声望不来自某一场孤立的交易，而来自整条商业链条的协同运转——当你的发展网络足够稠密，连最挑剔的贵族也会主动登门。这里的“文艺复兴”并非对历史细节的复刻，而是将“以资源换资源、以折扣撬动更大折扣”的商业逻辑，抽象为一场关于节奏与效率的竞速。<br>
+
+每轮，玩家必须从四个行动中选择一个执行：拿取三枚不同颜色的宝石指示物；拿取两枚同色宝石（前提是该颜色场上至少剩余四枚）；保留一张发展卡并获得一枚万能黄金宝石；或者花费宝石购买一张发展卡。宝石共有五种基础色，对应五种发展卡提供的永久折扣；黄金则是万能替代品，数量极其有限，通常与“保留”行动绑定在一起。发展卡分为三个等级，等级越高，购买成本越高，提供的声望点数也越可观；但每一张发展卡真正的价值不在其纸面分数，而在于它带来的永久宝石折扣。早期花费大量资源购入一张低分卡，看似“亏了”，实则在为后续的高效收购铺设轨道——当你的折扣积累到一定程度，后期的高分卡可能只需支付极少的额外资源，甚至免费获取。<br>
+
+贵族板块是第二条并行的得分轨道。游戏开始时翻开玩家人数+1张贵族牌，每个贵族都要求玩家拥有特定颜色和数量的发展卡（例如“3蓝+3绿+3红”）。一旦满足条件，贵族会自动到访，带来3点声望，不消耗行动。贵族的条件通常与你已有的发展卡结构形成交叉指引，迫使你在“专精一两种颜色以高效购买”和“适当铺开颜色以满足贵族组合”之间寻找平衡。每位玩家每回合最多只能被一位贵族拜访，但可以在符合条件的贵族中做出选择。<br>
+
+“保留”机制是这套简洁规则中最具博弈张力的设计。当你看到一张关键的高分卡或贵族拼图，却暂时无力购买时，可以将其扣留在自己面前（上限三张），同时拿走一枚黄金宝石。这既锁定了你的战略目标不被对手抢走，又为你争取了宝贵的筹备时间，同时黄金的万能属性在关键购买中往往能化解卡手的窘境。保留行动制造的“机会成本”与心理博弈，让璀璨宝石没有沦为一道纯粹的单人效率计算题——你必须关注对手在拿什么颜色、在保留什么牌、在向哪位贵族靠近，因为公共牌堆的每一次刷新和宝石池的每一次枯竭，都在实时改写所有人的最优路径。<br>
+
+当一位玩家达到15点声望时，游戏在当前轮结束后收尾，声望最高者获胜。15分是一条清晰而残酷的终点线：过度囤积资源而不转化为分数，或是过早耗尽黄金去争夺低效的贵族，都可能在竞速中被反超。真正的胜者，往往是在引擎的“投入期”与“收割期”之间切分得最果断的那个人。</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
