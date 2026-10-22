@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗杀神 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mei.html">← 返回美式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/anshashen.png">
+        <div class="info-right">
+            <h1>暗杀神</h1>
+            <div class="tag-row">
+                <span class="tag">1-4人</span>
+                <span class="tag">难度2.14/5</span>
+                <span class="tag">时长120分钟</span>
+                <span class="tag">卡牌构筑</span>
+                <span class="tag">手牌管理</span>
+                <span class="tag">公开选秀</span>
+            </div>
+            <div class="content">
+                <p>《暗杀神》（Ascension: Deckbuilding Game）由 Justin Gary、Rob Dougherty 与 Brian Kibler 联合设计——三人均为万智牌职业巡回赛冠军——Stone Blade Entertainment 于2010年推出首个版本《弑神编年史》，插画由 Eric Sabee 以欧洲版画风格绘制。它是牌库构筑（DBG）品类中最早一批摆脱“固定市场”框架的作品之一，与《皇舆争霸》同年起步却走向了不同的方向：《皇舆争霸》让你在一条可预测的牌列中精算路径，而《暗杀神》把六张明牌摊在中央，每一张的离开都会立刻翻开新的一张——你永远不知道下一张翻出来的是你能立刻买下的英雄，还是你完全打不过的怪物。这种“明牌市场 + 随机刷新”的设计，把DBG从一道规划题变成了一场持续的临场反应测试。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>凡人世界“祈夜”（Vigil）曾被大封印庇护了上千年，诸神约定不干预此界。但堕落之神萨麦尔打破了异界屏障，率领邪恶军团入侵。四个位面——圣贤、虚空、命约、机械——各自以不同的方式回应这场危机：圣贤以智慧与过牌调度资源，虚空以放逐与暴力清扫战场，命约以符文联动编织节奏，机械以神器与构造物堆叠优势。你并非一支军队的统帅，而是一位在混乱中崛起的英雄，通过招募斗士、搜寻神器、击败怪物来积累荣誉。荣誉池是有限的，当最后一枚荣誉指示物被取走，谁的名字最接近“弑神者”，谁就赢得了这场乱世中的竞逐。<br>
+
+每回合的骨架极其简单：抽五张牌，打出，然后用它们产出的资源去“买”或“杀”，最后弃掉所有手牌，补满五张。但《暗杀神》的资源系统有两个轴，而不是一个。符文（Runes） 用于从中央牌列招募英雄或获取神器，加入你的弃牌堆，最终进入牌库循环；战力（Power） 则用于击败中央牌列或始终可用的怪物，击杀怪物通常直接给予荣誉指示物，部分怪物还会附带额外的即时奖励。两个轴共享同一副手牌，这意味着你每一轮都在面对同一个问题：这一手牌，是应该拿去换一张能改善牌库的卡，还是拿去换一分立刻到手的荣誉。符文流和战力流并非互斥的“种族”，而是同一套牌库中两种用途的张力——只堆符文会发现自己面对怪物时无事可做，只堆战力则牌库质量停滞不前。<br>
+
+中央牌列是整局游戏的心跳。六张明牌始终面朝上，任何一张被购买、击败或放逐，立刻从中央牌库顶补入一张新的。这种“随走随补”的机制制造了一种持续的不确定性：你为下一回合攒好了符文，但牌列可能已经被上家刷走，取而代之的是一张你买不起的高费卡，或者一张你战力不够打的怪物。“天命”（Fate） 效果进一步放大了这种随机性——当带有天命标记的卡牌进入中央牌列时，会立即触发一个效果，可能是给当前玩家奖励，也可能是强制所有人执行某个动作。天命让中央牌列不只是被动等待选择的菜单，而是一个会主动改写局面的变量。<br>
+
+放逐（Banish） 是《暗杀神》中与“购买”同等重要的牌库优化手段。游戏开始时，每个人的牌库由八张“学徒”（产符文）和两张“民兵”（产战力）组成，这些基础牌在中期之后会越来越成为手牌质量的拖累。带有放逐效果的卡牌允许你将一张牌从牌库或手牌中永久移出游戏——不是弃掉，不是洗回，是彻底消失。虚空派系是放逐的主要来源，但其他派系也有零散的放逐手段。一个不懂得放逐的玩家，会在游戏后半段被十张基础牌拖住抽牌效率；而一个过度放逐的玩家，则可能把自己的引擎拆得七零八落。放逐的节奏，往往比购买的节奏更能区分高手与新手。<br>
+
+荣誉池设定了游戏的终点，也重新定义了“分数”的含义。荣誉指示物的总数通常为玩家人数乘以30（部分版本或扩展会调整），它们散落在中央区域，通过击杀怪物、购买特定卡牌以及卡牌本身携带的荣誉值来获取。游戏不是在某个固定回合数后结束，而是在荣誉被瓜分殆尽的那一刻终止。这意味着速攻策略（快速击杀低阶怪物滚起荣誉）和引擎策略（花时间构筑高效牌库、后期一次性刷取大量荣誉）之间存在真实的时间竞赛：如果你刷得太慢，荣誉池可能在你的引擎完全启动之前就已经见底。终局时，你拥有的荣誉指示物加上牌库、手牌、弃牌堆中所有卡牌上印制的荣誉值，总和最高者胜出。<br>
+
+暗杀神的运气成分是显性的——中央牌列的刷新顺序、天命效果的触发时机、以及你自己牌库的洗牌结果，都会在单局中制造波动。但它的策略空间恰恰藏在如何与这种随机性共处：是接受中央牌列的馈赠、及时调整方向，还是坚持自己的构筑蓝图、等待牌列中出现你真正需要的那一张。六张明牌不会等你，荣誉池也不会等你。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
