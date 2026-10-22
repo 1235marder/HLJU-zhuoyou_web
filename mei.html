@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美式冒险桌游 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        /* 返回导航 */
+        .back-nav {
+            padding: 24px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        /* 顶部横幅 */
+        .banner {
+            max-width: 1100px;
+            height: 260px;
+            margin: 0 auto 32px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            background: url("images/de_hengfu.png") center / 100% 100% no-repeat;
+        }
+        .banner-mask {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+        }
+        .banner-text {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 40px;
+        }
+        .banner-text h1 {
+            font-size: 2.4rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .banner-text p {
+            color: #ddd;
+            font-size: 1rem;
+        }
+        /* 排序栏 */
+        .sort-bar {
+            max-width: 1100px;
+            margin: 0 auto 24px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sort-bar label {
+            color: #bbb;
+        }
+        .sort-bar select {
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(22, 33, 56, 0.55);
+            color: #eee;
+            border: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 桌游网格 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .game-item {
+            height: 220px;
+            border-radius: 12px;
+            border: 1px solid rgba(35, 53, 84, 0.4);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            background: rgba(22, 33, 56, 0.55);
+        }
+        .game-item:hover {
+            transform: translateY(-4px);
+            border-color: #e94560;
+        }
+        .game-item-bg {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-color: #16213e;
+        }
+        .game-item-mask {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent 60%);
+        }
+        .game-info {
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            padding: 16px;
+            width: 100%;
+        }
+        .game-info h3 {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin: 2px 2px 0 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            .banner {
+                height: 180px;
+                margin: 0 16px 24px;
+            }
+            .banner-text h1 {
+                font-size: 1.8rem;
+            }
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="index.html">← 返回桌游列表主页</a>
+    </div>
+    <!-- 顶部横幅 -->
+    <div class="banner">
+        <div class="banner-mask"></div>
+        <div class="banner-text">
+            <h1>美式毛线桌游</h1>
+            <p>沉浸体验、骰子检定，适合喜欢角色扮演与享受随机乐趣的玩家</p>
+        </div>
+    </div>
+    <!-- 排序下拉 -->
+    <div class="sort-bar">
+        <label>排序方式：</label>
+        <select id="sortSelect">
+            <option value="nameAsc">名称 A→Z（拼音正序）</option>
+            <option value="nameDesc">名称 Z→A（拼音倒序）</option>
+            <option value="diffAsc">难度 低→高</option>
+            <option value="diffDesc">难度 高→低</option>
+        </select>
+    </div>
+    <!-- 桌游卡片容器，JS渲染 -->
+    <div class="container" id="gameContainer"></div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <!-- 星空层 -->
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        // ========= 美式冒险桌游数据，后续新增桌游直接往这里加条目即可 =========
+        const gameList = [
+            {
+                name: "Clank",
+                img: "images/zhanshi_mei.png",
+                player: "2-4人",
+                diff: 2.5,
+                diffUnit: "/5",
+                time: "45-90分钟",
+                desc: "寻找财富的同时，保持声响，巨龙就在头顶盘旋",
+                link: "mei/clank.html"
+            },
+            {
+                name: "灵迹岛",
+                img: "images/lingjidao.png",
+                player: "1-4人",
+                diff: 4.07,
+                diffUnit: "/5",
+                time: "90-120分钟",
+                desc: "岛屿精灵联手使用元素力量保卫家园免受入侵者侵害",
+                link: "mei/lingjidao.html"
+            },
+            {
+                name: "恶夜杀机",
+                img: "images/eyeshaji_de.png",
+                player: "2-4人",
+                diff: 2.27,
+                diffUnit: "/5",
+                time: "30-45分钟",
+                desc: "有些夜晚，阴影依然活跃……他们来了",
+                link: "mei/eyeshaji.html"
+            },
+            {
+                name: "林中小屋",
+                img: "images/linzhongxiaowu.png",
+                player: "3-6人",
+                diff: 2.35,
+                diffUnit: "/5",
+                time: "60分钟",
+                desc: "一起探索鬼屋......直到你们有人背叛",
+                link: "mei/linzhongxiaowu.html"
+            },
+            {
+                name: "HEAT",
+                img: "images/heat.png",
+                player: "1-6人",
+                diff: 2.20,
+                diffUnit: "/5",
+                time: "30-60分钟",
+                desc: "在过热前冲过终点",
+                link: "mei/heat.html"
+            },
+            {
+                name: "印加宝藏",
+                img: "images/yinjiabaozang.png",
+                player: "3-8人",
+                diff: 1.1,
+                diffUnit: "/5",
+                time: "20-40分钟",
+                desc: "你敢在带着财富离开前深入危险的神庙多深",
+                link: "mei/yinjiabaozang.html"
+            },
+            {
+                name: "暗杀神",
+                img: "images/anshashen.png",
+                player: "1-4人",
+                diff: 2.14,
+                diffUnit: "/5",
+                time: "120分钟",	
+                desc: "用强大的英雄和构造体打造你的卡组，争取最多荣誉",
+                link: "mei/anshashen.html"
+            },
+            {
+                name: "末日启示录",
+                img: "images/moriqishilu.png",
+                player: "1-6人",
+                diff: 2.14,
+                diffUnit: "/5",
+                time: "45-90分钟",
+                desc: "选择你自己，随后掠夺。活过你选择的末日。",
+                link: "mei/moriqishilu.html"
+            },
+            {
+                name: "大杀四方",
+                img: "images/dashasifang.png",
+                player: "2-4人",
+                diff: 2.06,
+                diffUnit: "/5",
+                time: "45分钟",
+                desc: "结合两个强大的派系，与对手交战，看看谁才是主宰",
+                link: "mei/dashasifang.html"
+            },
+            {
+                name: "王权骰铸",
+                img: "images/wangquantouzhu.png",
+                player: "2-6人",
+                diff: 2.07,
+                diffUnit: "/5",
+                time: "20-40分钟",
+                desc: "骰子与胜利，就在你手中",
+                link: "mei/wangquantouzhu.html"
+            },
+            {
+                name: "东京之王",
+                img: "images/dongjingzhiwang.png",
+                player: "2-6人",
+                diff: 1.63,
+                diffUnit: "/5",
+                time: "30分钟",
+                desc: "唯有战斗……",
+                link: "de/dongjingzhiwang.html"
+            }
+        ];
+        const container = document.getElementById("gameContainer");
+        const sortSelect = document.getElementById("sortSelect");
+        // 渲染卡片
+        function render(list) {
+            container.innerHTML = "";
+            list.forEach(game => {
+                const a = document.createElement("a");
+                a.className = "game-item";
+                a.href = game.link;
+                a.innerHTML = `
+                    <div class="game-item-bg" style="background-image:url('${game.img}')"></div>
+                    <div class="game-item-mask"></div>
+                    <div class="game-info">
+                        <h3>${game.name}</h3>
+                        <span class="tag">${game.player}</span>
+                        <span class="tag">难度${game.diff}${game.diffUnit}</span>
+                    </div>
+                `;
+                container.appendChild(a);
+            });
+        }
+        // 排序逻辑
+        function sortAndRender(type) {
+            let arr = [...gameList];
+            switch(type) {
+                case "nameAsc":
+                    arr.sort((a,b) => a.name.localeCompare(b.name, "zh-CN"));
+                    break;
+                case "nameDesc":
+                    arr.sort((a,b) => b.name.localeCompare(a.name, "zh-CN"));
+                    break;
+                case "diffAsc":
+                    arr.sort((a,b) => a.diff - b.diff);
+                    break;
+                case "diffDesc":
+                    arr.sort((a,b) => b.diff - a.diff);
+                    break;
+            }
+            render(arr);
+        }
+        sortSelect.onchange = e => sortAndRender(e.target.value);
+        sortAndRender("nameAsc"); // 默认按名称正序
+    </script>
+    <!-- 星空脚本 -->
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
