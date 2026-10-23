@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<!-- ========三院院长（op）最讨厌的身份类就在里面，但是我（op）还是做了============= -->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多人聚会桌游 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        /* 返回导航 */
+        .back-nav {
+            padding: 24px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        /* 顶部横幅 */
+        .banner {
+            max-width: 1100px;
+            height: 260px;
+            margin: 0 auto 32px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            background: url("images/mao_hengfu.png") center / 100% 100% no-repeat;
+        }
+        .banner-mask {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+        }
+        .banner-text {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 40px;
+        }
+        .banner-text h1 {
+            font-size: 2.4rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .banner-text p {
+            color: #ddd;
+            font-size: 1rem;
+        }
+        /* 排序栏 */
+        .sort-bar {
+            max-width: 1100px;
+            margin: 0 auto 24px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sort-bar label {
+            color: #bbb;
+        }
+        .sort-bar select {
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(22, 33, 56, 0.55);
+            color: #eee;
+            border: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 桌游网格 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .game-item {
+            height: 220px;
+            border-radius: 12px;
+            border: 1px solid rgba(35, 53, 84, 0.4);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            background: rgba(22, 33, 56, 0.55);
+        }
+        .game-item:hover {
+            transform: translateY(-4px);
+            border-color: #e94560;
+        }
+        .game-item-bg {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-color: #16213e;
+        }
+        .game-item-mask {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent 60%);
+        }
+        .game-info {
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            padding: 16px;
+            width: 100%;
+        }
+        .game-info h3 {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin: 2px 2px 0 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            .banner {
+                height: 180px;
+                margin: 0 16px 24px;
+            }
+            .banner-text h1 {
+                font-size: 1.8rem;
+            }
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="index.html">← 返回桌游列表主页</a>
+    </div>
+    <!-- 顶部横幅 -->
+    <div class="banner">
+        <div class="banner-mask"></div>
+        <div class="banner-text">
+            <h1>多人聚会桌游</h1>
+			<p>嘴炮交锋、欢乐互坑，适合喜欢活跃气氛与社交互动的玩家</p>
+        </div>
+    </div>
+    <!-- 排序下拉 -->
+    <div class="sort-bar">
+        <label>排序方式：</label>
+        <select id="sortSelect">
+            <option value="nameAsc">名称 A→Z（拼音正序）</option>
+            <option value="nameDesc">名称 Z→A（拼音倒序）</option>
+            <option value="diffAsc">难度 低→高</option>
+            <option value="diffDesc">难度 高→低</option>
+        </select>
+    </div>
+    <!-- 桌游卡片容器，JS渲染 -->
+    <div class="container" id="gameContainer"></div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <!-- 星空层 -->
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        // ========= 多人聚会桌游数据，后续新增桌游直接往这里加条目即可 =========
+        const gameList = [
+            {
+		name: "阿瓦隆",
+		img: "images/zhanshi_shejiao.png",
+		player: "5-10人",
+		diff: 2,
+		diffUnit: "/5",
+		time: "30-60分钟",
+		desc: "正义与邪恶在阿瓦隆开始决战，这关乎到人类未来的文明。",
+		link: "mao/awalong.html"
+			},
+			{
+		name: "一夜终极狼人",
+		img: "images/yiyezhongjilangren.png",
+		player: "3-10人",
+		diff: 1.38,
+		diffUnit: "/5",
+		time: "10分钟",
+		desc: "仅需一夜的私刑",
+		link: "mao/yiyezhongjilangren.html"
+			},
+			{
+		name: "血染钟楼",
+		img: "images/xueranzhonglou.png",
+		player: "6-21人",
+		diff: 3.03,
+		diffUnit: "/5",
+		time: "30-120分钟",
+		desc: "像幽灵一样在雷文斯伍德悬崖徘徊，尝试在坟墓中取胜。",
+		link: "mao/xueranzhonglou.html"
+			},
+			{
+		name: "无间疑云",
+		img: "images/wujianyiyun.png",
+		player: "4-8人",
+		diff: 1,
+		diffUnit: "/5",
+		time: "15-30分钟",
+		desc: "一款以警匪卧底为主题的阵营推理聚会桌游。玩家各持多张身份牌，暗中分属忠诚警察或变节集团，目标是在对方动手前抢先找出并解决敌方首领。游戏节奏轻快，充满互相试探和尔虞我诈的欢乐氛围",
+		link: "mao/wujianyiyun.html"
+			},
+			{
+		name: "险恶疑航",
+		img: "images/xianeyihang.png",
+		player: "5-11人",
+		diff: 2.17,
+		diffUnit: "/5",
+		time: "45-90分钟",
+		desc: "水手，海盗，异教徒",
+		link: "mao/xianeyihang.html"
+			},
+			{
+		name: "三国杀",
+		img: "images/sanguosha.png",
+		player: "2-8人",
+		diff: 3.5,
+		diffUnit: "/5",
+		time: "20-60分钟",
+		desc: "玩家扮演三国武将，随机分配主公、忠臣、反贼、内奸身份，通过出牌、技能配合、伪装等击败对手，完成各自阵营目标",
+		link: "mao/sanguosha.html"
+			},
+			{
+		name: "风声",
+		img: "images/fengsheng.png",
+		player: "3-9人",
+		diff: 2,
+		diffUnit: "/5",
+		time: "30-60分钟",
+		desc: "通过传递情报和心理博弈达成各自胜利条件",
+		link: "mao/fengsheng.html"
+			},
+			{
+		name: "富饶之城",
+		img: "images/furaozhicheng.png",
+		player: "2-8人",
+		diff: 2.05,
+		diffUnit: "/5",
+		time: "20-60分钟",
+		desc: "主教、军阀、盗贼、国王。换个角色，建你的城市，阻碍你的对手",
+		link: "mao/furaozhicheng.html"
+			},
+			{
+		name: "马尼拉",
+		img: "images/manila.png",
+		player: "3-5人",
+		diff: 2.05,
+		diffUnit: "/5",
+		time: "60分钟",
+		desc: "把你的赌注押注在这个轮盘上，船只、货物，甚至海盗的到港。",
+		link: "mao/manila.html"
+			},
+			{
+		name: "情书",
+		img: "images/qingshu.png",
+		player: "2-4人",
+		diff: 1.18,
+		diffUnit: "/5",
+		time: "20分钟",
+		desc: "通过高额的分数赢得公主的青睐",
+		link: "mao/qingshu.html"
+			},
+			{
+		name: "诺丁汉警长",
+		img: "images/nuodinghanjingzhang.png",
+		player: "3-6人",
+		diff: 1.71,
+		diffUnit: "/5",
+		time: "60分钟",
+		desc: "卖货赚钱，或者冒着偷放违禁品失去一切的风险...... ",
+		link: "mao/nuodinghanjingzhang.html"
+			},//牛魔的怎么还有这么多没写的
+			{
+		name: "亡者神抽",
+		img: "images/wangzheshenchou.png",
+		player: "2-4人",
+		diff: 1,
+		diffUnit: "/5",
+		time: "10-15分钟",
+		desc: "继续加码 or 见好就收，这是个问题",
+		link: "mao/wangzheshenchou.html"
+			},
+			{
+		name: "很久很久以前",
+		img: "images/henjiuhenjiuyiqian.png",
+		player: "2-6人",
+		diff: 1.4,
+		diffUnit: "/5",
+		time: "15-30分钟",
+		desc: "叙事类卡牌游戏，玩家共同创作童话故事，通过打出故事牌引导情节走向自己的结局，其他玩家可中断叙事并接管讲述权",
+		link: "mao/henjiuhenjiuyiqian.html"
+			},
+			{
+		name: "瞎掰王",
+		img: "images/xiabaiwang.png",
+		player: "3-9人",
+		diff: 1.33,
+		diffUnit: "/5",
+		time: "10分钟",
+		desc: "假装很懂，其实我也可以很懂",
+		link: "mao/xiabaiwang.html"
+			},
+			{
+		name: "小传说",
+		img: "images/xiaochuanshuo.png",
+		player: "2-5人",
+		diff: 1,
+		diffUnit: "/5",
+		time: "10分钟",
+		desc: "8bit像素游戏,在剑与魔法的世界，合理的选择用你的手牌，赚取金币！",
+		link: "mao/xiaochuanshuo.html"
+			},
+			{
+		name: "忍者之夜",
+		img: "images/renzhezhiye.png",
+		player: "4-11人",
+		diff: 1.84,
+		diffUnit: "/5",
+		time: "20-30分钟",
+		desc: "派你的忍者出去为你的家族赢得胜利——但你会知道你的盟友吗？",
+		link: "mao/renzhezhiye.html"
+			},
+			{
+		name: "血与刃的白蔷薇",
+		img: "images/baiqiangwei.png",
+		player: "5-10人",
+		diff: 1.80,
+		diffUnit: "/5",
+		time: "15-25分钟",
+		desc: "追随伟大的蔷薇之母，或是杀了她",
+		link: "mao/baiqiangwei.html"
+			},
+			{
+		name: "天堂，我要进来了",
+		img: "images/tiantang.png",
+		player: "5-10人",
+		diff: 1.67,
+		diffUnit: "/5",
+		time: "10-20分钟",
+		desc: "不知道自己的身份，也不属于任何一边！",
+		link: "mao/tiantang.html"
+			},
+			{
+		name: "赎罪之旅",
+		img: "images/shuzuizhilv.png",
+		player: "3-6人",
+		diff: 1.36,
+		diffUnit: "/5",
+		time: "30分钟",
+		desc: "出那张牌，但要小心后果",
+		link: "mao/shuzuizhilv.html"
+			},//写到这吃饭去了
+			{
+		name: "UNO",
+		img: "images/uno.png",
+		player: "2-10人",
+		diff: 1.10,
+		diffUnit: "/5",
+		time: "30分钟",
+		desc: "出那张牌，但要小心后果",
+		link: "mao/uno.html"
+			},
+			{
+		name: "火星骰",
+		img: "images/huoxingtou.png",
+		player: "2-5人",
+		diff: 1.07,
+		diffUnit: "/5",
+		time: "10分钟",
+		desc: "绑架地球物种以确定谁是主宰，但要警惕他们的防御！",
+		link: "mao/huoxingtou.html"
+			},
+			{
+		name: "得分沙律",
+		img: "images/defenshalv.png",
+		player: "2-6人",
+		diff: 1.15,
+		diffUnit: "/5",
+		time: "15-30分钟",
+		desc: "收集水果和蔬菜组合",
+		link: "mao/defenshalv.html"
+			},
+			{
+		name: "榴莲忘贩",
+		img: "images/liulianwangfan.png",
+		player: "2-7人",
+		diff: 1.12,
+		diffUnit: "/5",
+		time: "20分钟",
+		desc: "尽量不要过度推销你的水果。",
+		link: "mao/liulianwangfan.html"
+			}
+
+        ];
+        const container = document.getElementById("gameContainer");
+        const sortSelect = document.getElementById("sortSelect");
+        // 渲染卡片
+        function render(list) {
+            container.innerHTML = "";
+            list.forEach(game => {
+                const a = document.createElement("a");
+                a.className = "game-item";
+                a.href = game.link;
+                a.innerHTML = `
+                    <div class="game-item-bg" style="background-image:url('${game.img}')"></div>
+                    <div class="game-item-mask"></div>
+                    <div class="game-info">
+                        <h3>${game.name}</h3>
+                        <span class="tag">${game.player}</span>
+                        <span class="tag">难度${game.diff}${game.diffUnit}</span>
+                    </div>
+                `;
+                container.appendChild(a);
+            });
+        }
+        // 排序逻辑
+        function sortAndRender(type) {
+            let arr = [...gameList];
+            switch(type) {
+                case "nameAsc":
+                    arr.sort((a,b) => a.name.localeCompare(b.name, "zh-CN"));
+                    break;
+                case "nameDesc":
+                    arr.sort((a,b) => b.name.localeCompare(a.name, "zh-CN"));
+                    break;
+                case "diffAsc":
+                    arr.sort((a,b) => a.diff - b.diff);
+                    break;
+                case "diffDesc":
+                    arr.sort((a,b) => b.diff - a.diff);
+                    break;
+            }
+            render(arr);
+        }
+        sortSelect.onchange = e => sortAndRender(e.target.value);
+        sortAndRender("nameAsc"); // 默认按名称正序
+    </script>
+    <!-- 星空脚本 -->
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
