@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>得分沙律 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/defenshalv.png">
+        <div class="info-right">
+            <h1>得分沙律</h1>
+            <div class="tag-row">
+                <span class="tag">2-6人</span>
+                <span class="tag">难度1.15/5</span>
+                <span class="tag">时长15-30分钟</span>
+                <span class="tag">公开选秀</span>
+            </div>
+            <div class="content">
+                <p>《得分沙律》（Point Salad）由 Molly Johnson、Robert Melvin 与 Shawn Stankewich 联合设计，AEG 于2019年发行，中文版由2Plus等厂商代理。它的BGG重度仅1.15/5，是真正意义上“规则两句话就能讲完”的游戏，却在同年同时入围了 Golden Geek 最佳卡牌游戏与最佳家庭游戏两项提名，BGG评分稳在7.3，总排名长期在四百名上下。它的设计支点可以用一句话概括：同一张牌，你既可以把它当作食材，也可以把它当作食谱。六种蔬菜，超过一百种计分条件，而你在每一轮只能二选一——拿它来“吃”，还是拿它来“算”。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>得分沙律没有试图构建一个世界观。它的“背景”就是一张厨房操作台，上面摆着生菜、胡萝卜、西红柿、洋葱、卷心菜和辣椒，你的目标是用这些食材“调配出一份分数最高的沙拉”。但游戏的巧思不在于模拟切菜或烹饪，而在于它把“食谱”本身也做成了可被消耗的资源：每一张牌都是一体两面的——翻到蔬菜面，它是一份食材；翻到计分面，它是一条只属于你的沙拉配方。你的沙拉最终长成什么样，不取决于你拿到了多少蔬菜，而取决于你选择相信哪些配方、放弃哪些食材。<br>
+
+每回合的行动被压缩成一个极其简洁的二选一：从三叠计分牌库的顶部拿一张计分牌，或者从蔬菜市场中拿两张蔬菜牌。拿完之后补充市场，然后轮到下一位玩家。在你自己的回合中，你还有一次可选的免费翻面行动：将一张你已经持有的计分牌翻到蔬菜面，把它变成食材。规则到此结束，没有额外的阶段，没有隐藏的信息，所有的决策都围绕这一组动作展开。<br>
+
+双面卡牌的方向性是这款游戏全部张力的来源。计分牌可以翻成蔬菜，但蔬菜不能翻回计分牌。这意味着你从市场上拿走一张蔬菜牌时，它永远只是蔬菜；而你从计分牌堆顶拿走的每一张牌，都同时是一份“可能成立的未来配方”和一枚“随时可以兑现的食材”。当你觉得一张计分牌的得分条件太苛刻、和你现有的蔬菜对不上时，你可以把它翻成食材，让它在另一条计分线上发挥作用。但翻面的代价是永久放弃那条计分路径——也许下一轮就会翻出恰好能喂饱它的蔬菜，也许那张被你放弃的配方，正是对手求之不得的关键条件。<br>
+
+计分条件的多样性保证了每一局的“最优沙拉”都不一样。有的计分牌奖励特定蔬菜的数量（每张胡萝卜2分），有的奖励组合（西红柿+生菜+胡萝卜成套计分），有的奖励多样性（每收集一种不同蔬菜得若干分），也有的会扣分（每张洋葱减1分）。你的蔬菜不会被任何一张计分牌“独占”，同一批食材可以在多张计分牌之间重复结算——三张胡萝卜既可以在一张“每胡萝卜2分”的牌上拿6分，也可以同时在一张“胡萝卜+西红柿”的组合牌上参与成套计分。这让你在收集食材时不能只盯着一个目标，而必须思考这张蔬菜牌能否同时喂饱我面前的两三条计分线。<br>
+
+轮抽中的“互卡”<br> 是这款轻量游戏在人际层面最真实的互动。蔬菜市场由三叠牌库各翻开两张组成，公共可见，先到先得。你拿走的未必是你最需要的那张，有时只是对手最需要的那张——当你看到对手面前已经摆了两张“胡萝卜2分”的计分牌，而市场上恰好翻出一张胡萝卜，拿走它，哪怕你手里根本没有能配合的配方，也是在压缩对手的得分空间。但“卡人”的代价是消耗了你自己的一个回合，而你放弃的那张蔬菜或计分牌，可能正好喂饱了另一位玩家。得分沙律的互动不是宣言式的对抗，而是在每一次二选一中，同时完成“建设自己”与“干扰别人”的微妙平衡。<br>
+
+当三叠牌库和蔬菜市场全部清空，游戏立即结束，所有人翻开面前的计分牌逐条结算，蔬菜可被多张计分牌重复使用，总分最高者胜出。它的运气成分是可见的——翻出什么计分牌、什么蔬菜进入市场，不由你决定。但它把运气安放在了一个每个人都能快速理解、快速反应、快速接受的节奏里：你不需要记住牌库，不需要计算概率，只需要在每一次轮到你的时候，看清眼前的六张蔬菜和三张计分牌，然后做出那个让此刻的沙拉比上一刻更接近“完成” 的选择。
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

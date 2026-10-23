@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无间疑云 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/wujianyiyun.png">
+        <div class="info-right">
+            <h1>无间疑云</h1>
+            <div class="tag-row">
+                <span class="tag">4-8人</span>
+                <span class="tag">难度1/5</span>
+                <span class="tag">时长15-30分钟</span>
+                <span class="tag">警匪</span>
+                <span class="tag">阵营推理</span>
+                <span class="tag">身份隐藏</span>
+                <span class="tag">派对游戏</span>
+            </div>
+            <div class="content">
+                <p>《无间疑云》（Good Cop Bad Cop，又译《无间风云》）由 Clayton Skancke 与 Brian Henk 联合设计，Overworld Games 于2014年发行，中文版由栢龙玩具引进。它的 BGG 重度仅1.26/5，单局不过二三十分钟，规则几乎可以在几分钟内讲完，却被 BGG 社区列入“身份毛线”的经典参照系。游戏以《无间道》式的警匪互为卧底为舞台，核心设计支点极为锋利：你随身携带三张身份牌，但你只知道自己“大概率是谁”，你的敌人也不知道你“究竟是谁”——直到有人扣下扳机的那一刻。它不淘汰任何人，但每一枪都在强制翻开底牌；它不要求你长篇大论地发言，但每一个行动——调查、拿枪、瞄准、射击——都在向所有人泄露你刚刚知道了什么，以及你打算用它来做什么。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>警局内部已经烂透了。表面上所有人都是警察，但其中混杂着正直的警员与贪污的黑警。蓝方（正直方）的首领是探长，红方（腐败方）的首领是主谋。大多数人并不从属于某一方，他们只是被卷入这场无间暗战的普通警员，而他们的立场，取决于自己手中那三张身份牌的颜色构成。没有人知道站在身边的同事究竟是可以托付后背的战友，还是正在等待时机把枪口对准自己首领的叛徒。你的目标非常直接：找出对方阵营的首领，然后在他找出你们首领之前，先一步开枪。至于你自己究竟是蓝是红，有时候连你自己都要等到翻开第二张身份牌的那一刻，才能最终确认。<br>
+
+游戏开始时，每位玩家秘密获得三张“底蕴牌”（Integrity Cards） ，并在自己的玩家版图上按 A、B、C 三个位置依次扣置。这三张牌中可能包含探长或主谋，也可能只是一张代表正直（蓝）或腐败（红）的普通身份牌。如果你的三张牌中有一张是探长，你就是蓝方首领，直接归属蓝方；如果有一张是主谋，你就是红方首领，直接归属红方。如果你既没有探长也没有主谋，那么你的阵营由三张牌中颜色占多数的那一方决定——两张蓝就是蓝方，两张红就是红方。这意味着在翻开足够多的牌之前，你对自己的归属只有概率上的判断，而非绝对的确认。首领牌的存在感是压倒性的：只要它在你的三张牌里，你的阵营就已经被它定义了，但其他人并不知道是哪一张牌在定义你。<br>
+
+每回合，你从四个行动中选择一个执行：调查（秘密查看另一名玩家的一张未翻开底蕴牌）、拿枪（从桌面中央取走一把手枪，同时必须翻开自己的一张未翻开底蕴牌）、装备（抽取一张装备牌，弃至一张，同时翻开自己的一张未翻开底蕴牌），或者射击（用手枪射击当前瞄准的玩家，然后将枪弃回桌面中央）。拿枪和装备之所以要付出“翻开一张底蕴牌”的代价，是因为枪和装备是改变局面的硬资源，而翻开底牌则是把关于你自己的信息交到所有人手里。你翻开的每一张牌，都在缩小别人对你身份的猜测范围；你掌握的信息越多，你暴露的也越多。<br>
+
+手枪与射击是整局游戏最核心的推进器。每把枪在拿取时立即指定一名存活玩家作为瞄准目标，此后你只能在回合结束的“瞄准阶段”调整目标。开枪的结果取决于目标是否为首领：如果被射击的玩家既不是探长也不是主谋，他立即被淘汰出局，手中的装备与枪械全部弃回；但如果他是探长或主谋，第一次中枪不会死亡，只会获得一枚受伤标记，同时必须翻开所有底蕴牌以公开自己的首领身份。受伤的首领第二次中枪时，游戏立即结束，开枪者所在阵营获胜。这条“首领两条命”的规则制造了一个极其危险的中间状态：一个受伤的首领，身份已经完全暴露，但他仍然活着，仍然可以行动，仍然可能在下一次轮到自己的时候把枪口转向对方。所有人都会盯着那个受伤的人，而他的队友必须在对方补上第二枪之前，先一步解决掉对方的首领。<br>
+
+《无间疑云》的乐趣不在于精密的逻辑链，而在于在信息半透明的状态下，抢在所有人之前完成那一次身份确认与扣动扳机。你调查了一张牌，可能恰好确认了对方首领的位置，也可能只是看到了一张无伤大雅的普通身份牌，而你的调查动作本身已经被所有人看在眼里——他们知道你知道了什么，或者至少知道你在怀疑谁。枪在桌面上传递，瞄准线在回合结束时来回切换，而每个人手里都捏着几张尚未翻开的底牌。你可能在翻开第二张牌的那一刻才发现自己站错了队，也可能在开枪击倒对方首领之后，才被告知你从一开始就不属于赢的那一方。它轻到可以在饭桌上等人时连开两盘，短到每一次“我要不要翻开这张牌”的犹豫都来不及被深思熟虑，而胜负往往就压在那一张刚刚被翻开的、谁也未曾预料的底牌上。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诺丁汉警长 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/nuodinghanjingzhang.png">
+        <div class="info-right">
+            <h1>诺丁汉警长</h1>
+            <div class="tag-row">
+                <span class="tag">3-6人</span>
+                <span class="tag">难度1.71/5</span>
+                <span class="tag">时长60分钟</span>
+                <span class="tag">贿赂</span>
+                <span class="tag">手牌管理</span>
+                <span class="tag">角色扮演</span>
+            </div>
+            <div class="content">
+                <p>《诺丁汉警长》（Sheriff of Nottingham）由 Sérgio Halaban 与 André Zatz 联合设计，Arcane Wonders 于2014年发行，中文版由 Broadway Toys 等厂商引进。它的 BGG 重度仅约1.70/5，规则几分钟就能讲清，却被 BGG 社区以超过三万条评分推到了总榜前六百。它的设计支点可以用一句话概括：警长握着开袋的权力，商人握着说谎的胆子。你可以在袋子里装满合法的苹果和奶酪，做一个诚实的商人；也可以把违禁的香料和弩箭压在底层，用一张真诚的脸和一笔恰到好处的贿赂，赌警长不会翻开你的袋子。运气在这里几乎不存在，每一次成功的走私或一次失败的检查，背后都是一场人与人之间的即时博弈。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>约翰王子对诺丁汉征收了苛刻的关税，合法的货物要交重税，而违禁品干脆被宣布为非法——但黑市的价格也因此水涨船高。诺丁汉的城门只有一座，门口坐着警长，所有进城的货物都必须从他面前经过。你扮演一名商人，每回合把一到五张货物卡秘密塞进自己的布袋，然后向警长宣称里面装的是什么。你可以诚实申报，也可以把违禁品混在合法货物里，或者干脆把整袋违禁品说成一袋苹果。警长可以选择放行，也可以选择开袋检查。如果查出违禁品或数量不符，你要交罚金，被查出的违禁品也会被没收；但如果警长查了一个诚实的商人，警长自己要掏钱赔偿。围坐在桌边的每一个人，轮流坐上那把椅子，然后在下一轮变回那个试图骗过下一任警长的商人。<br>
+
+每一轮由一位玩家担任警长，其余玩家作为商人同时行动。商人从手牌中选出1到5张卡牌放入布袋，然后从公共牌堆补回手牌。卡牌分为合法货物（绿边框，如苹果、奶酪、面包、鸡）和违禁品（红边框，如香料、丝绸、弩箭、麦酒），合法货物有明确的分数与罚金/赔偿金额，违禁品分值更高，但一旦被查出，代价也更重。<br>
+
+声明是整局游戏的心脏。每位商人必须向警长说出袋子里一种合法货物和一个精确的数量——你可以说“四张苹果”，哪怕袋子里实际上只有一张苹果和三张香料。声明本身没有任何强制验证，它只是一句可以被相信、也可以被怀疑的话。真正的博弈从这里开始：商人可以在警长做出决定之前主动提出贿赂，用金币或未来的货物换取放行；警长可以讨价还价，也可以假装接受贿赂然后在开袋后照罚不误。其他商人同样可以介入，向警长提出“查他的袋子，我给你钱”，试图把检查的注意力引向别人。每一笔贿赂都是口头承诺，没有任何规则强制它必须被兑现——警长可以在收下金币后仍然选择检查，商人也可能在事后拒绝支付。信任在这里是一种可以被随时撤回的临时工具，而不是一种义务。<br>
+
+检查与结算将所有的谎言和承诺压缩成一个明确的后果。如果警长选择放行，商人将袋中所有合法货物放入自己的摊位，违禁品则背面朝上放在一旁，只有数量公开，内容保密，但同样会计入终局分数。如果警长选择检查，逐张翻开袋子：所有被正确声明的合法货物正常放入摊位；所有违禁品以及未在声明中提到的卡牌被弃掉，商人按每张牌的罚金金额向警长支付罚款。但如果袋中没有任何违禁品，且数量与声明完全一致，警长判断错误，必须按照每张合法货物的赔偿金额向商人付款。这一条规则的存在，让警长不能无差别地开袋：检查一个诚实的商人，付出的代价是实打实的金币。<br>
+
+游戏在每位玩家都担任过两次警长之后结束。终局得分由三部分构成：手中的现金、摊位上所有卡牌右上角的分数，以及每种合法货物数量最多的玩家获得的额外奖励分。这意味着诚实经营并非没有出路——合法货物的稳定得分与数量奖励可以累积出可观的分数；但违禁品的高分值也始终在诱惑每一个商人，把一两张红牌混进绿牌里，赌警长这次不会翻开。你选择做哪种商人，决定了你在每一轮声明时承受的心理压力有多大。<br>
+
+《诺丁汉警长》不提供精密的长期规划，它提供的是一轮又一轮在“他信不信我”和“我信不信他会不会信我”之间反复下注的机会。警长可以黑吃黑，商人也可以空手套白狼；你说出的每一句话都可能被当真，也可能被当作下一轮被针对的理由。60分钟一局，规则简单到任何人都能立刻上手，但坐在警长对面说出那句“三张奶酪”的时候，你手里攥着的从来不只是几张卡牌——你攥着的是这一桌人对你的信任，以及他们愿不愿意为了几枚金币，假装相信你。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

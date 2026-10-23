@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>榴莲忘贩 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/liulianwangfan.png">
+        <div class="info-right">
+            <h1>榴莲忘贩</h1>
+            <div class="tag-row">
+                <span class="tag">2-7人</span>
+                <span class="tag">难度1.12/5</span>
+                <span class="tag">时长20分钟</span>
+                <span class="tag">虚张声势</span>
+            </div>
+            <div class="content">
+                <p>《榴莲忘贩》（Durian）由Masato Uesugi（《纸片传说》《地球怪兽》的设计师）设计，日本极简桌游厂牌Oink Games于2020年发行，中文版由艾赐魔袋于2023年引进。它在BGG上的评分约6.9，重度仅1.1/5左右，是Oink“小黑盒”序列中辨识度极高的一作。与绝大多数隐藏身份或手牌游戏相反，榴莲忘贩把信息不对称的方向彻底调转：你能看清桌上每一个人的库存，唯独看不见自己的。游戏的全部张力，就压在这一条“对自身处境的彻底无知”之上：你必须在别人的表情、犹豫和摇铃时机里，反推出自己到底有多少货，然后赌上家是不是在把订单推过那条爆单的红线。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>丛林深处，一家由大猩猩担任店长的水果店正忙得不可开交。你和几名店员各自守着一批库存水果——榴莲、香蕉、草莓、菠萝，品类与数量各不相同，但没有人知道自己面前那张牌上印着什么。顾客的订单一张张压过来，每一张订单都会推高某类水果的需求量；店员们轮流接待，要么继续接下新订单，要么在觉得库存已经撑不住的时候摇响手边的铃铛，把大猩猩店长叫出来问责。如果确实爆了单，最后接单的那个人要挨骂；如果没有爆，乱摇铃的人自己倒霉。三只大猩猩兄弟偶尔也会从办公室探出头来，用完全不讲道理的方式改写库存或订单——而你连自己手里有什么都不知道，只能看着局面在眼前被搅乱。<br>
+
+游戏按轮推进，每一轮直到有人摇铃并接受店长的裁决为止。轮到你时，你只有两个选择：抽一张新订单牌，从左右两侧中选一侧的水果，加进桌面中央的订单区；或者摇铃，质疑上一位接单的玩家把订单推过了库存上限。订单区会持续累积，每一张新牌都在抬高某一类水果的总需求量，而全场的库存总量是公开可见但不由你掌控的——因为你自己的那张牌，只有别人能看见。<br>
+
+摇铃的判定只有两种结果，而代价全部由其中一方承担。如果摇铃时订单确实已经超过了全场库存，上一位接单的玩家扣分；如果没有超过，摇铃的人自己扣分。扣分不是一个固定的数字，而是逐轮递增：第一次店长发怒扣1分，第二次扣2分，以此类推，第7次直接扣7分，并触发游戏结束。这意味着越往后拖，摇铃的风险和收益都被同步放大：早摇可能只是帮别人垫1分，晚摇一旦赌错，自己要吞下6分或7分的窟窿。你不仅要判断“现在到底爆没爆”，还要判断“上家是不是在故意喂给我一个不该接的订单”。<br>
+
+猩猩特殊卡为这套信息迷雾注入了额外的不可预测性。牌堆中混有三张猩猩兄妹卡，抽到后会立即触发全局效果：例如“香蕉无限库存”“数字3的水果全部失效”“抵消所有香蕉订单”。这些效果直接改写刚刚被所有人默算过的库存总量，让此前基于“我还剩多少空间”的判断在瞬间失效。你无法把这些卡牌纳入计算，只能接受它们会在某个时刻把牌桌掀翻。<br>
+
+榴莲忘贩的乐趣不在于精算，而在于在信息迷雾里赌谁先眨眼。你看得见所有人的牌，却看不见自己的；你知道订单在膨胀，却不知道自己的库存能不能撑住下一张；你摇铃，可能抓住上家的贪心，也可能把自己送进大猩猩的办公室。它轻到可以在饭桌上等人上菜时开一局，但它把“对自己一无所知”这件事变成了一种持续二十分钟的、带着笑声的紧张。
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

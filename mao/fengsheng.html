@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风声 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/fengsheng.png">
+        <div class="info-right">
+            <h1>风声</h1>
+            <div class="tag-row">
+                <span class="tag">3-9人</span>
+                <span class="tag">难度2/5</span>
+                <span class="tag">时长15-30分钟</span>
+                <span class="tag">谍战</span>
+                <span class="tag">博弈</span>
+                <span class="tag">对抗</span>
+                <span class="tag">阵营</span>
+            </div>
+            <div class="content">
+                <p>《风声》由黄磊、金国恩等六人设计，广州千骐动漫于2010年发行，是中国首款谍战主题桌面游戏。它获得了麦家小说《风声》的授权，后续也推出了《黑名单》《再临》等多个版本。BGG评分约6.9，玩家社区普遍将它的核心机制概括为“手牌即情报”——你手中的每一张牌，既是驱动你行动的资源，也是你必须送出去或拦截下来的秘密。游戏用一套与《三国杀》高度相似的回合框架，承载了一个远比“出杀闪桃”更阴郁的命题：在所有人都可以撒谎的房间里，你传出的每一张牌，都在替你的阵营说话，也在暴露你自己的位置。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>1940年代，汪精卫伪政府成立，重庆国民政府与陕甘宁边区政府三足鼎立，明争暗斗的焦点从战场转向了情报网。玩家扮演的是潜伏在各方势力中的间谍，或是被无辜卷入的路人。身份在开局时暗置，没有人知道谁与自己同阵营——你必须在传递和接收情报的过程中，从其他人的出牌选择里，一点一点拼出敌友的轮廓。军情处与潜伏战线各自需要将特定颜色的情报送到自己人手中，而“打酱油的”第三方则怀揣着完全独立的机密任务，他们的胜利条件可能与任何一方都不兼容，甚至以制造混乱为乐。<br>
+
+每回合的骨架与《三国杀》类似：摸牌、出牌、传递情报。回合开始补充两张手牌，然后你必须在传递阶段传出一张情报——这是强制性的，没有“跳过”的选项。情报按颜色分为红色（潜伏）、蓝色（军情）和黑色（假情报），传递方式也各不相同：密电暗置后从右手边依次传递，每位玩家决定是否接收；直达则直接面朝下交给指定的人。一张牌离开你的手，进入传递链的那一刻，它就不再只属于你——截获、调包、退回、识破，功能牌可以在传递的每一个节点介入，把一条原本通向盟友的情报半路劫走，或者把一张假情报硬塞进对手的情报区。<br>
+
+胜利条件是一条极窄的线：军情处任意一名玩家收到三张蓝色情报，整个军情阵营共同获胜；潜伏战线同理，任意一人集齐三张红色情报，潜伏方全体胜利。但这条线同时也是死亡线：任何玩家收到的假情报（黑色）达到三张，该玩家立即死亡。这意味着你每一次决定“收下”一张传到自己面前的情报，都是在赌——赌它是你阵营的颜色，还是别人精心包装的毒药。而“打酱油的”路人拥有独立的机密任务，他们的目标可能是让某个特定的人死，可能是让某种颜色的情报被传递一定次数，也可能只是活到最后。第三方势力的存在，让原本已经足够脆弱的阵营识别变得更加不可靠：一个拼命把蓝色情报往外推的人，可能不是潜伏阵营在捣乱，而是一个路人在完成他自己的任务。<br>
+
+角色技能将这种不确定性推向了更高的密度。每位角色拥有专属能力，且部分技能在角色牌盖伏状态下不可用——翻开角色牌宣告身份，可以获得更强的能力，但同时也向全场公开了你的阵营归属。黑玫瑰可以在情报传递过程中响应，通过展示牌库顶牌来向目标放置假情报，放置三张时目标直接死亡且不可被“烧毁”规避。妙手可以在争夺阶段弃置待收情报，查看一名角色的手牌与情报区，并从中选择一张作为新的待收情报移给另一名角色。这些技能不是点缀，它们本身就是信息博弈的一部分：一个翻开角色牌的人，既是在宣告“我是谁”，也是在宣告“我知道我在做什么”。而一个始终盖伏的人，他的沉默本身就在被所有人解读。<br>
+
+《风声》的深度不在于规则有多复杂，而在于它把“传递” 这个动作变成了一种持续的语言。你传出的每一张牌，都在被接收者、拦截者、以及所有旁观传递链的人反复阅读——你是想把红情报送给下家，还是在用一张假情报引诱对手截获？你截获了一张牌，是因为你判断它对你的阵营有利，还是因为你不想让它到达某个特定的人手中？没有人能同时做到隐藏意图和推进目标，而《风声》的全部张力，就压在这条不可能被完全抹平的裂缝上。
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>忍者之夜 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/renzhezhiye.png">
+        <div class="info-right">
+            <h1>忍者之夜</h1>
+            <div class="tag-row">
+                <span class="tag">4-11人</span>
+                <span class="tag">难度1.84/5</span>
+                <span class="tag">时长20-30分钟</span>
+                <span class="tag">隐藏角色</span>
+                <span class="tag">封闭选秀</span>
+            </div>
+            <div class="content">
+                <p>《忍者之夜》（Night of the Ninja）由《暗杀神》的设计师 Justin Gary 操刀，Brotherwise Games 于2021年发行，中文版由指尖桌游、栢龙玩具等引进。它在BGG上的重度约2.06/5，单轮仅5分钟左右，整局也不过15-30分钟，却曾入围2021年 Golden Geek 最佳派对游戏奖。它的设计支点可以用一句话概括：你的阵营和你的能力是两回事。你开局抽到的流派牌决定了你是仙鹤、莲花还是浪人，但你在夜晚阶段能做什么，完全取决于你轮抽到的那两张忍者牌。同一张“刺客”牌，可能握在你的队友手里，也可能握在你正要寻找的敌方首领手里——信息在轮抽中流动，而杀意藏在顺序里。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>忍者世界的两大流派在暗夜中争夺荣耀。你的任务是找出并斩杀敌方流派的首领，同时确保己方的首领活到黎明。如果玩家人数为奇数，还会有一名中立的浪人混入其中，他没有流派归属，唯一的生存法则就是活过这个夜晚。游戏不讲述一段完整的忍者史诗，它复刻的是一种秘而不宣的杀局：所有人都在黑暗中摸索，你知道自己的身份，却不知道身边坐着的究竟是可以托付后背的同门，还是正在盘算着下一张牌该指向谁的刺客。死亡不会让你出局，被击杀的人只是不能再行动，但仍然可以说话，可以给队友递眼神，可以误导敌人。整张桌子从头到尾都是活的，只是有些人已经不能再拔刀了。<br>
+
+每一轮的开局都是一次封闭轮抽。每位玩家获得3张忍者牌，留下1张，将剩余2张传给左手边的玩家，再从传来的牌中留下1张，最终每人手持2张忍者牌进入夜晚。这个简短的动作决定了你这一轮能做什么，但它是在不知道其他人留了什么的情况下完成的。你看到的牌越多，你对场上可能存在的杀招就越有数，但你只能从中截取两把刀带走。<br>
+
+夜晚阶段按照一张固定的流程牌依次结算，顺序通常为：密探 → 隐士 → 骗徒 → 刺客 → 上忍。当轮到某个职业阶段时，所有手中有对应牌且选择打出的玩家同时亮牌。如果同一阶段有多名玩家出牌，则根据牌面上的数字大小决定先后，数字小者先动。你也可以选择不出牌，但一旦跳过某个阶段，那张牌在本轮中就永远失去了打出的机会。这把每一次“留还是出”的选择都变成了一次不可撤回的下注：你手里握着一张“上忍”，可以查看一名玩家的身份并决定是否击杀他，但如果你等到最后阶段才出，你的目标可能已经被别人的刺客先一步带走了。<br>
+
+角色能力大致分为两条线。情报类角色（密探、隐士、骗徒）负责获取信息：密探查看一名玩家的流派；隐士同时查看一名玩家的流派和一张忍者牌；骗徒则拥有多种变体，例如掘墓从弃牌堆换牌、捣蛋鬼查看流派并可以强制揭示、窃贼从分数更高的玩家那里偷走1分荣誉。击杀类角色（刺客、上忍）是真正的刀刃：刺客直接击杀一名玩家；上忍查看一名玩家的身份，然后选择是否将其击杀。但刀锋也有反噬的可能——还施在被上忍或刺客击杀时可以反杀对方，殉道在被击杀时反而获得一个荣誉标记。一个看起来最像猎物的目标，可能恰恰是这一轮设下的陷阱。<br>
+
+揭示阶段决定了谁能在这一轮中拿走荣誉。夜晚结束后，所有仍然存活的玩家翻开自己的流派牌，比较各自流派牌上的数字大小。数字最高的流派中，存活者最“高级”的一方获胜——如果最高级平手，就比较次高级，以此类推；如果完全平手，则共享胜利。胜出流派中每一位存活玩家各抽取一枚荣誉标记（分值通常为1-4，抽取后保密），如果浪人存活，他也自动抽取一枚。率先累计达到10点荣誉的玩家赢得整局游戏。<br>
+
+《忍者之夜》的“轻”不在于思考量小，而在于信息永远是不够的，但你仍然必须出手。你轮抽到的两张牌可能根本不支持你去验证任何人的身份，你只能凭发言、凭别人出牌时的犹豫、凭上一轮谁和谁看起来像是一伙的，去赌一个击杀。而你打出的每一张牌，也在向所有人泄露你的意图：一个在密探阶段就急于查看别人流派的人，很可能是在为后续的击杀铺路；一个始终不出牌的人，手里可能攥着足以在最后阶段翻盘的刺客。浪人的存在让一切联盟都变得临时，因为那个活到最后就能得分的人，不需要忠于任何人。它短到可以连开十局，轻到新人五分钟就能上手，但它在那几分钟里让你做出的每一次出牌选择，都在重新定义谁是你的同门，谁是你的猎物，以及谁只是在等你们互相残杀。
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

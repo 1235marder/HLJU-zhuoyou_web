@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亡者神抽 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/wangzheshenchou.png">
+        <div class="info-right">
+            <h1>亡者神抽</h1>
+            <div class="tag-row">
+                <span class="tag">2-4人</span>
+                <span class="tag">难度1/5</span>
+                <span class="tag">时长10-15分钟</span>
+                <span class="tag">运气</span>
+            </div>
+            <div class="content">
+                <p>《亡者神抽》（Dead Man's Draw）由 Derek Paxton、Leo Li 与 Chris Bray 联合设计，最初由 Stardock Entertainment 在2013年尝试众筹，后由 Mayday Games 于2014年成功发行，中文版由新天鹅堡引进。它在BGG上的评分约6.9，重度仅1.37/5，单局不过十来分钟，是整个“见好就收”品类里规则最干净、压力最纯粹的作品之一。它的设计支点可以用一句话概括：每一张牌你都可以继续抽，但每多抽一张，你离“全部归零”就更近一步。十种花色，每种都带着不同的能力，你可以在一次贪心的连抽中把对手的宝藏抢光、把自己的分数堆到天上，也可能在下一张牌翻开的瞬间，因为一个重复的花色，把这一切全部沉入海底。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>你是一名海盗，站在一艘沉船的残骸上方，面前是散落海底的宝藏。每一次下潜，你都可以多捞一件上来——金币、宝箱、美人鱼、藏宝图、甚至是一门大炮。但海底不属于活人。同一种宝藏不会在同一片水域出现两次，如果你贪心地伸手去够那件不该拿的东西，整片海床会塌陷，你之前捞到的一切都会重新被深渊吞回去。游戏不讲述任何一个具体的海盗故事，它复刻的是一种纯粹的赌徒处境：你可以在任何时候收手上浮，但你永远不知道下一件宝藏值不值得你拿已经到手的东西去换。<br>
+
+游戏开始前，从十种花色（锚、宝箱、大炮、钥匙、海怪、美人鱼、海盗旗、剑、地图、海妖）中各取出数字最低的一张，面朝下置于一旁作为弃牌堆（俗称“深海阎王的箱子”）；其余卡牌洗混作为摸牌堆。每位玩家轮流进行回合，回合中你只需重复一个动作：从摸牌堆顶翻开一张牌，面朝上放在自己面前，然后检查是否与本次回合已翻开的牌花色相同。<br>
+
+如果花色全部不同，你执行这张牌上标示的特殊能力，然后选择继续抽牌或停牌。停牌时，本回合翻开的所有牌加入你的宝藏区，归你所有。如果翻出了与本次回合已翻开牌重复的花色，立即爆牌——本回合翻开的所有牌全部弃入弃牌堆，你本回合一无所获，回合结束。<br>
+
+十种花色的能力是“继续抽”这件事变得复杂的唯一原因。它们全部是强制性的：翻开就必须执行，没有“可以选择不发动”的余地。锚可以在爆牌时救你一次，抵消这次重复，让你继续回合；钥匙让你立即再抽一张牌，等于免费往前推一步；美人鱼从弃牌堆中捞回一张牌，加入本回合已翻开的牌中；海盗旗从任意一名对手的宝藏区偷一张牌过来；海怪逼迫一名对手弃掉宝藏区的一张牌；大炮指定一种花色，所有玩家宝藏区中该花色全部弃掉；剑与一名对手决斗，输者弃掉一张宝藏牌；地图秘密查看牌堆顶的一张牌；宝箱提供额外的分数或终局加成；海妖数值极高，但翻开时可能触发高风险效果，比如强制弃掉本回合所有牌，或被迫继续抽牌直到爆牌。<br>
+
+计分规则将“贪”的代价压到了极致：游戏在摸牌堆耗尽时结束，每位玩家清点自己宝藏区时，每种花色只取其中数字最高的一张计入总分，其余同花色的牌全部作废。这意味着囤积同一种花色的低数值牌毫无意义，宝藏区的价值取决于你凑齐了多少种不同的花色，以及每种花色里最高的那一张有多大。你可以在一次连抽中拿到五六张牌，但如果其中三张都是低分“地图”，它们只按最高的那一张计分，剩下的两张等于白拿。而“美人鱼”从弃牌堆里捞回的那张牌，可能就是别人刚刚因为爆牌而失去的高分宝藏。<br>
+
+随机性与挑战<br>
+《亡者神抽》的运气是完全暴露的。牌堆的顺序在洗牌的那一刻就已经决定了，你每一次“继续抽”的决策，本质上是在赌下一张牌的花色是否与你本次回合已翻开的所有牌都不同。但你并非毫无信息：你已经知道了本次回合翻开了哪些花色，你知道每种花色在牌堆中大概还剩多少张，你也知道哪些高分牌已经被别人拿走或已经沉入弃牌堆。“地图”让你多知道一张牌，“美人鱼”和“藏宝图”让你有能力从弃牌堆里把失去的东西捞回来，“锚”给你一次犯错的机会。这些能力让你在赌运气的框架里获得了有限的操控空间，但没有任何一张牌能保证你安全。它轻到可以在等人上菜的间隙连开三局，短到每一局都是一次关于“要不要再来一张”的、不超过十五分钟的纯粹拉扯。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情书 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/qingshu.png">
+        <div class="info-right">
+            <h1>情书</h1>
+            <div class="tag-row">
+                <span class="tag">2-4人</span>
+                <span class="tag">难度1.18/5</span>
+                <span class="tag">时长20分钟</span>
+                <span class="tag">手牌管理</span>
+                <span class="tag">计分重置</span>
+            </div>
+            <div class="content">
+                <p>《情书》（Love Letter）由日本设计师Seiji Kanai（金井清史）设计，最初以Kanai Factory名义于2012年发行日文原版，同年由Alderac Entertainment Group（AEG）推出英文版并迅速推向全球。它在BGG上的评分稳定在7.2左右，排名长期位居总榜前四百，重度仅1.18/5，整个游戏只有16张牌，每局不过20分钟。情书的设计支点可以用一句话概括：你手里永远只有两张牌，而你必须在抽第三张之前，决定打出哪一张，以及承受打出它的全部后果。没有持续的资源积累，没有多轮的长线布局，规则简单到几乎透明，但每一次出牌都在同时泄露关于你自己的信息，并试图从对手的反应里撬出关于他们的信息。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>风暴之城（Tempest）的公主安妮特（Princess Annette）将自己锁在了宫殿深处，所有追求者都无法直接见到她。你是一名年轻的求婚者，唯一能做的，是通过宫廷中形形色色的人物——卫兵、神父、男爵、侍女、王子、国王、女伯爵——将你的情书一层层递送进去。这些角色各自握有不同的权力：卫兵可以指认并驱逐一名可疑的竞争者，神父能窥探他人的秘密，男爵可以发起一场点数高低的较量，侍女能提供一回合的庇护，王子可以迫使任何人重新换牌，国王直接与你交换手中的信件，女伯爵必须被优先送出，而公主本人，一旦被暴露或主动打出，就宣告你在这场求爱竞赛中出局。游戏不讲述一段完整的叙事，它复刻的是一种宫廷社交的微观博弈：每个人都在试图让自己的信抵达公主手中，同时不动声色地把别人的信丢进火盆。<br>
+
+每一轮开始时，每位玩家获得1张手牌，牌堆顶1张牌被暗置移除（2人局额外公开移除3张）。轮到你时，你抽1张牌，手中变为两张，然后必须打出其中一张，并立即执行该牌的效果——效果是强制的，即使对你不利也必须结算。所有打出的牌公开放在自己面前，按顺序叠放，弃牌堆是公开信息，任何人都能从中推断出哪些牌已经不在牌堆里、哪些牌可能还在某人手中。<br>
+
+16张牌的构成决定了整局游戏的全部可能性：卫兵×5（数值1） 指定一名玩家并猜测其手牌（不能猜“卫兵”），猜中则该玩家出局；神父×2（数值2） 私下查看一名玩家的手牌；男爵×2（数值3） 与一名玩家比较剩余手牌点数，低者出局；侍女×2（数值4） 使自己直到下一回合开始前免疫所有卡牌效果；王子×2（数值5） 指定一名玩家（包括自己）弃掉手牌并重抽一张，若弃掉的是公主则直接出局；国王×1（数值6） 与一名玩家交换手牌；女伯爵×1（数值7） 若手中同时有女伯爵与国王或王子，必须打出女伯爵；公主×1（数值8） 一旦打出或被弃置，立即出局。<br>
+
+一轮的结束有两种方式：牌堆耗尽，或仅剩一名玩家未出局。如果牌堆耗尽，所有存活玩家亮出手牌，点数最高者赢得本轮；若仅剩一人，该玩家直接获胜。赢家获得一枚好感指示物，率先达到规定数量者赢得整局（2人局7枚，3人局5枚，4人局4枚，不同版本或人数下略有调整）。<br>
+
+手中两张牌的选择是情书全部决策的重量所在。高数值牌（公主、女伯爵、国王）留在手里意味着你在牌堆耗尽时占据点数优势，但也意味着你不能安全地打出它们：公主打出即出局，女伯爵在某些组合下被迫打出，国王会把你最脆弱的牌暴露给对手。低数值牌（卫兵、神父、男爵）可以安全打出并主动施加影响，但如果你一直用低牌行动，牌堆耗尽时你手里的点数就输给了那些默默囤着高牌的人。每一次出牌都是在“现在做点什么”和“把强牌留到最后”之间取舍，而你的弃牌堆正在向所有人直播你的选择逻辑。<br>
+
+情书不提供精密的长期规划，它提供的是一轮又一轮在两张牌之间做出的、不可撤回的即时判断。你猜对手手里是卫兵还是公主，对手也在猜你打出的神父是真的想窥探，还是在虚张声势逼他露出破绽。16张牌的全部信息在理论上都是可追踪的——只要你记得住谁打过什么、牌堆里还剩什么——但人不是完美的记录仪，而情书的乐趣恰恰在于，它用极少的规则和极短的时间，把记忆、概率与心理战压缩成了一场几乎每张桌都能立刻开始的微型博弈。它轻到可以塞进口袋，短到可以连开五局，但它在那二十分钟里让你做出的每一次选择，都比许多体量数倍于它的游戏更让人记得住。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

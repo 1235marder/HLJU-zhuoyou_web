@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马尼拉 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/manila.png">
+        <div class="info-right">
+            <h1>马尼拉</h1>
+            <div class="tag-row">
+                <span class="tag">3-5人</span>
+                <span class="tag">难度2.06/5</span>
+                <span class="tag">时长60分钟</span>
+                <span class="tag">读博（谐音）</span>
+                <span class="tag">虚张声势</span>
+            </div>
+            <div class="content">
+                <p>《马尼拉》（Manila）由德国设计师 Franz-Benno Delonge 设计，Zoch Verlag 与 Rio Grande Games 于2005年发行。它的BGG重度仅约2.03/5，单局一小时以内，规则十分钟就能讲完，是德式轻策中“风险与回报”主题最经典的入门范本之一。它的核心设计支点不在于精密的长期规划，而在于每一次下注时对概率的直觉判断：三艘平底船能否抵达马尼拉，由骰子决定；但你把手下派上哪条船、押注哪门货物、甚至是否成为海盗去劫掠同行，完全由你自己承担后果。运气负责制造波动，而你负责在波动到来之前，把自己的筹码放在正确的位置。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>1821年，西班牙殖民统治下的菲律宾。殖民政府的垄断贸易法令森严，但马尼拉的黑市商人自有门路。脆弱的小平底船载着肉豆蔻、丝绸、玉器和人参，沿着秘密航线驶向马尼拉港。你扮演一名本地走私商人，通过竞标港口负责人的职位获取航线决策权，派遣手下担任押运员、领航员、海盗、修船工或保险商，甚至亲自入股货物本身。每一次航程都是一场赌局：船可能平安靠岸，让你的货物和股票身价倍增；也可能中途沉没，让所有押注它的人血本无归。而那位坐在港口办公室里的人，正微笑着决定哪三样货物上船、三条船分别从什么位置出发。<br>
+
+每一轮航程以港口负责人竞标开场。所有玩家秘密出价，出价最高者获得港口办事处——他有权决定哪三种货物上船（四种货物中排除一种）、三艘船各自的起始位置（三船起始点数之和不得超过9，单船不得超过5），并可以按当前市价购买一张股票。竞标的花费直接进入银行，不返还给任何玩家，因此这个职位本身既是权力，也是一笔沉没成本。拿到权力的人可以优先安排对自己有利的货物和航线，但他也刚刚为这份权力付出了真金白银。<br>
+
+权力分配完毕后，所有玩家同时派遣手下。你手中有三到四个手下（视人数而定），他们可以被部署到以下几个位置：船舱（押运某艘船，若该船抵达，根据该船在航程中的排名获得相应分红）、港口（成为领航员，影响船只移动）、海盗湾（若某艘船抵达时你在海盗位，可以劫掠该船，拿走船上所有押运员的分红的一部分）、修船厂（若某艘船沉没，你在修船位可以获得赔付）、保险公司（为沉船事件提供保险并收取保费）。每一个位置都需要支付金币，而支付的金币同样不返还。你花出去的每一枚硬币，都是在赌你押注的那件事会发生。<br>
+
+航程本身由四颗骰子驱动，每颗骰子对应一种货物颜色。每轮投掷一次，对应颜色的船前进相应点数。三艘船从各自的起始位置出发，朝马尼拉港的终点线前进。航程持续三个回合，三轮骰子之后，抵达或越过终点的船视为成功靠岸，未能抵达的船则沉没。靠岸的货物，其股票价格上升；沉没的货物，股票价格不变，但所有押注在该船上的押运员分红全部落空。海盗可以在船靠岸时发动劫掠，从押运员的分红中抽走一部分；保险商则在船沉没时获得赔付。整条航程中，没有任何行动是“安全”的：押运员赌船能到，海盗赌船能到（然后他去抢），保险商赌船会沉，领航员则试图用微小的移动修正来改变一条船是刚好靠岸还是刚好沉没的命运。<br>
+
+当任意一种货物的股票价格达到30比索时，游戏结束。所有玩家结算手中的现金与股票总值，最富有的人获胜。股票是终局计分中波动最大的部分：一张在航程初期以低价买入的股票，可能在几轮靠岸后翻了几倍；而一张在高位追进的股票，也可能因为后续航程中该货物连续沉没而停滞不前。现金则相对稳定，但现金本身不产生收益，你必须在航程中把现金转化为股票或位置押注，才有机会在终局时跑赢其他人。<br>
+
+《马尼拉》不提供精密的长期规划，它提供的是一轮又一轮在概率与赔率之间做出判断的机会。你知道三艘船的起始位置，你知道骰子的数学期望，你也知道其他玩家把手下放在了哪里——但你永远无法确定下一轮骰子会滚出什么。押运员赌的是“船能到”，保险商赌的是“船会沉”，海盗赌的是“船能到，而且船上的人比我更怕我”。每一次手下落位，都是一次关于风险偏好的自我声明：你是那个在船刚出发时就挤进头等舱的人，还是等到最后一轮、看清形势后才把手下塞进一条几乎确定靠岸的船的人？港口负责人可以操纵起点，但他操纵不了骰子；海盗可以劫掠分红，但他劫掠不了一条沉没的船。在这场航程里，没有人能控制结果，所有人都在控制自己暴露在结果面前的姿态。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

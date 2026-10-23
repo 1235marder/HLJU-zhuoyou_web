@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--“我喜欢它” -->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>很久很久以前 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/henjiuhenjiuyiqian.png">
+        <div class="info-right">
+            <h1>很久很久以前</h1>
+            <div class="tag-row">
+                <span class="tag">2-6人</span>
+                <span class="tag">难度1.4/5</span>
+                <span class="tag">时长15-30分钟</span>
+                <span class="tag">语言</span>
+                <span class="tag">童话</span>
+                <span class="tag">卡牌</span>
+                <span class="tag">扯淡</span>
+            </div>
+            <div class="content">
+                <p>《很久很久以前》（Once Upon a Time）由 Richard Lambert、Andrew Rilstone 与 James Wallis 联合设计，Atlas Games 于1993年发行初版，2012年推出第三版。它在BGG上的评分约6.4，重度仅1.37/5，与《一夜终极狼人》（1.38）几乎并列社交叙事类游戏的最低门槛。但它考验的不是推理、不是撒谎、也不是演技，而是你能否在故事被别人抢走之前，用手里那几张关键词卡，把叙事的方向盘扳回自己的结局。规则书里甚至直白地写着：乐趣不在于获胜，而在于一起把故事讲出来。然而，当“讲完手牌”是获胜的前提时，每一个讲故事的人都在被所有人等待着犯错。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>“很久很久以前……”——这句话本身就是全部的设定。没有固定的世界观，没有预设的角色，没有需要遵循的剧本。玩家共享的只有一套童话原型的碎片：王子、公主、森林、巨龙、仙女、诅咒、魔法、城堡、迷雾。每一张故事卡上印着一个或几个这样的元素，而你的手牌决定了你在这段共同叙事里能“看见”什么。故事从第一位讲述者的口中开始，但它的走向不由任何人独占。你可以让它变成一个关于背叛的宫廷故事，也可以在三句话之内把它拽向一条会说话的龙和一座会走路的森林。游戏不要求故事合乎逻辑，只要求它在被打断的那一刻之前，听起来像是一个正在被讲述的故事。<br>
+
+每位玩家起手获得若干张故事牌和一张结局牌。故事牌上印着童话中常见的元素——一个角色、一个物件、一个地点或一个事件。结局牌则规定了这段故事必须以什么方式收尾：也许是“从此他们幸福地生活在一起”，也许是“邪恶被彻底消灭”，也许是某种更具体的转折。你的任务不是“讲一个好故事”，而是把手里的故事牌全部打出去，然后用自己的结局牌收束叙事。<br>
+
+讲述与出牌是同一件事。当前讲述者继续编织情节，每当他在故事中提到自己某张手牌上的元素，就可以把那张牌打到面前，那张牌从此离开他的手牌。打出的牌越多，离结局越近；但讲述者不能凭空跳跃，他必须让每一次出牌都听起来像是故事自然生长出来的一部分。一个手里握着“沼泽”的玩家，必须在不让听众觉得突兀的前提下，把情节引向一片沼泽。你手里有什么牌，决定了你能在故事里“看见”什么路径。<br>
+
+打断是这款游戏真正的引擎。其他玩家并非被动的听众。当讲述者提到了某位听众手牌上的元素——哪怕只是一笔带过——那位听众就可以打出那张牌，夺走讲述权，成为新的讲述者。讲述者也可以在被“卡住”或主动选择时放弃讲述，将叙事权交给左手边的玩家，同时补一张故事牌。打断的代价是，被夺走讲述权的人会补一张故事牌，这意味着打断虽然让你拿到了方向盘，但也让对手的手牌变得更厚。每一次打断都在重新分配叙事权，也重新分配“谁离终点更近”的进度。<br>
+
+结局的判定是整局游戏最微妙的环节。当一个玩家打完了所有故事牌，他可以亮出自己的结局牌，并尝试讲述故事的收尾。此时其他玩家拥有否决权：如果他们认为这个结局与之前的情节逻辑上无法衔接，可以提出异议，该玩家就必须弃掉这张结局牌、重新抽取一张，继续游戏。但“不合理”的边界极其模糊。一个关于巨龙的故事能不能以“他们幸福地生活在一起”收尾？取决于桌上其他人是否接受。你不仅要讲得足够快，还要讲得足够让所有人愿意放你过关。<br>
+
+《很久很久以前》最诚实的描述是：它是一款用叙事权作为筹码的竞速游戏。故事本身当然是乐趣的一部分，但推动每一轮决策的，不是“怎样让故事更好听”，而是“怎样在别人打断我之前把手牌清空，以及怎样在被打断之后，用最小的代价把方向盘抢回来”。你可能会遇到讲得精彩绝伦却始终赢不了的讲述者，也可能会遇到三句话打完一手牌、用一个敷衍但无人反驳的结局收场的人。它不保证每一局都诞生一个值得回味的故事，它只保证每一张桌都会经历一场关于“谁在讲故事”的持续拉扯。而那句“很久很久以前”，在每一轮被不同的人重新说出时，都会带着不同的意图。
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>富饶之城 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/furaozhicheng.png">
+        <div class="info-right">
+            <h1>富饶之城</h1>
+            <div class="tag-row">
+                <span class="tag">2-8人</span>
+                <span class="tag">难度2.05/5</span>
+                <span class="tag">时长20-60分钟</span>
+                <span class="tag">竞争</span>
+                <span class="tag">建造</span>
+            </div>
+            <div class="content">
+                <p>《富饶之城》（Citadels）由法国设计师布鲁诺·费杜蒂（Bruno Faidutti）设计，原版于2000年以法语“Citadelles”之名发行，中文版由台湾新天鹅堡引进。它在BGG上的评分约7.1–7.4，重度仅2.0/5左右，长期稳居总榜前六百。与绝大多数城市建造游戏不同，富饶之城的核心不在“建什么”，而在“这一轮你是谁”。每一轮你都在秘密选择一个身份，然后用这个身份的能力去获取金币、抽取卡牌、干扰对手，或者保护自己。你的城市只是结果，你在选角阶段对他人意图的每一次预判，才是真正被考验的东西。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>中世纪的法国皇城，老国王驾崩，权柄悬空。作为城中颇具势力的家族首领，你需要在混乱中扩张自己的领地，用建筑与金币证明你配得上那座空悬的王座。但你并非孤身一人在行动。每一轮，你都会从宫廷中“雇佣”一位人物来为你效力：刺客在暗处让某个身份的人闭嘴一整轮，盗贼趁夜摸走某个身份的全部金币，国王拿到皇冠、决定下一轮的选角顺序，主教保护自己的建筑免受军阀劫掠，商人在商业建筑上多收一枚金币，建筑师可以在同一回合连续建造，军阀则直接把别人的建筑夷为平地。九位基础角色，每一位都是一把钥匙，开启一种完全不同的行动逻辑。你无法同时拥有所有钥匙，而最危险的事情莫过于：你以为你选中的角色能保护你，但刺客恰好猜中了你的选择。<br>
+
+每轮以选角开始。持有皇冠的玩家洗混角色牌，根据人数移除若干张（暗置或明置），然后从自己开始，秘密选择一张角色牌，将剩余的角色牌传给左手边的玩家，以此类推，直到所有人完成选择。你拿到的不只是一个能力，还是一个身份编号——行动顺序完全由编号决定，刺客（1号）最先行动，军阀（8号）最后。选角阶段没有任何公开信息，你唯一能读取的，是传牌时对手接过牌堆的那几秒钟里，有没有一丝迟疑。<br>
+
+行动阶段按角色编号从小到大依次“叫号”。被叫到的玩家亮明身份，然后执行两件事中的一件：从牌库顶抽取两张建筑牌保留一张，或者拿取两枚金币；随后，他可以用手中的金币建造一座建筑（建筑师除外，可以建多座）。建筑牌左上角的数字既是建造费用，也是终局分数。建筑的类别（宗教、商业、军事、皇家、特殊）决定了哪些角色能从中获得额外收益：主教从宗教建筑收税，商人在商业建筑上多拿钱，军阀靠军事建筑获得劫掠折扣。<br>
+
+角色能力是整局游戏全部变数的来源，而它们的共同点是指向“身份”而非“玩家”。刺客指定一个角色编号，选择那个角色的玩家必须跳过整轮，且不能透露自己受到了影响；盗贼指定一个角色编号，拿走那个玩家身上的所有金币；军阀选择一名玩家，支付等于其建筑费用减1的金币，就可以拆掉那座建筑。你无法直接攻击一个你看得见的人，你只能攻击一个你猜测的身份。猜对了，收益巨大；猜错了，你的行动回合可能完全落空，甚至反过来暴露了自己。这种“盲指身份”的机制，让每一次选角都变成了一次双向的读心：你在猜别人会选什么，同时你也在赌别人猜不到你选了什么。<br>
+
+建筑的计分与终局奖励为整局游戏设定了清晰的终点，但真正的胜负往往在终点线之前就已经倾斜。当有玩家建成第7座建筑（部分版本为第8座，2人局为12座），游戏在当轮结束后终止。终局计分包含三个部分：建筑本身的分数、率先完成7座建筑的额外奖励，以及集齐五种不同类别建筑的颜色奖励。这意味着单纯追求高分建筑并不足够，你还需要在速度和多样性之间做出取舍。一个早早铺满便宜建筑的人可能触发终局并拿走速度奖励，而一个专注少数高分类别的人，则可能在颜色奖励上失分。<br>
+
+富饶之城不提供精密的长期规划，它提供的是一轮又一轮在信息不完整的情况下，对他人心理的持续下注。你知道刺客可能正盯着建筑师，但你不确定这一轮会不会有人冒险选择建筑师来赌一把速度；你知道盗贼在找有钱人，但你不知道他会不会恰好猜中你选的那个角色。你的金币、你的手牌、你的建筑，全都可以被一次精准的身份读取瞬间清零，而你唯一能做的反制，是在选角的那几秒钟里，比对手多想一步。它轻，但它不松；它短，但每一轮的选角都在重新洗牌整局的权力关系。
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
