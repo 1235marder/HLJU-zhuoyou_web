@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--==“身份类是坏东西” -op== -->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>血与刃的白蔷薇 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/baiqiangwei.png">
+        <div class="info-right">
+            <h1>血与刃的白蔷薇</h1>
+            <div class="tag-row">
+                <span class="tag">5-10人</span>
+                <span class="tag">难度1.8/5</span>
+                <span class="tag">时长15-25分钟</span>
+                <span class="tag">手牌管理</span>
+                <span class="tag">隐藏角色</span>
+            </div>
+            <div class="content">
+                <p>《血与刃的白蔷薇》（Blades & Rose）由 Yu Wang 设计，台湾 Moaideas Game Design 与 Blue Magpie Games 于2023年发行。BGG 评分约7.3，重度仅1.80/5，单局15至25分钟，规则浅显到几乎不需要教学。它与《阿瓦隆》《狼人杀》共享“隐藏身份、阵营对抗”的外壳，但核心决策方式截然不同：你不需要在公开讨论中用发言说服任何人，你只需要在每一轮暗扣一张手牌，然后等待所有牌混洗翻开的那一刻，看自己押注的“血刃”是否出现在牌堆里。发言可以撒谎，表情可以伪装，但翻开的牌面不会。它把社交推理从“语言的法庭”拽回了“手牌的赌桌”。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>白蔷薇是教会中受创世母神赐予魔法花苞的至高魔女，她将魔法的芽传递给在战争、饥饿与疾病中挣扎的信者们，帮助他们渡过试炼、实现愿望。如今，白蔷薇的复活献祭仪式即将举行：司教带领虔诚的信者来到圣地，准备献出生命与花苞，将这位“母亲”重新唤醒。然而，那些曾借白蔷薇的魔法获得力量的人，不愿归还生命与权柄。他们组成了血刃暗杀团，带着锋利的刀刃潜入仪式，目标只有一个——在白蔷薇复活之前，将她与她的花苞一同斩尽。一方要献祭，一方要截杀，而所有人手中的牌，都将在同一时刻被翻开。<br>
+
+游戏的核心循环极其紧凑：暗扣一张牌，混洗，翻开，结算。每一轮，所有存活玩家同时从手牌中暗扣一张牌置于中央，混洗后统一公开。如果翻开的牌中没有“血刃”牌，所有被打出的白蔷薇牌与花苞牌安全献祭，移入献祭区；如果出现了至少一张“血刃”牌，本轮所有被打出的花苞与白蔷薇全部被刺杀，移入阵亡区。白蔷薇阵营的胜利条件有三条且必须同时满足：白蔷薇存活至仪式完成、献祭区累积足够数量的花苞、所有白方玩家打完手中的花苞牌。血刃阵营则只需要刺杀白蔷薇本人，或截杀足够数量的花苞，即可获胜。<br>
+
+开局时的“睁眼互认” 是这款游戏区别于几乎所有社交推理作品的关键设计。入夜后，白蔷薇、司教、巨刃与双刃四名玩家会睁眼看到彼此，但每个人只知道这四个人中“有一个是队友，有两个是敌人”，却无法确定具体对应关系。这意味着游戏从第一秒起就存在一层半公开的信息结构：某些人之间确实“见过面”，但见面本身不揭示阵营，只制造了可供后续推理的锚点。与《阿瓦隆》中梅林独自掌握信息、必须用发言迂回传递不同，这里的开局信息是多人共享但语义模糊的，它不告诉你谁可信，只告诉你“谁和谁在同一个夜晚睁开了眼”。<br>
+
+幽魂牌与暗扣机制 共同构成了信息隐藏的底层逻辑。每位玩家的起始手牌中除了身份牌与信者牌之外，都有一张幽魂牌——一张结算时直接移除的空白牌。幽魂的存在让“暗扣”拥有了策略纵深：你可以在手中握有血刃牌时故意扣出幽魂，制造“本轮无人行刺”的假象，让花苞安全落地；也可以在身为白方时扣出幽魂，伪装成血刃阵营的沉默威慑，迫使真正的血刃在下一轮改变出牌节奏。你扣出的牌不一定是你想打出的牌，而对手只能根据翻开的牌面反推你手里还剩什么。<br>
+
+双刃的换牌 为血刃阵营提供了一次隐蔽的“弹药补充”。入夜阶段，持有双刃身份的玩家会悄悄将手牌中的一张牌与桌面上的双刃牌交换，使自己拥有两次行刺机会。这个动作发生在所有人闭眼时，不产生任何公开信息，但它意味着血刃阵营的行刺资源并非固定不变，白蔷薇阵营在计算“牌堆里可能有多少张血刃”时，必须把这张额外的暗刃纳入考量。<br>
+
+白水晶与魔法书 为每一轮增添了不可预测的变量。每位玩家开局抽取一枚白水晶，数字对应一项被动触发的魔法能力，例如强制某人出牌、隐藏出牌、改变出牌顺序等。持有金币的玩家在白天将金币传递给一位玩家，该玩家展示水晶数字并执行对应能力。这些能力不直接改变阵营，但会打乱出牌顺序、增加或减少公开信息、甚至迫使某人在不利的时机打出关键牌。在所有人都依赖“暗扣”隐藏意图的框架下，一次强制出牌或强制公开，就足以撕开一道裂口。<br>
+
+《血与刃的白蔷薇》不试图用冗长的讨论来支撑一局游戏。它的15到25分钟里，大部分时间是沉默的：暗扣、混洗、翻开，然后所有人同时读取牌面，调整下一轮的赌注。发言是自由的，但发言的权重被机制刻意压低了——你可以说任何话，但你最终只能通过一张暗扣的牌来表达你的真实判断。它比《阿瓦隆》更短、更轻、更依赖出牌那一刻的直觉与预判，而它换来的，是一种不需要口才也能参与的社交推理体验：坐在桌边的人不必是演说家，只需要在每一轮翻开牌面时，做出那个让自己阵营离胜利更近一步的选择。
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--==“身份类是坏东西，这个还行” -op== -->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一夜终极狼人 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/yiyezhongjilangren.png">
+        <div class="info-right">
+            <h1>一夜终极狼人</h1>
+            <div class="tag-row">
+                <span class="tag">3-10人</span>
+                <span class="tag">难度1.38/5</span>
+                <span class="tag">时长10分钟</span>
+                <span class="tag">角色扮演</span>
+                <span class="tag">隐藏角色</span>
+            </div>
+            <div class="content">
+                <p>《一夜终极狼人》（One Night Ultimate Werewolf）由 Ted Alspach 与 Akihisa Okui 联合设计，Bézier Games 于2014年发行。它的BGG重度仅1.38/5，在身份推理类游戏中甚至低于《阿瓦隆》（1.74），单局只有十分钟。但这份“轻”恰恰来自一次极其锋利的结构性切割：传统狼人杀用多个夜晚的死亡来积累信息，一夜终极狼人只保留一个夜晚，然后直接进入唯一一次投票。它不淘汰任何人，但也几乎不给你修正判断的时间。身份在夜里可能已经被换掉、篡改、甚至彻底反转，而你醒来之后只有十分钟，去决定自己到底是谁的队友。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>经典的村庄与狼人叙事被压缩进一个完整的夜晚。村民在入睡前还知道自己是村民，狼人在互认时还知道同伴是谁。但这一夜并不平静。强盗可能把你的身份偷走，留下他自己的牌在你面前；捣蛋鬼可能在不看牌的情况下，交换场上任意两名玩家的身份；酒鬼可能在自己不知情的情况下把自己换进中央的三张弃牌里。第二天天亮，所有人睁眼，翻开自己面前的牌，然后发现：你昨晚以为的身份，很可能已经不是你现在持有的身份。阵营的划分不再基于“你开局抽到了什么”，而基于“你在天亮之后实际是什么”。狼人可能变成了村民，村民也可能在浑然不觉中被推入了狼人阵营。<br>
+
+游戏开始前，从角色牌库中抽取玩家人数+3张牌，每人分发一张，剩余三张面朝下置于桌面中央作为遗弃身份。所有人先查看自己的初始身份，然后进入夜晚。夜晚按照固定顺序依次唤醒特定角色执行能力：狼人互认（若只有一名狼人，可以查看一张中央弃牌）、预言家查看一名玩家的身份或两张中央牌、强盗将自己的牌与另一名玩家交换并查看新身份、捣蛋鬼在不看牌的情况下交换另外两名玩家的牌。这些能力的关键在于：它们改变的是牌面归属，而非玩家的记忆。一个被强盗换走身份的玩家，醒来后手里拿着狼人牌，但他昨晚闭眼前看到的明明是村民。<br>
+
+天亮之后，所有人睁眼，查看自己面前现在的牌，然后进入讨论与投票。没有多轮发言，没有淘汰等待，只有一次自由讨论和一次同时投票。每个人必须投出一票，不能投给自己；得票最多的玩家（平票则平票者同时出局）被处决，随后翻开所有身份牌进行结算。<br>
+
+阵营胜负的判定同样被简化到了极致。村民阵营的胜利条件是：至少有一名狼人被处决；如果场上已经不存在狼人（因为身份交换导致所有狼人牌都进入了中央弃牌），那么村民阵营需要确保无人被处决，才能获胜。狼人阵营则相反：没有任何狼人被处决，狼人获胜。这意味着游戏的核心张力不在于“推理出谁是狼”，而在于推理出“现在还有没有狼、狼是谁、以及谁手里的牌在投票结束后会变成狼”。一个被捣蛋鬼换过牌的玩家，可能在讨论中真诚地声称自己是村民，而他的牌在结算时确实是村民——但他昨晚看到的那张牌是狼人，他的“真诚”和“真相”之间隔着一层他自己也无法穿透的迷雾。<br>
+
+角色配置是这款游戏真正的策略变量。基础版提供了十余种角色，包括皮匠（被处决时独自获胜）、猎人（被处决时可以带走一名玩家）、失眠者（夜晚结束时重新查看自己的牌）、爪牙（属于狼人阵营但不是狼人，即使没有狼人存活，爪牙被处决时村民依然失败）等。不同的角色组合会彻底改变一局游戏的推理逻辑：加入皮匠后，一个急于被投票处决的人可能不是狼，而是一个拥有独立胜利条件的第三方；加入爪牙后，“场上没有狼”不等于村民安全。主持人或玩家群体可以在每一局开始前自行选择角色池，让同一套规则在不同的组合下呈现出截然不同的博弈面貌。<br>
+
+随机性与挑战<br>
+《一夜终极狼人》的运气成分集中在开局：你抽到什么身份、中央弃牌里有什么、以及夜晚行动的顺序如何影响信息分布。但这些初始条件一旦确定，游戏就进入了纯信息博弈的领域。没有后续的掷骰，没有随机翻牌，所有的变化都来自玩家之间的技能交互和发言选择。它的“轻”不在于思考量小，而在于决策窗口极短：你没有多个回合去验证一个假设，没有第二轮发言去修正一个错误。十分钟之内，你只能基于残缺的、可能已经被夜晚行动篡改过的信息，做出一个不可撤回的判断。对于熟悉角色能力的老手，这种压缩带来了极高的信息密度；对于新人，它可能只是一场热闹的十分钟混乱——而这款游戏的设计，恰恰同时容纳了这两种体验。
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
