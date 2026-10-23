@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--==“身份类是坏东西” -op== -->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿瓦隆 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/zhanshi_shejiao.png">
+        <div class="info-right">
+            <h1>阿瓦隆</h1>
+            <div class="tag-row">
+                <span class="tag">5-10人</span>
+                <span class="tag">难度2/5</span>
+                <span class="tag">时长30-60分钟</span>
+                <span class="tag">角色扮演</span>
+                <span class="tag">隐藏身份</span>
+            </div>
+            <div class="content">
+                <p>《阿瓦隆》（The Resistance: Avalon）由 Don Eskridge 设计，Indie Boards & Cards 于2012年发行，是《抵抗组织》的亚瑟王主题独立续作。它在BGG上的重度仅1.74/5，单局30分钟，规则简单到几句话就能讲完，却被广泛视为社交推理游戏中最具竞技深度的作品之一。它的核心设计支点在于用“任务投票”的公开结果取代了传统狼人杀的“夜间出局”：没有玩家会被提前淘汰出局，每一个人从开局到结束都握着投票权与发言权；但正因如此，每一轮组队投票的赞成与反对、每一次任务卡翻开的成功与失败，都成了所有人共同审视的公开证据。阿瓦隆不淘汰任何人，它只让所有人的每一次选择都留下痕迹。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>不列颠的命运悬于阿瓦隆。亚瑟王麾下的圆桌骑士们必须完成三次艰巨的任务，才能抵御莫德雷德及其爪牙的阴谋。然而，骑士团中已经混入了邪恶的渗透者——他们伪装成忠臣，潜伏在每一次出征的队伍里，伺机破坏任务，并在最后关头刺杀那位洞悉真相的大法师梅林。你扮演的是一名圆桌骑士，但你无法确定身边的同袍究竟是忠诚的战友，还是莫德雷德安插的刺客。正义一方掌握着信息优势，却必须在不暴露核心的前提下将其转化为胜势；邪恶一方人数劣势，却拥有“失败即信息”的隐蔽性，以及终局一击的翻盘权。<br>
+
+游戏以轮次推进，每一轮包含两个阶段：组队与任务。每轮有一名队长，负责从所有玩家中挑选若干人组成任务小队。队长的人选按顺时针轮转，但小队名单必须经过全体投票——每一位玩家同时亮出赞成或反对的标记，多数赞成则小队成立，多数反对则队长顺延，重新组队（连续四次否决后强制成立）。投票结果是完全公开的，谁支持了谁、谁反对了谁，构成了整局游戏最基础的“发言”。一个邪恶玩家可以在讨论中撒谎，但他无法在投票记录里同时讨好所有人。<br>
+
+小队成立后，队员秘密打出一张“任务成功”或“任务失败”卡，洗混后公开。正义方必须打出成功，邪恶方则可以选择成功或失败。失败卡的数量本身就是一种语言：一次任务中出现了一张失败，意味着这支小队里至少有一名邪恶玩家，但也至多意味着有一个人选择了破坏。这个“至少”与“至多”之间的缝隙，就是好人阵营全部推理工作的起点。任务成功三次，正义方获胜；失败三次，邪恶方获胜。但游戏尚未结束——如果正义方完成了三次任务，邪恶阵营的刺客仍然拥有一次刺杀梅林的机会。刺客指认成功，邪恶方立即翻盘；指认错误，正义方才真正取胜。<br>
+
+角色能力将这套基础框架从“公开投票的推理题”升级为一场信息不对称的博弈。梅林开局能看到除莫德雷德之外的所有邪恶玩家，但他绝不能暴露自己——一旦被刺客锁定，之前所有的任务胜利都会在一瞬间归零。派西维尔能看到梅林和莫甘娜，但无法分辨二者——莫甘娜伪装成梅林，目的正是让派西维尔在关键时刻站错边。莫德雷德是梅林视野中的盲区，奥伯伦则连自己的邪恶队友都不认识，成为双方都无法完全纳入计算的孤立变量。可选角色如兰斯洛特与湖中女神进一步增加了阵营转换与信息验证的维度。没有两个角色在玩同一种游戏，而整局游戏的张力，恰恰来自好人阵营必须在“梅林知道但不能说”与“派西维尔想说但不确定”之间，找到那条足够窄、但尚未断裂的传递路径。<br>
+
+阿瓦隆的难度不在规则，而在发言的重量。你没有淘汰机制可以依赖，没有夜间行动可以躲藏。你说的每一句话、投的每一张票、在组队时表现出的犹豫或果断，都会被在场的所有人反复称量。邪恶方可以撒谎，但撒谎的代价是留下可以被追溯的轨迹；好人方可以说真话，但真话可能恰恰是刺客寻找梅林的路标。正义方拥有信息，却必须隐藏信息的来源；邪恶方缺乏信息，却拥有定义叙事节奏的自由。30分钟一局，没有出局，没有等待，每一个人从头到尾都在牌桌上——而牌桌上最危险的位置，永远是那个知道得最多、却最不能让人看出来的人。
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
