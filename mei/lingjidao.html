@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灵迹岛 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mei.html">← 返回美式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/lingjidao.png">
+        <div class="info-right">
+            <h1>灵迹岛</h1>
+            <div class="tag-row">
+                <span class="tag">1-4人</span>
+                <span class="tag">难度4.07/5</span>
+                <span class="tag">时长90-120分钟</span>
+                <span class="tag">合作</span>
+                <span class="tag">战役</span>
+                <span class="tag">影响力</span>
+            </div>
+            <div class="content">
+                <p>《灵迹岛》（Spirit Island）由 R. Eric Reuss 设计，Greater Than Games 于2017年发行，中文版由游人码头代理。它长期位居 BGG 总榜前列（一度高居第11位），BGG 重度评分高达4.08/5，是合作类桌游中公认的“硬核标杆”。与绝大多数“合作打怪”游戏不同，灵迹岛把玩家放在了被入侵者的位置上：你不是在扮演英雄驱赶怪物，你是在扮演一片土地本身的意志，看着外来者一寸寸啃食你的身体。它的核心设计张力在于一个近乎残忍的命题——你拥有毁灭他们的力量，但每一次动用力量，都在改变你自己。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>架空历史中约公元1700年的某座岛屿。殖民者的帆船出现在海平线上，他们带来了旗帜、火枪、疾病，以及一种根深蒂固的信念：这片土地是无主的。但他们错了。岛屿本身是活的。森林记得每一棵被砍倒的树，河流记得每一道被改写的河道，山峦记得每一座被炸开的矿脉。你扮演的正是这些记忆的化身：岛屿的自然之灵。你并非仁慈的守护者，你是被惊醒的、愤怒的、古老的意志。你的目标不是“击退一支军队”，而是让这些外来者从骨子里感到恐惧，让他们意识到自己踏入了一个不该踏入的地方，直到他们主动逃离，或被彻底吞没。<br>
+
+灵迹岛是一款完全合作、对抗AI驱动入侵者的策略游戏。每一局中，入侵者的行动由一套卡牌系统自动控制，他们会在岛上探索、建造村镇、制造污染、攻击原住民（达汗）。入侵者的行动具有可预测的模式——卡牌会提前标示他们下一步将侵袭哪片区域——这意味着玩家的核心挑战不是“猜敌人要做什么”，而是在信息透明的情况下，依然做出足够好的决策。你知道浪潮要来，但你只有有限的能量和卡牌，而浪潮不止一道。<br>
+
+精灵的非对称性是灵迹岛全部策略深度的地基。基础版提供的精灵（如“闪电之爪”、“河流之涌”、“暗影的闪烁”、“大地之坚韧”等）拥有截然不同的能力体系、成长路径与元素亲和。有的擅长快速爆发、清理入侵者；有的擅长操控恐惧、改变入侵者的行为逻辑；有的专注于防御与污染控制；有的则通过传播存在感来缓慢蚕食岛屿的主导权。没有两个精灵在玩同一种游戏，而合作的全部意义就在于：你必须读懂你的精灵能做什么，然后找到它和队友的精灵之间那条狭窄的协同路径。<br>
+
+快速与慢速的双阶段施法是灵迹岛节奏控制的核心。卡牌分为“快速” （在入侵者行动之前生效）和“慢速” （在入侵者行动之后生效）。快速牌可以用来阻止入侵者的建造、在破坏发生前消灭他们，或提前施加防御；慢速牌则是在入侵者行动完毕后“清算”局面，处理那些已经造成的后果，或者为下一轮布局。顺序错一步，整条防线可能同时崩塌。你必须在每一轮同时计划“现在做什么”和“接下来会发生什么”，而入侵者的可预测性恰恰是为了让你的预判成为可能——它不隐藏信息，它考验你在信息面前的组织能力。<br>
+
+恐惧等级将“胜利”本身变成了一个动态的目标。游戏开始时，入侵者的恐惧等级为1级，他们甚至没有意识到精灵的存在。此时要获胜，通常需要将岛上的入侵者彻底消灭。随着你在岛屿上制造恐惧（通过消灭入侵者、施展强大的精灵能力、触发敬畏牌），恐惧等级会逐步攀升。到了2级，胜利条件变为岛上不再存在村庄和城镇——入侵者开始逃离，你不再需要杀死每一个人。到了3级，入侵者只能龟缩在城镇中，胜利条件进一步放宽。这意味着同一局游戏的前期和后期，你追求的目标本身是不同的：前期你是在硬碰硬地清场，后期你是在利用恐惧的雪球效应，用更少的直接暴力达成胜利。<br>
+
+失败条件同样多线并行。污染标记代表入侵者对岛屿生态造成的不可逆伤害，一旦污染池耗尽，岛屿死亡，所有人失败。此外，入侵者牌堆耗尽而未能获胜、或某种精灵被彻底灭绝，也会触发失败。你不仅要赢，还要在岛屿被彻底毁掉之前赢。时间不是中立的裁判，时间是和你作对的第三方势力。<br>
+
+灵迹岛的难度不是来自规则的模糊，而是来自决策密度的压迫。每一轮你都要在能量有限、手牌有限、行动有限的前提下，同时回应多个方向上的威胁，而每一个回应都可能透支你下一轮的选择空间。它不保证合作是愉快的——有时队友的最佳选择和你的是冲突的，有时你们必须牺牲一片区域来保住另一片。但正是这种“带着代价去守护”的体验，让灵迹岛在合作游戏中占据了一个几乎无法被替代的位置：你不是在打败入侵者，你是在决定这座岛屿愿意付出什么，以及愿意让谁记住这份代价。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

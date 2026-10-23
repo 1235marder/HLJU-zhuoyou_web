@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>末日启示录 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mei.html">← 返回美式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/moriqishilu.png">
+        <div class="info-right">
+            <h1>末日启示录	</h1>
+            <div class="tag-row">
+                <span class="tag">1-6人</span>
+                <span class="tag">难度2.15/5</span>
+                <span class="tag">时长45-90分钟</span>
+                <span class="tag">合作</span>
+                <span class="tag">角色扮演</span>
+            </div>
+            <div class="content">
+                <p>《末日启示录》（Maximum Apocalypse）由 Mike Gnade 设计，Rock Manor Games 于2017年发行，中文版由游人码头代理。它是一款轻量化美式合作生存游戏，重度仅2.12/5，规则书被刻意压缩到“巴掌大小”。游戏将探索、拾荒、战斗与饥饿压迫塞进了一个极其精简的框架里，其核心设计支点在于把“资源耗尽”写进了每一个生存维度——你的牌库抽空即死亡，拾荒牌堆耗尽则物资永久枯竭，饥饿值每回合不可逆地攀升。你不是在击败末世，你是在末世的倒计时里，比队友活得稍微久一点。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>核大战之后，人类文明崩塌。僵尸在废墟间游荡，变异体潜伏在暗处，失控的机器人与外星入侵者各自盘踞一方。你扮演的不是什么救世英雄，而是一名幸存者小队的成员：消防员、外科医生、机械师、枪手、牧师、老兵，甚至一位带着狗的猎人。你们的目标非常具体——收集燃料、修好载具、完成剧本指定的生存任务，然后撤离到安全地点。但在这座随机拼接的废土上，安全地点本身可能就在怪物的巢穴旁边，而你的饥饿值不会因为你在赶路就停止上升。<br>
+
+游戏每回合分为五个阶段：怪物出生、抓牌、执行行动、增加饥饿等级、怪物攻击。每位玩家拥有4个行动点，用于在移动、抽牌、打牌、执行卡牌行动或拾荒中进行分配。规则本身几乎没有理解成本，但4个行动点永远不够用：你需要移动去推进剧本目标，需要抽牌来维持手牌质量，需要拾荒来补充弹药与食物，还需要留出行动来攻击或躲避已经贴上来的怪物。<br>
+
+角色专属牌库是这款游戏在“轻规则”外表下真正的策略纵深。每位幸存者拥有一套完全独立的牌库，牌张围绕该角色的职业定位设计：消防员擅长近战抗线与开图，枪手提供中远距离火力掩护，外科医生负责治疗与维持小队生存，机械师则精于搜索与布置陷阱。你的牌库不会被其他玩家污染，但也意味着你无法从队友的牌库中获取你需要的资源。抽牌是寻找关键武器的唯一途径，而牌库抽空的那一刻，角色立即死亡——你的“资源”和“生命”是同一条倒计时。这种设计迫使你在“过牌找答案”和“保留牌库厚度以续命”之间做出持续的取舍。<br>
+
+怪物出生的规则简单到近乎粗暴，却极其有效地制造了持续升压的压迫感。每个已探索的版图右上角印有一个数字，怪物阶段掷两颗六面骰，所有数字等于骰点之和的版图各生成一只怪物。这意味着随着版图越铺越开，能够“匹配”骰点的格子越来越多，每回合出现的怪物总量在统计意义上持续上升。你无法通过“不探索”来回避这套机制，因为剧本目标要求你移动、搜寻和推进，而地图不会自己缩短。<br>
+
+饥饿是另一条与怪物并行的、不可撤销的倒计时。每回合结束时，你的饥饿等级上升1点；达到6点时，角色牌翻面，开始承受持续且逐回合递增的饥饿伤害，直到你找到食物并进食。饥饿和牌库枯竭、怪物刷新一起，构成了三条彼此独立又相互加剧的失败路径。你为了推进目标而消耗行动点移动，就可能来不及拾荒找食物；你为了找食物而拾荒，就可能抽到伏击，消耗血量与手牌；你为了节省手牌而少过牌，牌库的厚度优势又会在后期转化为“找不到关键武器”的劣势。<br>
+
+剧本系统为这套底层循环提供了模块化的叙事外壳。每一局开始前，你们根据所选剧本设置地图、怪物卡组、拾荒卡组与任务目标；不同剧本的主线任务各异——寻找燃料、修理载具、击杀首领、营救人质——搭配的支线任务与怪物类型也不同，使得每一次废土生存的路径都不完全重复。胜利条件通常指向完成剧本目标并成功撤离，但“撤离”本身往往需要你在资源已经濒临枯竭的状态下，再做一次不可逆的豪赌。<br>
+
+末日启示录不试图用厚重的模型和冗长的战役来营造“史诗感”。它的沉重来自那些沉默的倒计时：你抽出的每一张牌都在缩短牌库的寿命，你回合结束的每一次饥饿增长都在逼近翻面线，而你掷出的每一颗骰子都在决定下一只怪物出现在哪个离你最近的格子里。它是一款关于“在资源耗尽之前做完该做的事”的游戏，而废土从来不保证你来得及。
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

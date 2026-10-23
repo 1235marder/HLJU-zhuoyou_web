@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>恶夜杀机 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mei.html">← 返回美式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/eyeshaji.png">
+        <div class="info-right">
+            <h1>恶夜杀机</h1>
+            <div class="tag-row">
+                <span class="tag">2-4人</span>
+                <span class="tag">难度2.27/5</span>
+                <span class="tag">时长30-45分钟</span>
+                <span class="tag">恐怖</span>
+                <span class="tag">骰子</span>
+                <span class="tag">隐藏地图</span>
+            </div>
+            <div class="content">
+                <p>《恶夜杀机》（Terrorscape）由香港设计师 Jeffrey CCH 设计，香港工作室 Ice Makes 开发，2023年通过 Kickstarter 众筹上线，中文版由 Asmodee（艾赐魔袋）引进。BGG 评分 8.1，重度约 2.3/5，属于轻中度规则、重度氛围的非对称恐怖游戏，常被玩家称作桌面版“黎明杀机”。它的核心设计支点只有两个：一张隔绝双方视野的物理屏风，以及一条“噪音”作为唯一位置信息的规则。杀手看不见幸存者在哪里，幸存者看不见杀手在做什么，整局游戏就是一场围绕“谁先忍不住发出声音”展开的信息战。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>暴风雨之夜，一座阴森豪宅的大门在身后合拢。幸存者们对这里一无所知，只知道必须找到出路；而藏身暗处的杀手，享受的正是猎物在恐惧中一点点暴露踪迹的过程。游戏不讲述某个具体的故事，它复刻的是Slasher 恐怖片的集体体验：手电筒的光柱扫过走廊、门轴发出不该有的声响、你明知道有什么东西在跟着你，却不知道它在哪。桌面中央那座立体的洋馆纸模，既是场景，也是物理意义上的“黑暗” ——它把杀手和幸存者分隔在屏幕两侧，双方看到的是同一张平面图，但谁也看不见对方的模型在哪个房间。杀手知道的，只有幸存者愿意（或不得不）暴露的那一点声响。<br>
+
+幸存者每回合从六种基础行动中选择一个执行：移动（通常1格，部分角色或道具可以加速）、搜索（从所在房间抽取物品卡）、修理无线电、移除封堵标记、移除惊吓标记，或使用角色专属的特殊行动。行动本身不难理解，真正的压力来自一条规则：搜索物品、开门、大量移动，以及拿到带有⚠标记的物品卡，都会在所在房间留下噪音标记，而幸存者必须在回合结束时，如实向杀手报出本回合所有噪音发生的房间位置。钥匙和无线电零件都带有噪音标记——这意味着想赢，就不可能悄无声息。你只能选择在哪个房间、哪个时机“发出声音”，用噪音去赌杀手会不会被引向错误的方向。<br>
+
+杀手在幸存者全部行动完毕后，获得噪音信息，然后执行自己的回合。杀手的基本移动是公开的，但他可以选择潜行：暗中规划一条移动路线，直到现身的那一刻才揭示自己的位置。潜行现身如果恰好与幸存者同房，会直接推高对方的惊吓值；惊吓值累积到第三层时，幸存者会失控尖叫，被迫向杀手暴露自己的精确位置。杀手的成长曲线同样是压力来源：他可以通过抽牌和升级提升力量与技能，游戏拖得越久，杀手越强。杀手不需要击倒所有人，击杀任意一名幸存者，游戏立即结束，杀手获胜。<br>
+
+幸存者的胜利路线有三条，达成任意一条即可：收集5把钥匙后全员抵达主出口；收集5把钥匙外加一张秘密地图，从隐藏出口离开；或者修好无线电呼叫警察，然后存活完整的5个回合等待救援抵达。三条路线共享同一个底层逻辑：你必须在杀手的猎场里持续行动、持续制造噪音，在暴露与推进之间找到那条窄缝。<br>
+
+双方的胜负从来不由单纯的数值碾压决定，而由信息解读的质量决定。幸存者的噪音是“真实信号”，但杀手需要判断这是必要的行动声响，还是故意抛出的诱饵；杀手的潜行是“沉默的威胁”，但幸存者需要从杀手公开的移动轨迹和已知的技能倾向中，反推出他可能正在逼近哪个区域。一局30到45分钟，足以让双方在“预判—反预判”的循环里反复拉扯，直到某一方在错误的房间推开了错误的门。
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026 “第五人格说是”
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

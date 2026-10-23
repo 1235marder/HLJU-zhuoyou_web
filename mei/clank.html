@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clank！ | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mei.html">← 返回美式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/zhanshi_mei.png">
+        <div class="info-right">
+            <h1>Clank！	</h1>
+            <div class="tag-row">
+                <span class="tag">2-4人</span>
+                <span class="tag">难度2.5/5</span>
+                <span class="tag">时长45-90分钟</span>
+                <span class="tag">卡牌构筑</span>
+                <span class="tag">板块设计</span>
+                <span class="tag">地牢探险</span>
+            </div>
+            <div class="content">
+                <p>《Clank!》由 Paul Dennen 设计，Dire Wolf Digital 于2016年发行。它的重度仅约2.23/5，规则透明，节奏轻快，却被 BGG 社区以超过四万条评分推到了总榜前百，平均分稳在7.8左右。它的设计支点用一个词就能概括：贪。你扮演盗贼潜入巨龙巢穴，目标不是杀掉龙，而是在被龙吃掉之前，尽可能多地把宝物带出去。走得越深，宝物越好；但你在里面制造的每一丝声响——“Clank!”——都会变成一颗属于你的方块，混进龙怒袋里。龙什么时候发怒是随机的，而你的贪婪是确定的。** Clank! 把“见好就收”这句古老的忠告，做成了一条可以精确感知、却永远难以执行的倒计时**。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>山上有一座龙巢，龙在睡觉，宝物在深处。你们是一群不请自来的盗贼，各自为战，目标只有一个：带着值钱的东西活着回到地面。越往地城深处走，宝物的品质越高；但深处意味着更长的回程，更少的容错，以及更多的机会在龙翻身的那一刻成为那个被烧成灰的人。游戏不讲述宏大的故事，它复刻的是一种极其具体的处境：你蹑手蹑脚地走在堆满金币的地板上，每踩一步都可能发出声响，而你身后那个人比你更贪、走得比你更深。你不需要比龙快，你只需要比最贪的那个人慢一步被龙盯上。<br>
+
+每回合从抽五张牌开始，牌上的符号驱动你在龙穴中做出一切行动：靴子用于移动，剑用于击败沿途的怪物，技能用于从市场购买新牌加入你的弃牌堆，金币则用于购买特定物品或满足某些卡牌的条件。你的牌库就是你的盗贼能力——起始的十张基础牌孱弱而笨拙，随着你不断购入新牌，移动距离、战斗效率与得分手段都会逐步提升，这是牌库构筑最标准的成长曲线。<br>
+
+但《Clank!》在标准DBG之上叠了一层几乎无法被忽视的风险系统，而它才是整局游戏真正的方向盘。许多卡牌在提供效果的同时会带有“Clank!”符号，迫使你将若干枚属于自己颜色的方块投入龙怒袋中。地城中的某些格子、被惊动的怪物、以及偷取神器的行为本身，也会向袋中投放方块。每一次发出声响，你都在往一个共享的随机池里增加自己的名字。然后，当市场翻出带有龙怒符号的卡牌时，龙就会发怒：从袋中抽取若干方块，被抽中的人受到伤害。袋中的方块越多，你被抽中的概率就越高。你无法通过“不发出声响”来完全回避这套机制——偷东西本身就有代价，区别只在于你是在什么时候、以多大的概率，把代价变成伤害。<br>
+
+神器的争夺是驱动玩家向深处走的诱饵。每个地城中的神器都有固定的分数，越深的位置神器分值越高。拿到神器是结束游戏的前提之一：你必须至少携带一件神器，才能返回地面并计分；空手而归的人，无论走得有多深，都等于白跑一趟。但神器本身也会增加龙的怒意——你越是得手，龙就越接近失控。这就形成了一个与时间赛跑的闭环：你需要在龙怒轨道走到尽头之前拿上东西、掉头、跑回来，而你的对手们也在做同样的事，并且他们制造的噪音会以完全不受你控制的方式，提高你被龙选中的概率。<br>
+
+“什么时候跑” 是《Clank!》每一局都在反复拷问的核心决策，也是它区别于大多数DBG的地方。当有人开始掉头撤离时，龙怒轨道往往还没有走完，但地城中的气氛会瞬间改变——领先的人已经带着分数往回走了，剩下的人要么继续深入去拿更值钱的东西，要么空着手承认这一局赌输了。继续贪的收益是可见的（更高分的神器、更深处未被翻开的宝物），风险也是可见的（回程更长，龙怒袋更厚，而你已经消耗了半副牌库在移动上）。Clank! 不惩罚贪婪，它惩罚的是在错误的时间停止贪婪，或在正确的时间拒绝停止。如果龙在你逃出地城之前把你击倒，你的角色会被拖回地面，但你身上的所有宝物都会遗落在深处，分数大幅缩水；而那个比你早一步爬出洞口的人，可能只拿了一件中等分值的物品，却因为活着回来而赢下了整局。<br>
+
+《Clank!》没有试图把牌库构筑做成一道精密的数学题。它的乐趣不在于你构筑出了多么优雅的引擎，而在于那个引擎在龙怒袋的阴影下运转时，你还能不能保持清醒。龙怒袋里的方块是客观存在的概率，龙什么时候抽、抽中谁，是纯粹的运气。但你选择在哪个深度停下、在什么装备水平下掉头、以及是否要为了抢先撤离而放弃眼前那块还差一步就能拿到的宝物——这些都不是运气能替你回答的。它是一款关于贪婪与生存的短跑，而每一次“Clank!”响起的时候，你都知道自己刚刚又给了龙一次选择你的理由。
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

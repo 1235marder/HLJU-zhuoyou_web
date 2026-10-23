@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东京之王 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mei.html">← 返回美式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/dongjingzhiwang.png">
+        <div class="info-right">
+            <h1>东京之王</h1>
+            <div class="tag-row">
+                <span class="tag">2-6人</span>
+                <span class="tag">难度1.63/5</span>
+                <span class="tag">时长30分钟</span>
+                <span class="tag">战斗</span>
+                <span class="tag">骰子</span>
+                <span class="tag">运气</span>
+            </div>
+            <div class="content">
+                <p>《东京之王》（King of Tokyo）由理查德·加菲尔德（Richard Garfield）设计——这位数学家与游戏设计师最广为人知的身份是《万智牌》的创造者——由 IELLO 于2011年发行，2016年推出全新美术的修订版。它的重度仅约1.63/5，一局30分钟，规则书薄到可以站着读完就开局。但在这层“聚会游戏”的轻巧外壳之下，藏着加菲尔德一贯的设计直觉：把《万智牌》中“资源转换与时机选择”的骨架，抽离成一套只用六颗骰子就能运转的简化模型。你不是在精算，你是在“赌”，但赌什么、什么时候赌、赌多大，仍然由你决定。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>《东京之王》不讲述一个连贯的故事，它复刻的是一种类型片的集体记忆：怪兽电影。突变巨兽、暴走机器人、外星异种——这些本该出现在银幕上互相撕扯的城市毁灭者，此刻被扔进同一张桌面，目标只有一个：成为东京之王。桌上没有复杂的剧情线，没有角色成长，只有一座被围观的东京、几头嗷嗷叫的怪兽，以及一条简单粗暴的法则：要么拿下20分，让全世界记住你的名字；要么把其他所有怪兽打到再也站不起来。它的“背景”不在于叙事，而在于一种氛围——那种周六下午电视机里放着特摄片、你一边看一边想“如果这两只怪兽打起来谁会赢”的纯粹快乐。<br>
+
+每回合的循环极其简单：掷最多六颗骰子，最多重掷两次，然后结算最终骰面。骰面上有六种符号：能量（闪电）、治疗（心形）、攻击（爪痕），以及数字1、2、3。你每一轮要做的事，就是在三次投掷之间决定“留下哪些、重掷哪些”，然后接受最终结果——攻击用来打人，治疗用来回血，能量用来买卡，数字凑成三个相同的就能得分（三个“1”得1分，三个“2”得2分，三个“3”得3分，每多一个同数字再加1分）。你无法“选择”自己掷出什么，你只能选择在什么结果面前停手。这就是“愚骰”（push-your-luck）的核心：每一次重掷都是一次期望值的赌注，而你永远不知道下一把会更好还是更糟。<br>
+
+东京是这个游戏真正的棋盘。当东京无人占据时，任何一个掷出攻击符号的玩家都可以选择进入东京，并立刻获得1分。一旦有人坐上了东京的王座，规则就翻转了：东京内的玩家掷出的攻击，伤害所有东京之外的玩家；东京之外的玩家掷出的攻击，只伤害东京内的那一位。换句话说，进入东京意味着你从“打所有人”变成了“被所有人打”，作为补偿，你每回合留在东京里就能持续得分。更关键的是，东京内的玩家不能使用治疗符号回血——你坐在王座上，就必须用脸接住每一发爪痕。东京之外掷出足够攻击的玩家，可以选择夺取东京，把前任赶出去（前任不受伤，只是回到场外）。于是整局游戏围绕东京形成了一个持续的拉锯：坐上去的人想多撑一轮多拿几分，外面的人则在计算“什么时候把他打下来、什么时候换自己上去”。进退的时机，比骰运本身更能区分谁真正读懂了这局游戏。<br>
+
+能量与超能力卡是骰子之外的第二条决策轴。掷出的每一个能量符号都会转化为一枚能量方块，你可以在自己回合的结算阶段花费能量，从展示区购买超能力卡。超能力卡分为两种：“保留”型放在你面前持续生效（比如让你多长一个头、多一条命，或者让攻击附带额外效果），“弃牌”型则是一次性效果，结算后立刻丢弃。展示区始终保持三张明牌，你也可以花费2点能量刷新它们。超能力卡的存在让每一局不至于沦为纯粹的骰运比拼：能量是稀缺的，三张明牌是随机的，你必须在“现在买下这张立刻能用的”和“攒着等下一张更关键的”之间做选择。某些卡牌之间的组合（比如增加骰子数量、改变骰面效果）能让一套看似随机的投掷产生质变，但前提是你活到把它们凑齐的时候。<br>
+
+游戏的结束条件有两条，而且它们彼此拉扯。你可以追求20分，通过数字组合得分、占据东京每回合的自动得分、以及部分超能力卡的加分来累积；你也可以选择把其他所有怪兽的生命值打到0，成为最后站着的那一个。前者是一条“慢速但稳定”的路，后者是一条“暴力但风险极高”的路——因为你每打出一发伤害，都在消耗别人的血量，也在把自己变成桌面上最显眼的靶子。领跑者永远会被集火：当你接近20分时，所有人都会默契地把攻击指向你，或者用超能力卡的效果干扰你；而一个血量见底的玩家，也可能在绝境中连续掷出攻击，把领先者一起拖下水。东京之王不提供长线规划的空间，它提供的是一轮又一轮在“我现在该贪多少”和“我现在该收多少”之间的即时判断。<br>
+
+《东京之王》的运气是显性的、不可掩饰的。骰子会背叛你，卡牌会不来，你精心保留的三个“3”可能在最后一次重掷后变成一堆爪痕。但它作为聚会游戏的生命力，恰恰来自这种运气面前人人平等的混乱感：老手未必能赢新手，但老手知道什么时候该坐进东京、什么时候该花钱买下那张能改变局面的卡、什么时候该放弃得分转而把某个人往死里打。30分钟一局，规则十分钟讲完，剩下的二十分钟里，你只需要做一件事：在骰子停下来之前，决定你还想再赌一次吗。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

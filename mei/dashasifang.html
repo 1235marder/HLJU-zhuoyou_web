@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大杀四方 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mei.html">← 返回美式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/dashasifang.png">
+        <div class="info-right">
+            <h1>大杀四方</h1>
+            <div class="tag-row">
+                <span class="tag">2-4人</span>
+                <span class="tag">难度2.06/5</span>
+                <span class="tag">时长45分钟</span>
+                <span class="tag">占领</span>
+                <span class="tag">地区控制</span>
+            </div>
+            <div class="content">
+                <p>《大杀四方》（Smash Up）由 Paul Peterson 设计，Alderac Entertainment Group（AEG）于2012年发行，中文版由MYBG游踪桌影代理。它在BGG的重度仅约2.07/5，规则书薄到“不超过5分钟就可以上手”，却在发售后十余年里催生了数十个扩展、上百个种族。游戏官方将自己的核心机制命名为 “Shufflebuilding”——它不是让你在游戏中逐步构筑牌库，而是让你在开局之前就把两副完整的、风格互不相容的阵营牌洗在一起，然后带着这副“已经定型”的四十张牌进入战场。真正的策略不在“买什么牌”，而在 “你选了哪两个种族，以及你有没有读懂它们混在一起之后会长出什么”。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>大杀四方不试图讲述一个连贯的故事，它把所有流行文化里你能想到的“阵营原型”扔进同一个搅拌机：海盗、忍者、机器人、僵尸、恐龙、外星人、巫师、妖精、克苏鲁邪教徒、蒸汽朋克、神话小马、猫咪、迪斯科舞者、卡车司机……官方基础版就提供了8个种族，两两混搭产生28种组合；随着扩展不断加入，可选阵营早已超过70个，理论组合数以千计。你扮演的不是某一个阵营的领袖，而是两个本不该结盟的势力之间那个不稳定的盟约：僵尸-忍者可以让被消灭的随从从弃牌堆复活，配合暗杀清场；海盗-恐龙则用“全帆突进”把高战力单位砸进基地，靠纯粹的吨位碾压。每一局开始前的“选种族”环节，就已经在定义你这一局能玩出什么花样。<br>
+
+每回合的行动极度精简：打出一张随从牌到任意一个基地，再打出一张战术牌（可以打在不同基地，也可以选择不打某一种），然后从牌库抽两张牌，手牌上限十张。随从提供战力，战术牌提供一次性效果——消灭对手随从、移动单位、额外抽牌、改变战力对比。规则层面几乎没有理解成本，但“打在哪、什么时候打、留什么不打” 构成了每一回合的全部决策重量。<br>
+
+基地的爆破与计分是驱动整局游戏的引擎。场上始终同时翻开比玩家人数多一个的基地牌，每个基地都有一个“爆破值”（通常是十几到二十几点）和一组按名次排列的分数（如第一名3分、第二名2分、第三名1分，随轮次或基地不同而变化）。当某个基地上所有随从的战力总和大于或等于爆破值时，该基地立即结算：战力最高的玩家拿走第一名分数，以此类推，平局则共享较高名次的分。结算完成后，该基地上所有随从进入弃牌堆，翻开一张新的基地补位。这意味着你打出的随从只有在基地爆破的那一刻才真正“兑现”，在那之前，它既是你的资产，也是对手可以攻击、移动或利用的目标。<br>
+
+种族组合的化学反应才是这个游戏真正的“深度”所在。每个种族有20张牌，包含随从与战术，带有鲜明的机制倾向：机器人擅长铺场、让随从成群涌入；僵尸从弃牌堆反复复活；外星人把对手的随从弹回手牌；忍者专精于在结算前暗杀关键单位；恐龙提供单纯的高战力；巫师依赖法术连锁；海盗在移动与消灭之间游走。单独看每个种族，强度大致在一个可控的区间内；但当你把两个种族的牌洗在一起，它们之间可能产生规则文本允许、但设计师未必完全预见的协同或冲突。僵尸-忍者可以让被消灭的随从从弃牌堆再次入场，配合暗杀形成反复清场与重建的循环；海盗-恐龙的“全帆突进”能把原本笨重的高战力单位以超出预期的方式砸进基地。反过来，某些组合则几乎毫无联动，或者因为关键牌的上手顺序而被对手轻易压制。<br>
+
+游戏在任意玩家达到15分时立即结束，该玩家获胜。15分是一条被刻意压低的终点线：一个基地的结算就可能送出3–5分，因此领先者随时可能在下一轮被两三个基地的连锁爆破掀翻。你在牌桌上的“威胁度”是一种真实的资源——过早暴露一套运转流畅的组合，会让所有人默契地把战术牌和暗杀效果朝你倾泻；而一套看起来“不太行”的混搭，有时反而能在无人戒备的角落里悄悄累积分数，直到某个基地爆破时所有人发现自己已经追不上了。<br>
+
+大杀四方不提供精密的长期规划，它提供的是每一局开局时那几分钟的“选人赌局”：你赌这对组合能跑起来，赌对手不会恰好克制你，赌基地的翻面顺序让你的爆发回合来得不太晚。规则简单到几乎透明，但“两个种族洗在一起会发生什么”这个问题，在数百个阵营面前，永远有下一个答案值得试。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

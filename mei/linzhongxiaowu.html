@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林中小屋 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mei.html">← 返回美式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/linzhongxiaowu.png">
+        <div class="info-right">
+            <h1>林中小屋</h1>
+            <div class="tag-row">
+                <span class="tag">3-6人</span>
+                <span class="tag">难度2.35/5</span>
+                <span class="tag">时长60分钟</span>
+                <span class="tag">骰子</span>
+                <span class="tag">角色扮演</span>
+                <span class="tag">地图添加</span>
+            </div>
+            <div class="content">
+                <p>《林中小屋》（Betrayal at House on the Hill，又译《山中小屋》《山屋惊魂》）由 Bruce Glassco 主设计，Rob Daviau、Bill McQuillan 等组成的团队共同开发，Avalon Hill 于2004年推出首版，2022年发行第三版。它在 BGG 上的评分约7.0，重度2.40/5，被广泛视为美式恐怖桌游的“入门教科书”。但它的经典地位并不来自规则的精密——恰恰相反，它的规则薄到十分钟就能讲完，判定几乎全靠六颗骰子的运气。林中小屋真正的设计核心是一个叙事上的暴力切换：前一秒你们还是并肩探索的同伴，后一秒其中一个人就变成了必须被杀死或被逃脱的“叛徒”。房子在变，规则在变，盟友的身份也在变，唯一不变的是你永远不知道这一局的“游戏”到底是什么，直到它突然变成另一种游戏。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>你们各有各的理由来到这座深山中的宅邸，但没有人真正说得出为什么。大门在身后轰然关闭，锁死，没有回头路。你们只能往里走。每推开一扇门，房间就在眼前铺展开来——有的是书房，有的是地窖，有的是从未在建筑图纸上存在过的礼拜堂。事件、物品与“预兆”散落在这些房间里，一开始只是些古怪的声响和不太对劲的画作，但预兆越积越多，房子本身似乎也在变得越来越不耐烦。然后，“作祟”降临了。<br>
+
+作祟一旦触发，游戏就不再是你们刚才玩的那款游戏。其中一名玩家会被揭示为叛徒——他可能是被房子蛊惑了，可能是从一开始就别有用心，也可能只是在错误的时间出现在了错误的房间。叛徒拿到一本只有他自己能读的剧本，剩下的人拿到另一本。双方各自阅读属于自己的胜利条件，然后抬起头，看向刚才还在一起翻板块的同伴。从这一刻起，你们不再共享同一套规则，也不再共享同一个目标。<br>
+
+游戏被“作祟”切分成两个截然不同的阶段，而这两个阶段之间的断裂本身，就是林中小屋全部张力的来源。<br>
+
+探索阶段是合作进行的。每位玩家轮流移动、探索新房间，从房间板块牌库中抽取一块拼接到版图上，然后根据板块上的标记触发事件、物品或预兆。房间的拼接方式以“门对门”为原则，但板块的抽取完全随机，所以每一次游戏中的宅邸都是一座从未存在过、也不会再次出现的建筑。角色的能力由四项属性定义：力量（Might，用于攻击）、速度（Speed，用于移动）、神志（Sanity，用于抵抗精神冲击）与知识（Knowledge，用于解析线索与器物）。属性以轨道上的指针标记，起始值印在角色卡上，游戏过程中会因事件与物品上下滑动。任何一项属性降到轨道的最底端，角色立即死亡，哪怕其余三项依然充盈。<br>
+
+预兆与作祟检定是引爆整局游戏的引信。每当有人抽到一张预兆牌，就必须进行一次作祟检定：掷出等同于已揭示预兆数量的骰子，骰面结果之和必须大于等于这个数量，才能“无事发生”。第一张预兆只需要掷1颗骰子，几乎不可能失败；但到了第四、第五张预兆，你就要掷四五颗骰子去对抗同样的数字，失败的概率迅速攀升。房子在逼你走向那个时刻。一旦检定失败，剧本手册翻到对应的那一页，叛徒被揭示，游戏进入第二阶段。剧本的具体内容由触发作祟的那张预兆牌与触发时所在的房间共同决定，50个剧本意味着同样的房子可以在完全不同的故事里变成完全不同的噩梦。有些剧本是经典的“一个叛徒对抗所有人”，有些则加入了隐藏叛徒（叛徒自己一开始也不知道身份），甚至有纯合作的变体，所有人共同对抗房子本身。<br>
+
+进入作祟阶段后，叛徒与幸存者各自获得独立的胜利条件，而这些条件往往不对称得近乎粗暴。叛徒可能拥有压倒性的力量加成，但必须完成某个仪式；幸存者可能正面打不过，但只需要坚持若干回合或找到某个特定物品。这意味着从作祟揭示的那一刻起，双方的游戏就不再是“谁更强”，而是“谁先读懂自己的剧本”。叛徒的秘密剧本只有他自己能看，幸存者不知道叛徒的确切目标是什么，叛徒也不知道幸存者需要做什么才能赢。信息差本身就是武器。问题在于，这种不对称的平衡极其脆弱。第三版的规则调整试图让剧本判定更直观，但“愚骰”的本质并未改变：一个力量8的叛徒面对力量4的幸存者，骰运正常时几乎碾压；而幸存者如果恰好抽到了剧本所需的关键道具，也可能在叛徒完成准备之前就终结游戏。平衡不是林中小屋的强项，它也不打算成为强项。<br>
+
+林中小屋最诚实的评价是：它是一款用规则的不稳定性来制造叙事体验的游戏。房子随机生长，剧本随机触发，骰子随机裁决，叛徒的身份与能力随机分配。你无法像在《诡镇奇谈》里那样规划牌库，也无法像在《恶夜杀机》里那样精算噪音的引向。你能做的，是在房子翻出一间你从未见过的房间时发出惊叹，在叛徒揭示的那一刻倒吸一口气，然后在接下来半小时里，和你刚刚还在并肩探路的人，为了各自剧本上那行只有自己能读到的胜利条件，拼到最后一颗骰子落定。它不公平，不精密，不保证每一局都精彩——但当它运转起来的时候，那张桌面上会长出一座只属于这一晚的鬼屋，和一段只属于这一桌人的背叛故事。这就是为什么二十年后，它仍然被一遍又一遍地打开。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

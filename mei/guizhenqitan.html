@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诡镇奇谈 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mei.html">← 返回美式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/guizhenqitan.png">
+        <div class="info-right">
+            <h1>诡镇奇谈</h1>
+            <div class="tag-row">
+                <span class="tag">1-4人</span>
+                <span class="tag">难度3.8/5</span>
+                <span class="tag">时长60-120分钟</span>
+                <span class="tag">卡牌构筑</span>
+                <span class="tag">战役成长</span>
+                <span class="tag">克苏鲁神话</span>
+            </div>
+            <div class="content">
+                <p>《诡镇奇谈：卡牌版》（Arkham Horror: The Card Game）由 Nate French 与 MJ Newman 设计，Fantasy Flight Games（FFG）于2016年发行，中文版由艾赐魔袋代理。BGG 评分约8.1–8.3，重度在3.18至3.86之间浮动（视剧本与卡池深度而定），长期位居总榜前三十。它是 FFG 旗下“成长式卡牌游戏”（LCG）体系中叙事密度最高的一作，将克苏鲁神话的压迫感从版图桌上收束进一副你自己构筑、也会由你自己承担后果的牌库里。它的核心不在于“赢下某一局”，而在于你和谁一起、带着什么样的创伤与记忆，走完一段注定不会毫发无损的旅程。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>1925年，马萨诸塞州，阿卡姆。漫长的夏天刚刚过去，但某些东西并没有随着暑热一同消退。古老的邪恶在暗影中蠕动，神话中的存在正试图叩开这个世界的大门。你不是什么天选之人，你是一名调查员——也许是从战场归来的联邦探员，也许是流落街头的孤儿，也许是埋首故纸堆的教授，也许是靠直觉行走的灵媒。你们各自带着残缺的能力与不愿提及的过去，因为同一桩诡异事件聚到了一起。每一个剧本都是一次完整的调查，但调查的终点往往不是“真相大白”，而是你在真相面前付出了多少：肉体上的创伤、精神上的裂痕、以及那些一旦做下就无法撤销的选择。<br>
+
+每轮调查以行动点驱动。每名调查员在自己的回合拥有3个行动点，用于移动、调查、攻击、躲避、打出资产卡或触发能力。行动本身并不复杂，真正的重量压在每一次行动所附带的技能检定上。<br>
+
+技能检定是诡镇奇谈全部随机性与心理压力的交汇点。调查员拥有意志、智力、战斗、敏捷四项技能值，面对一项检定（例如“调查”对应智力，“攻击”对应战斗），你需要让自己的技能值加上修正后，大于或等于检定的难度值。在抽取标记之前，你可以从手牌中弃掉带有对应符号的卡牌来临时提升技能值——这是你唯一能主动施加的控制。然后，从混沌袋中抽取一枚标记。袋中的标记绝大多数是负数修正（-1、-2、-3、-4），只有少数是0或+1，还有一枚自动失败的旧神标记和一枚可能出现在高阶难度中的自动成功标记。混沌袋不会说谎，也不会怜悯：你计算好了一切，投入了手牌，然后抽出一个-4，一切归零。<br>
+
+场景牌与密谋牌构成了每一局的双重倒计时。场景牌代表调查员需要推进的进度——收集足够的线索，揭示事件的真相；密谋牌代表邪恶一方的进度——每轮固定添加的毁灭标记会沿着密谋牌推进，一旦密谋走完，调查往往以失败告终，或者至少让局面急剧恶化。你在追赶真相，敌人在追赶你。调查员每轮的行动点只有3个，而移动、调查、战斗、躲避全都在争夺这3点。你几乎永远无法在同一轮里既推进场景，又压制密谋，还保全自己。<br>
+
+职阶与组卡将这种压力提前到了游戏开始之前。调查员分为五个职阶：守卫者（战斗与保护）、探求者（调查与线索）、流浪者（资源与灵活性）、潜修者（法术与意志检定）、求生者（逆境与失败收益），外加中立卡牌。每名调查员只能在自己的主职阶中自由选牌，副职阶受到等级限制。你构筑的30张牌不是一套“最优解”的堆砌，而是一份关于“你打算如何面对失败”的声明：守卫者用血量和武器硬扛检定，探求者用高智力和调查工具把线索效率拉满，潜修者用高意志法术覆盖一切检定但承担反噬风险，求生者则把“失败”本身变成资源。没有一套牌能同时做好所有事，所以你从组卡的那一刻起，就已经在决定放弃什么。<br>
+
+战役模式是诡镇奇谈区别于几乎所有其他卡牌游戏的核心设计。一个战役由数个相互关联的剧本串联而成，剧本之间的选择会写入战役记录，并直接决定下一个剧本的场景配置、可用盟友、甚至结局分支。你在上一关获得的经验值可以在两关之间购买更高等级的卡牌，替换掉牌库中效率不足的旧卡；但与此同时，你承受的肉体创伤和精神创伤会永久降低生命值上限或理智值上限，并带入后续所有剧本。你变强的方式，同时也是你变脆的方式。一次侥幸的生还可能在下一关变成致命的短板，而一次惨烈的失败也可能为你换来一个在终局中至关重要的故事资产。战役不保证你会赢，它只保证你的每一个选择都会留下痕迹。<br>
+
+诡镇奇谈的难度从来不在规则本身，而在你必须在信息不完整、资源不充裕、时间不站在你这一边的情况下，反复决定什么值得赌、什么可以放。混沌袋会让最周密的计划落空，密谋牌会让最勇敢的冲锋显得徒劳，而创伤记录卡会在每一个战役之间提醒你：上一关的代价还没有付完。但正是这种“带着伤往前走”的体验，让每一次检定成功、每一条线索被揭开、每一个剧本走到终局时，都带着一种别处很难复制的重量。你不是在打败克苏鲁，你是在尽量完整地、带着尽可能多的人，从祂的阴影里走出来。
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

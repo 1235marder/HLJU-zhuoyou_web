@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王权骰铸 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mei.html">← 返回美式桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/wangquantouzhu.png">
+        <div class="info-right">
+            <h1>王权骰铸	</h1>
+            <div class="tag-row">
+                <span class="tag">2-6人</span>
+                <span class="tag">难度2.07/5</span>
+                <span class="tag">时长20-40分钟</span>
+                <span class="tag">对战</span>
+                <span class="tag">骰子</span>
+            </div>
+            <div class="content">
+                <p>《王权骰铸》（Dice Throne）由 Nate Chatellier 与 Manny Trembley 联合设计，Gavan Brown 参与美术与开发，Roxley 于2018年发行，中文版由原石桌游与 Asmodee 先后引进。它是一款将骰子的随机爆发与卡牌的战术操控焊在一起的双人对战游戏，重度仅约2.07/5，一局二三十分钟，规则透明到几乎不需要查阅。但“轻”不等于“浅”：每一颗骰子掷出之后，你仍然握有重掷、改判、升级与反制的多重手段，运气负责制造戏剧性，而决定在哪个骰面上停手、把资源投向哪条技能线，才是区分胜负的那只手。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>没有漫长的战役，没有需要探索的版图。王权骰铸的背景简洁到近乎一个竞技场设定：来自不同奇幻谱系的英雄——野蛮人、月精灵、火法师、暗影盗贼、枪手、武士、吸血鬼领主、炽天使——为了“王权”的象征意义，在骰盘与卡牌之间展开一对一的决斗。每个英雄都拥有一套完全独立的五颗专属骰子、一张印满技能组合的英雄面板，以及一套只属于该角色的卡牌与状态体系。你选择的英雄，从开局第一秒起就决定了你能打出什么样的连招、擅长在什么节奏下发难，以及你的运气上限和下限分别长什么样。
+<br>
+一回合被拆解成清晰的阶段，而所有决策都围绕同一个核心循环运转：掷骰 → 凑组合 → 发动技能或攻击 → 对手防御 → 结算。<br>
+
+每位玩家的回合开始时，先处理身上的持续状态，然后进入主要阶段。在这个阶段，你可以花费战斗点数（CP） 升级英雄面板上的技能、打出蓝色行动卡，或者保留资源等待后续。随后进入攻击掷骰阶段：你拿起自己的五颗骰子，最多进行三次投掷，每次都可以选择保留部分骰面、重掷其余的。你的目标是在英雄面板上找到与当前骰面组合匹配的条目——对子、顺子、特定数字的集合，或者纯粹的“攻击”符号堆叠。面板上列出的每一种组合都通向不同的伤害数值、状态效果或特殊能力，而你必须在三次投掷之内决定自己要追求哪一条路线。追求高风险的大招组合，可能三次都凑不齐；稳妥的小组合，又可能把节奏拱手让给对手。<br>
+
+攻击宣告之后，对手进入防御掷骰阶段。防御同样依赖骰子，但防御骰面通常更少、组合更简单，效果包括减伤、完全格挡或反击。卡牌可以在这个阶段从手中打出，改变骰面、追加伤害或取消对方的防御效果。这意味着一次攻击的最终结果，在宣告之后仍然可能被双方的卡牌改写——你计算好的斩杀线，可能被一张防御牌瞬间抹平；对手以为安全的血量，也可能被你手里蓄谋已久的改判牌直接击穿。<br>
+
+卡牌与CP构成了骰子之外的第二条控制轴。CP通过特定骰面或卡牌效果获得，用于购买和打出卡牌。卡牌的效果涵盖永久升级（强化英雄面板上的某个技能，让它从此变得更强）、状态施加（中毒、灼烧、眩晕等持续负面效果）、以及直接操控骰子——不只是改自己的，还可以改队友的，甚至在特定卡牌下干涉对手的骰面。在多人组队模式（2v2、3v3或2v2v2）中，这种“操控他人骰子”的能力将游戏从单纯的对轰升级为小团队之间的资源调度与掩护配合：一个人负责制造压力，另一个人负责改判关键骰面来确保连招成立。<br>
+
+胜负的判定极其干脆：在标准1v1中，将对手的生命值从50点削减至0，你就赢下了这一局。没有分数结算，没有隐藏任务，所有伤害都朝同一个方向累积。但正是这种“一眼望到底”的胜利条件，让王权骰铸的张力全部集中在每一个回合的瞬时决策上：这一轮是应该搏大招、赌三次投掷的运气，还是用小组合稳定削血、把CP攒到下一轮升级关键技能？你的骰子决定了你能做什么，但你的卡牌和CP决定了你在骰子背叛你的时候，还能不能把局面拽回来。<br>
+
+王权骰铸并不试图用厚重的策略深度来证明自己。它的设计自信在于：当五颗骰子落下、所有人都盯着那个“就差一个图标”的骰面时，桌面上的紧张感不需要任何规则书来支撑。你可以在新人手里看到它变成纯粹的运气狂欢，也可以在对局老手之间看到它变成一场关于概率、资源与心理的微型博弈。同一款游戏，在不同的人手里，重量是不同的——而它把选择权，连同那五颗骰子，一起交到了你手上。
+
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
