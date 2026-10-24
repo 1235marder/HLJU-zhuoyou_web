@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>险恶疑航 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/xianeyihang.png">
+        <div class="info-right">
+            <h1>险恶疑航</h1>
+            <div class="tag-row">
+                <span class="tag">5-11人</span>
+                <span class="tag">难度2.17/5</span>
+                <span class="tag">时长45-90分钟</span>
+                <span class="tag">身份</span>
+                <span class="tag">角色扮演</span>
+                <span class="tag">网格移动</span>
+            </div>
+            <div class="content">
+                <p>《险恶疑航》（Feed the Kraken）由 Maikel Cheney、Dr. Hans Joachim Höh 与 Tobias Immich 三位德国设计师联合设计，Funtails 于2022年发行，中文版由七海桌游代理引进。它在 BGG 上的评分约7.8，重度仅2.17/5，规则体量略高于《阿瓦隆》但远不及德式重策，单局却能容纳多达11人，最佳体验在8人以上。它的设计支点可以用一句话概括：船上没有任何一个阵营是“好人”，所有人都在用谎言争夺同一艘船的方向盘，而方向盘每轮都在换人握。与传统双阵营身份游戏不同，险恶疑航把“找到坏人”替换成了“判断这一轮该让谁来决定航向”，而你刚刚投出的那一票，下一轮可能就会变成指向你自己的刀。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>祖船长（Captain Zu）的船在海上遭遇了一连串灾祸，半数船员丧生，剩下的也认为这趟航程受到了诅咒，在小港口补给淡水后便尽数离去。祖船长只能在酒馆里招募一批新的面孔来帮他完成横渡大洋的旅程——但应招上船的人里，并非全是眼神清澈的水手。有人觊觎着他的船，有人觊觎着船上所有人的灵魂。忠诚的水手想把船安全带回东北方的蓝水湾；海盗在暗处谋划着把船驶向西北的绯红洞穴；而邪教徒则试图把船引向北方海域的中心，在那里将邪教领袖献祭给深海巨兽克拉肯（Kraken），或者干脆说服足够多的船员加入 cult，一起召唤他们的黑暗之主。三方同船异梦，而船只有一个航向。<br>
+
+每轮航程以一个权力交接的循环开场，这是险恶疑航区别于所有静态身份游戏的根本设计。当前船长任命一名副官和一名领航员，其余玩家则通过秘密握持手枪标记来投票是否哗变。每人手中握有0到3把手枪，同时亮出后，若场上手枪总数达到阈值，哗变成功，出枪最多的玩家成为新船长，手枪被消耗；若未达阈值，原船长团队继续掌权，手枪保留。这意味着权力不是靠身份或技能获得的，而是靠即时的人际计算与资源押注：你手里有几把枪、你猜别人会出几把、你愿不愿意为一个不确定的政变花掉宝贵的火力，这些问题每一轮都在重写答案。<br>
+
+权力交接完成后，航向决定由三人团队完成：船长和副官各自秘密抽取两张航向卡，从中选一张放入航海日志，传给领航员；领航员从这两张中选择一张执行，船只向对应方向移动一格。航向卡分为蓝色（东）、红色（西）、黄色（北）三种，正好对应三个阵营的目标方向。船长和副官可能给出互相矛盾的指令，领航员则必须在两个他无法完全信任的人递来的方向之间做出抉择——他看不到被丢弃的那两张牌是什么，也就无法判断递到他面前的这两个选项，是经过筛选的“仅有的可能”，还是精心布置的“唯一的陷阱”。<br>
+
+船移动后触发的版图事件是局面中最大的变数来源。格子上的图标可能让船长搜查船舱（查看一名玩家的阵营）、割舌（禁止某人发言）、鞭刑（强制展示某人不属于哪个阵营），也可能要求献祭（将一名玩家直接喂给海怪出局）。这些事件的效果不改变阵营归属，但它们强制公开信息或强制消除参与者，从而在原本已经浑浊的水面上再搅一层泥沙。一个被割舌的玩家无法为自己辩护，一个被鞭刑展示“不是某阵营”的玩家反而可能因此获得某种奇怪的信任，而献祭则可能恰好把邪教领袖送到他自己想要去的终点。<br>
+
+邪教仪式是第三阵营独有的暗线引擎。在特定阶段，邪教徒可以秘密向其他玩家发放手枪，可以查看领航团队所有人的阵营，还可以将一名玩家转化为邪教小弟——前提是那个人面前没有放置过“搜查船舱”或“鞭刑”标记，也就是说，已经公开暴露过部分身份信息的人，反而不会被邪教看上。邪教领袖的胜利条件有两条且只需达成一条：船只抵达北方海域中心，或者邪教领袖本人被献祭给海怪。后一条规则是整局游戏最锋利的一把暗刃：一个邪教领袖完全可能在前期表现得像一个无辜的水手，然后在某个恰当的时机主动把自己推到献祭的刀口上——他的死亡，就是他最大的胜利。<br>
+
+当船只抵达某一方的目的地时，游戏立即结束。水手和海盗的胜利条件直接对应目的地：抵达蓝水湾，所有水手共同获胜；抵达绯红洞穴，所有海盗共同获胜。邪教的判定则更为复杂，因为被转化的小弟与领袖的胜负并不同步，领袖可能赢了，而小弟未必。这种三方不对称的终局判定，让每一个玩家在航程的最后一格之前，都无法百分之百确认自己到底站在赢的那一边。<br>
+
+险恶疑航的“重”不在于规则密度，而在于每一轮权力结构都在被重新定义。你这一轮是船长，下一轮可能因为一场哗变变成一个连发言权都被割掉的普通船员；你刚刚信任的领航员，下一轮可能就坐在船长的位置上，把船引向一个你完全不想去的方向。它保留了身份推理的核心快感——阅读发言、追踪矛盾、押注信任——但把驱动这一切的引擎从“找出坏人”换成了“争夺定义航向的权力”。45到90分钟，5到11人，没有淘汰等待，没有固定阵营的舒适区，只有一艘船、三个目的地，和一群每一轮都在重新计算该把票投给谁的人。
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

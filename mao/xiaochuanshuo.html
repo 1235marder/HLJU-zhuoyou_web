@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小传说 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/xiaochuanshuo.png">
+        <div class="info-right">
+            <h1>小传说</h1>
+            <div class="tag-row">
+                <span class="tag">2-5人</span>
+                <span class="tag">难度1/5</span>
+                <span class="tag">时长10分钟</span>
+                <span class="tag">手牌管理</span>
+            </div>
+            <div class="content">
+                <p>《小传说》（Hero Tales）由g小调设计，地核桌游于2022年发行，像素美术由范玥执笔。它在集石上的上手难度为3级（满分10级），BGG类重度约在1.5至2之间，单局20分钟左右，是一款体量极轻但决策密度不低的国产原创卡牌游戏。它的设计支点可以用一句话概括：你没有被绑定在任何一方阵营里——这一秒你是勇者，下一秒你就能倒戈成为魔物，而金币不在乎你是谁。游戏将“反复横跳”从一个贬义词变成了核心策略，你打出的每一张牌都在同时定义你此刻的立场与下一轮的收益路径。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>剑与魔法的幻想大陆上，皇室与魔物两大阵营的对峙从未停歇。按照正统的叙事，勇者应当讨伐恶龙、守护王国，但《小传说》并没有给你预设一条固定的英雄之路。你开局时手牌里同时握着代表皇室的黄色卡牌与代表魔物的紫色卡牌，每一回合你都可以重新决定：这一轮是站在人类王国一边发展自己，还是投身魔族去掠夺对手。阵营不是你的身份，而是你这一回合选择使用的工具。游戏的“背景”不在于讲述一段史诗，而在于提供一种极其轻快的道德弹性：你可以在第一回合用勇者搜刮金币，下一回合就化身恶龙把对手的勇者踩在脚下，而旁观的其他人只会关心你手里又多了几枚金币。<br>
+
+游戏的回合结构清晰而紧凑。每位玩家依次经历准备、行动、结束三个阶段。准备阶段，你场上所有非“持续”效果的卡牌回到手牌；行动阶段，你拥有2次行动，每一次可以是抽一张牌（从皇室或魔物两个牌库中任选其一）或打出一张牌，两次行动的顺序与组合完全自由，可以连续抽两张，也可以连续打出两张；结束阶段，手牌弃至4张上限，场上带有“持续”标记的卡牌保留并重置。行动虽然只有“抽”或“打”两个选项，但双牌库的存在让“抽哪一张”本身就成了一个立场声明：抽皇室牌，意味着你倾向于自我发展、稳定产出；抽魔物牌，则意味着你准备掠夺对手、走一条更具攻击性的路线。<br>
+
+皇室牌（黄色）与魔物牌（紫色） 的能力取向截然不同。皇室卡侧重于自我发展与资源转化，勇者、公主、铁匠、商人等角色通过打出时的效果或触发条件为你赚取金币；魔物卡则侧重于直接掠夺与干扰，恶龙、炸弹怪、龙幼崽等卡牌的效果往往指向对手的手牌、场上的卡牌或金币本身。关键之处在于，你同时拥有这两个牌库的访问权。一个纯粹的皇室路线可以稳定积累，但速度可能偏慢；一个纯粹的魔物路线可以快速从对手身上撕下金币，但一旦对手的防御或反制到位，你可能一无所获。最优路径几乎从来不在任何一个极端上，而在于根据手牌与场面，在两者之间反复切换。<br>
+
+胜利条件被刻意压到了极简：率先获得5枚金币的玩家立即获胜；如果牌库在有人达到5枚金币之前耗尽，则金币数量最多的玩家获胜；若多人同时达标，则比较各自场上（或阵营中）角色卡的数量，多者胜出。5枚金币是一条很短的终点线，一局20分钟内可能发生多次攻守转换。你这一轮通过魔物掠夺了2枚金币，下一轮对手就可能用皇室角色的触发效果把你的优势抹平。金币是唯一的计分单位，而获取金币的路径散布在两种截然不同的牌库逻辑里，这迫使每一回合的“抽或打”都带着对节奏的即时判断：是继续沿着当前路线滚雪球，还是在对手的引擎成型之前切换阵营，去拆掉他的组件。<br>
+
+《小传说》的随机性来自手牌抽取与牌库顺序，但它的策略空间恰恰藏在手牌上限与行动点数的双重约束里。你每回合只能做两件事，手牌最多留四张，这意味着你不可能把所有想要的东西都握在手里等待“完美的一轮”。你必须在信息不完全、资源不充裕的情况下，决定这一轮是抽牌储备、打出组合，还是切换阵营去回应对手的威胁。它轻到可以塞进口袋，短到可以在等餐时连开三局，但它在那二十分钟里让你做出的每一次“抽皇室还是抽魔物”的选择，都在重新定义你在这场小小传奇里的位置——而5枚金币之后，没有人会记得你曾经是勇者还是恶龙。
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

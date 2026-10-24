@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瞎掰王 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/xiabaiwang.png">
+        <div class="info-right">
+            <h1>瞎掰王</h1>
+            <div class="tag-row">
+                <span class="tag">3-9人</span>
+                <span class="tag">难度1.33/5</span>
+                <span class="tag">时长10分钟</span>
+                <span class="tag">欺骗</span>
+                <span class="tag">语言</span>
+            </div>
+            <div class="content">
+                <p>《瞎掰王》（9upper）由香港桌游品牌狗吠火车娱乐于2023年推出，是一款纯粹的语言类派对游戏。它在集石上的上手难度仅2级（满分10级），单轮时长极短，整个游戏几乎没有需要学习的“规则”，唯一的要求就是“开口说话”。它的设计支点可以用一句话概括：在一个所有人都可以撒谎的房间里，唯一知道真相的那个人，必须把真话说得比谎言更像谎言。玩家被随机分配为大聪明（猜测者）、老实人（唯一知道正确答案的人）和一群瞎掰人（编造谎言的人）。大聪明的任务是在一片胡言乱语中找出那个说真话的老实人；而瞎掰人的任务，是用一个足够离谱却又足够合理的虚构故事，把大聪明骗到自己的阵营里。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>游戏不讲述任何一个完整的故事，它复刻的是一种极其具体的社交场景：一群人在一本正经地胡说八道。每一轮，大聪明会翻开一张冷门词汇卡——可能是某个地方的方言俚语，可能是一个生僻的专业术语，也可能是某个早已无人使用的旧词。除了老实人有机会在闭眼阶段偷看到词汇的真实释义，其他所有人（瞎掰人）都对答案一无所知。但他们不能表现出无知，他们必须像真的知道一样，编造出一个听起来头头是道的解释。大聪明手握一张名为 “净他喵扯淡” 的功能牌，可以在任何他觉得某人在胡说的时候拍出去，但拍错了（对方恰好是老实人），代价会非常沉重。在这个房间里，知识是劣势，因为知道答案的人必须努力让自己听起来不像在撒谎；无知反而是优势，因为瞎掰人只需要编得足够像真的就行。<br>
+
+游戏以轮次推进，每一轮中，一位玩家担任大聪明（身份公开），其余玩家秘密抽取身份牌，其中一人是老实人，其余均为瞎掰人。大聪明从牌堆抽取一张题目卡，所有人阅读卡面正面的词汇（通常是大家从未见过的冷门词），然后进入“闭眼”阶段：所有人闭眼并制造噪音，只有老实人能在30秒内睁眼，翻看卡牌背面的真实释义并记住它。时间结束后，所有人睁眼，大聪明从任意一位玩家开始，依次听取每个人对这个词汇的解释。<br>
+
+发言的核心不在于“讲出正确的答案”，而在于让自己的说法比别人的更可信。老实人必须如实说出自己看到的释义，但他面临的困境是：真实的释义往往因为词汇本身的冷僻而显得荒诞不经，他越是诚实地复述，听起来就越像是在编造。瞎掰人则完全相反，他们可以随意发挥，没有任何事实束缚，只需要让自己的故事听起来有细节、有逻辑、有自信。大聪明可以随时向任何一位发言者追问，要求对方补充细节或解释矛盾之处，老实人必须基于真实释义作答，而瞎掰人则需要即时为自己的谎言打补丁。<br>
+
+“净他喵扯淡”功能牌是大聪明唯一能主动施加的干预手段。当大聪明认为某位玩家在瞎掰时，他可以打出这张牌进行指认。如果被指认的确实是瞎掰人，该瞎掰人扣1分，大聪明额外得1分；如果被指认的恰好是老实人，大聪明自己扣3分。这张牌的存在让大聪明的处境同样两难：他不能无差别地怀疑所有人，因为每一次错误的指认都在直接削减他自己的分数。他必须在听完所有人的发言之后，做出一个不可撤回的判断。<br>
+
+当所有玩家都完成发言和追问后，大聪明必须指认他认为是老实人的那位玩家。如果指认正确，大聪明和老实人同时获得与题目难度对应的分数（例如难度2的题目，两人各得2分）；如果指认错误，只有被错误指认的那位瞎掰人获得该难度级别的分数，大聪明和老实人一分不得。题目难度分为三级：难度1提供提示词（如“形容词”“身体部位”），难度2的三个提示词中只有一个正确，难度3则完全没有提示词，全靠玩家自己“闭眼瞎掰”。<br>
+
+当每位玩家都担任过规定次数的大聪明（3-4人局每人3次，5-7人局每人2次，8-9人局每人1次）之后，游戏结束，总分最高者获胜。<br>
+
+《瞎掰王》不提供任何精密的策略计算，它提供的是一场纯粹的语言表演。它的乐趣不在于你“猜对了多少”，而在于你亲眼目睹一个平时最靠谱的朋友，为了圆一个随口编出的谎言，在追问下越编越离谱，最终把自己逼进一个无法收场的角落；或者一个真正知道答案的人，因为说实话时过于紧张，反而被所有人当作最大的骗子。它轻到可以塞进口袋，短到可以在等餐时连开好几轮，而它留下的东西比分数更持久：那些在这一局里被编造出来的、荒唐到足以在接下来一整晚被反复提起的“新定义”。
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>印加宝藏 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/yinjiabaozang.png">
+        <div class="info-right">
+            <h1>印加宝藏</h1>
+            <div class="tag-row">
+                <span class="tag">3-8人</span>
+                <span class="tag">难度1.1/5</span>
+                <span class="tag">时长20-40分钟</span>
+                <span class="tag">运气</span>
+                <span class="tag">探险</span>
+                <span class="tag">虚张声势</span>
+            </div>
+            <div class="content">
+                <p>《印加宝藏》（Incan Gold / Diamant）由布鲁诺·费杜蒂（Bruno Faidutti，《富饶之城》设计师）与艾伦·R·穆恩（Alan R. Moon，《车票之旅》设计师）联合设计，最初于2005年前后发行，中文版由新天鹅堡引进。它的BGG重度仅1.11/5，规则几乎不需要教学，单局20到40分钟，却被广泛视为“推运”（push-your-luck）品类中最纯粹的入门范本之一。它的设计支点可以用一句话概括：每一轮，你都在“带着已经到手的宝藏离开”和“赌下一张牌不会杀死你”之间做选择，而真正决定收益的，往往不是你的胆量，而是其他人是否比你更早害怕。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>你和一群探险者深入一座被遗弃的印加神庙，绿松石、黑曜石与黄金散落在沿途，传说中的神器就藏在更深处。但神庙并不欢迎活人：巨型蜘蛛、木乃伊、毒蛇、烈火与落石，每一种危险都潜伏在牌堆里，等待第二次现身。游戏不讲述一段具体的冒险故事，它复刻的是一种极简的赌徒处境：你可以随时掉头返回营地，把已经分到手的宝石锁进帐篷；也可以继续往里走，赌自己能分到更大的份额。但越往里走，愿意同行的人就越少，分蛋糕的人越少，每一块蛋糕就越大——而危险再次出现的概率，也在同步攀升。<br>
+
+游戏进行五轮探险。每一轮开始时，将一张神器卡洗入由宝藏卡与危险卡组成的探险牌堆。所有玩家从神庙入口出发，然后重复以下循环，直到本轮结束：<br>
+
+翻开一张牌。<br> 如果是宝藏卡，卡面数字代表宝石数量，由仍在探险中的所有玩家平分；除不尽的零头留在卡牌上，等待下一轮分配。如果是危险卡（蜘蛛、蛇、木乃伊、落石、烈火），第一次出现时无事发生，但同一种危险第二次出现，探险立即失败，所有仍在神庙中的玩家失去本轮已经获得的一切。如果是神器卡，它被放在路径上，暂时无人可以拿走。
+<br>
+翻牌之后，所有玩家秘密且同时选择继续或撤退。撤退的玩家带着本轮已经分到的宝石安全离开，退出本轮的后续决策；继续的玩家留在神庙中，面对下一张牌。如果恰好只有一名玩家选择撤退，他不仅带走自己应得的宝石，还独吞路径上所有的神器卡和遗留的零头宝石。如果有多人同时撤退，他们只能平分路径上的遗留宝石，神器则由众人均分（或按版本规则处理），独自离开才是收益最大化的撤退方式。<br>
+
+五轮结束后，累计宝石（以及神器的额外分值）最高的玩家获胜。<br>
+
+《印加宝藏》的深度不在规则，而在每一轮“翻牌之后、亮牌之前”的那几秒钟沉默。你手里握着“继续”和“撤退”两张牌，你知道这一轮已经出现了哪些危险，你知道牌堆里还剩下多少张同类型的危险卡，但你不知道坐你对面的那个人，此刻是比你更害怕，还是比你更贪婪。如果全桌都是谨慎的人，你独自撤退就能拿走神器；如果全桌都是赌徒，你留在神庙里可能分到更大的份额，也可能成为唯一一个被第二次落石埋葬的人。它的运气是显性的，但你输掉的那些轮次，很少是因为运气不好，而往往是因为你误判了其他人会在什么时候收手。20到40分钟一局，规则透明到任何人都能立刻加入，而它在那几十分钟里反复追问的，始终是同一个问题：你有多相信，自己不是这张桌上最贪的那个人。
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>

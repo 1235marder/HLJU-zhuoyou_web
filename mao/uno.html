@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNO | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.9; }
+        }
+        .back-nav {
+            padding: 48px 20px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .back-nav a:hover {
+            color: #e94560;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+        /* 左侧封面图 */
+        .cover-img {
+            width: 320px;
+            height: 420px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: rgba(22, 33, 56, 0.55);
+            flex: 0 0 320px;
+        }
+        /* 右侧文字区 */
+        .info-right {
+            flex: 1;
+        }
+        h1 {
+            color: #e94560;
+            margin-bottom: 32px;
+            font-size: 2.2rem;
+        }
+        .tag-row {
+            margin-bottom: 32px;
+        }
+        .tag {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .content p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+			margin-bottom: 16px;
+        }
+        /* 通栏游戏背景 */
+        .bg-wrap {
+            max-width: 1000px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+        .bg-wrap h3 {
+            color:#f5a623;
+            margin-bottom:12px;
+        }
+        .bg-wrap p {
+            color: #bbb;
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(35, 53, 84, 0.4);
+        }
+        /* 手机端自动上下堆叠 */
+        @media (max-width:768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 48px;
+            }
+            .cover-img {
+                width: 100%;
+                height: 300px;
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="../mao.html">← 返回聚会桌游列表</a>
+    </div>
+    <div class="container">
+        <img class="cover-img" src="../images/yinjiabaozang.png">
+        <div class="info-right">
+            <h1>UNO</h1>
+            <div class="tag-row">
+                <span class="tag">-10人</span>
+                <span class="tag">难度1.1/5</span>
+                <span class="tag">时长30分钟</span>
+                <span class="tag">手牌管理</span>
+            </div>
+            <div class="content">
+                <p>《UNO》由理发师 Merle Robbins 于1971年设计，最初为了家庭娱乐在小作坊手工制作，后由 International Games 发行，现由美泰（Mattel）持有其版权。它在BGG上的重度极低，仅1.05/5，几乎是所有现代桌游的“坐标系原点”——规则一句话就能讲完，单局不过十几分钟，但在全球范围内的销量和知名度，让它成为当之无愧的“国民级毛线”。它的设计支点可以用一句话概括：当所有人都以为这是一场比拼运气的抽牌游戏时，实际上它是一场关于如何把上一家的痛苦最大化传递给下一家的互相折磨。你不需要规划什么长线引擎，你只需要在手里攒够几张功能牌，然后等待那个最合适的时机，把整副牌库的恶意一次性砸在左手边那个人的脸上。</p>
+            </div>
+        </div>
+    </div>
+    <!-- 游戏背景挪到外面，整行通栏 -->
+    <div class="bg-wrap">
+        <h3>游戏背景</h3>
+        <p>《UNO》不提供任何世界观。没有王国需要拯救，没有文明需要发展，没有飞船需要驾驶。你拿到一副牌，每个人都抽七张，然后轮流出牌。游戏唯一的“叙事”，产生于那张牌桌上的人际关系变化：上一秒你们还在愉快地聊天，下一秒你的朋友就用一张“+4”把你手里的牌塞到了十三张；你咬牙切齿地摸完牌，发现下一张刚好能接上，于是你打出一张“反转”，让那个刚刚害你的人自己把牌吞回去。它的背景就是你们这桌人本身，而规则只是为你们提供了一个合法互相伤害的理由。<br>
+
+每位玩家起手7张牌，牌堆顶翻开一张作为弃牌堆的起始牌。轮到你时，你必须打出一张与弃牌堆顶牌颜色相同或数字/符号相同的牌。如果没有可以打出的牌，你必须从摸牌堆摸一张牌，如果这张牌能出，你可以立刻打出，否则回合结束。当你在手中只剩一张牌时，必须大声喊出 “UNO!”——如果你忘了喊，并且被其他玩家抓住，你就要再摸两张牌作为惩罚。<br>
+
+四种功能牌是整局游戏的灵魂。跳过牌（Skip） 让下一名玩家直接失去本回合；反转牌（Reverse） 改变出牌顺序，在两人局中相当于跳过；+2牌（Draw Two） 让下一名玩家摸两张牌并跳过其回合；变色牌（Wild） 允许你任意指定接下来的颜色；+4变色牌（Wild Draw Four） 则同时要求下一名玩家摸四张牌，并跳过其回合，同时由你指定颜色。+4的使用限制是规则中最具争议也最容易被村规覆盖的条款：官方规则中，你只能在手中没有当前颜色的牌时才能打出+4；但在大多数民间玩法中，这条限制被默许打破，从而衍生出无休止的“+2叠+2”、“+4反弹+4”的加码模式。无论采用哪种版本，谁先被塞满一手烂牌，谁就离胜利最远。<br>
+
+当有人打空手牌，该轮立即结束。胜利者获得其他所有人手中剩余牌的点数总和（数字牌按面值，功能牌按20或50分计），最终率先达到500分的玩家赢下整局。但很多人根本不在乎那个累计的500分——赢下这一轮本身，就已经足够让那个刚刚还在对你笑的人，在下一轮疯狂针对你了。<br>
+
+《UNO》的运气成分是绝对显性的。你摸到什么牌，决定了你能做什么；你下一家手里有什么，决定了你能不能痛快地把痛苦传出去。但它的持久魅力恰恰来自这份毫无掩饰的随机性：它不假装自己是一个需要深思熟虑的策略游戏，它只想让你在摸出+4的那一刻，感受到一种原始的、不需要任何技巧支撑的、纯粹的快乐。它被无数硬核玩家视为“不入流”，却又几乎出现在每一场需要打发时间的聚会里。因为它轻、快、不需要任何学习成本，而它唯一要求的，就是你在那个特定时刻，比你左手边的人，多一张能让他骂出声的牌。
+
+
+</p>
+    </div>
+    <div class="footer">
+        黑大桌游社 · 黑龙江大学 · 2026
+    </div>
+
+    <div class="star-layer" id="starBox"></div>
+    <script>
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+        for(let i=0; i<starCount; i++){
+            const star = document.createElement('div');
+            star.className = 'star';
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2+Math.random()*3}s ease-in-out infinite`;
+            starBox.appendChild(star);
+        }
+    </script>
+</body>
+</html>
