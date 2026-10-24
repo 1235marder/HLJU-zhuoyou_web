@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 | 黑大桌游社</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(145deg, #070b16 0%, #142442 50%, #0a101d 100%);
+            color: #eee;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 星空层 */
+        .star-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.9;
+            }
+        }
+
+        /* 返回导航 */
+        .back-nav {
+            padding: 24px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .back-nav a {
+            color: #f5a623;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .back-nav a:hover {
+            color: #e94560;
+        }
+
+        /* 内容区 */
+        .content {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: left;
+        }
+
+        .content h1 {
+            font-size: 2.4rem;
+            color: #fff;
+            margin-bottom: 24px;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            color: #bbbbbb;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            .content h1 {
+                font-size: 1.8rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 返回导航 -->
+    <div class="back-nav">
+        <a href="index.html">← 返回桌游列表主页</a>
+    </div>
+
+    <!-- 正文内容 -->
+    <main class="content">
+        <h1>关于我们</h1>
+        <p>
+        免责声明：本站为学生社团自制展示网站，所有桌游相关素材仅作社团内部交流分享使用，图片、规则版权归原作者所有，<br>
+        不用于商业用途。<br>
+        如任何组织或个人对网站内容有任何疑问，可联系：<br>
+        QQ：1506939434 --域名持有者_OP<br>
+        QQ：2405911609 --协同开发者_殊墨<br>
+        本届桌游社相关人员名单：<br>
+        社长：歪武（2902806599）<br>
+        副社长：殊墨（2405911609）<br>
+		副社长：月月鸟（1490980056）<br>
+        三国杀负责人：小帅（1530194625）<br>
+        跑团负责人：殊墨（同上）<br>
+        注：联系方式均为QQ号<br>
+        </p>
+    </main>
+
+    <!-- 星空层 -->
+    <div class="star-layer" id="starBox"></div>
+
+    <script>
+        // 生成星空背景
+        const starBox = document.getElementById('starBox');
+        const starCount = 180;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const size = Math.random() * 2 + 0.4;
+
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animation = `twinkle ${2 + Math.random() * 3}s ease-in-out infinite`;
+
+            starBox.appendChild(star);
+        }
+    </script>
+
+</body>
+</html>

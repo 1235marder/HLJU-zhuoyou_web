@@ -141,6 +141,19 @@
             font-size: 0.85rem;
             margin: 4px;
         }
+        .about-link {
+			display: block;
+			text-align: right;
+			padding: 24px 20px;
+			font-size: 12px;
+			color: #aaa;
+			text-decoration: none;
+		}
+		.about-link:hover {
+			color: #fff;
+		}
+
+
         .download-book {
 			position: absolute;
 			top: 20px;
@@ -168,6 +181,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="hero">
     <a href="pdf/zhanshice.pdf" target="_blank" class="download-book">📖 桌游展示册</a>
@@ -255,8 +269,10 @@
         </div>
     </div>
     <div class="footer">
-        黑大桌游社 · 黑龙江大学 · 2026
-    </div>
+    <span>黑大桌游社 · 黑龙江大学 · 2026</span>
+    <a href="aboutus.html" class="about-link">关于我们</a>
+	</div>
+
 
     <!-- 星空 放在footer下面，</body>之前 -->
     <div class="star-layer" id="starBox"></div>
